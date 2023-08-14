@@ -1,0 +1,52 @@
+.down button{
+background-Color:#3f51b5;
+color: white;
+width: 12vh;
+height: 5vh;
+}
+.down h3{
+    color: #3f51b5;
+}
+.all{
+    display: flex;
+    flex-direction: column;
+    gap: 5vh;
+    margin-top: 5vh;
+}
+form{
+    background-color: white;
+    padding: 5rem;
+    height: 50%;
+}
+.down{
+    display: flex;
+    gap: 15vh;
+    margin-top: 2vh;
+}
+.all input{
+    height: 5vh;
+}
+h5{
+    font-size: 2rem;
+    font-weight: 100;
+}
+.down h3{
+    font-size: 2rem;
+}
+.all label{
+    font-size: 2rem;
+}
+@media (max-width: 400px) {
+    .all input{
+        height: 2vh;
+    }
+    .all label{
+        font-size: 1rem;
+    }
+    .down h3{
+        font-size: 1rem;
+    }
+    h5{
+        font-size: 1rem;
+    }
+ }
