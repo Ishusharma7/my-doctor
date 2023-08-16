@@ -1,5 +1,5 @@
 import React from 'react'
-import a from './images/a.svg'
+import a from '../Login Page/images/a.svg'
 import css from './header.module.css'
 
 export default function Header () {

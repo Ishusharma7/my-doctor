@@ -1,8 +1,9 @@
 import React from 'react'
 import css from './register.module.css'
 import { useState } from 'react';
+import { TextField } from '@mui/material';
 
-export default function Doc() {
+export default function Doc(props) {
     const [selectedOption, setSelectedOption] = useState('');
   
     const handleOptionChange = (event) => {
@@ -14,7 +15,7 @@ export default function Doc() {
             <h1>Create an account</h1>
             <label>
             Full Name*
-            <input 
+            <TextField 
                 placeholder='Enter name'
                 required
             />
@@ -56,32 +57,34 @@ export default function Doc() {
         <div className={css.down}>
         <label>
           Mobile Number*
-            <input
+            <TextField
             placeholder='Enter Mobile Number'
              />
              </label>
              <label>
              Email*
-             <input
+             <TextField
             placeholder='abc@gmail.com'
              />
              </label>
              <label>
              Create Password*
-             <input
+             <TextField
             placeholder='Create Password'
              />
              </label>
              <label>
              Confirm Password*
-             <input
+             <TextField
             placeholder='Confirm Password'
              />
              </label>
         </div>
         <div className={css.last}>
         <button>Register</button>
-        <h4>Already have an account? Sign in</h4>
+        <div className={css.but}>
+        <h4>Already have an accout? <button onClick={props.handleSigin}>Sign in</button></h4>
+        </div>
         </div>
     </form>
   )

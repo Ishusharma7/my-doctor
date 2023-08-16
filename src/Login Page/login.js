@@ -1,5 +1,4 @@
 import React from 'react'
-import Header from "./Header";
 import b from './images/b.svg'
 import c from './images/c.svg'
 import css from './login.module.css'
@@ -9,9 +8,9 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import Form from '../form';
-import Register from './register';
-import Doc from './doc';
+import Form from './forms/form';
+import Register from './forms/register';
+import Doc from './forms/doc';
 
 
 
@@ -50,14 +49,22 @@ function CustomTabPanel(props) {
 
 
 function Login() {
-    const [value, setValue] = useState(1);
+    const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+  const handleSign =()=>{
+    setValue(1);
+  }
+  const handleSigin=()=>{
+    setValue(0)
+  }
+  const handlesiigin=()=>{
+    setValue(0)
+  }
   return (
     <>
-        <Header />
         <div>
         <div className={css.nav}>
         <Box sx={{ width: '100%' }}>
@@ -81,7 +88,7 @@ function Login() {
             width={1200}
             height={1200}
         />
-       <Form />
+       <Form handleSign={handleSign} />
         </div>
  
       </CustomTabPanel>
@@ -93,7 +100,7 @@ function Login() {
             width={1200}
             height={1200}
         />
-        <Register />
+        <Register handlesiigin={handlesiigin} />
         </div>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
@@ -104,7 +111,7 @@ function Login() {
             width={1200}
             height={1200}
         />
-        <Doc />
+        <Doc handleSigin={handleSigin} />
         </div>
       </CustomTabPanel>
     </Box>

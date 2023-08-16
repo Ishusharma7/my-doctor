@@ -1,0 +1,136 @@
+.up h1{
+    font-size: 3rem;
+}
+.up input{
+    height: 6vh;
+    width: 63vh;
+    border-radius: 5px;
+    font-size: 2rem;
+}
+.mid h2{
+    font-size: 2.5rem;
+    font-weight: 100;
+}
+.mid label{
+    font-size: 2rem;
+}
+input[type=radio]{
+    margin-right: 3.5vh;
+    margin-left: 2vh;
+}
+.radio{
+    height: 3vh;
+    width: 3vh;
+}
+.down input{
+    height: 6vh;
+    width: 63vh;
+    border-radius: 10px;
+    font-size: 2rem;   
+}
+form{
+    width: 65vh;
+    padding: 2vh;
+    border: 2px solid #eeebeb;
+}
+.down{
+    margin-top: 4vh;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+.last button{
+    margin-top: 5vh;
+    width: 20vh;
+    font-size: 3vh;
+    background-color: #3f51b5;
+    color: white;
+}
+.last{
+    display: flex;
+    flex-direction: column;
+}
+.last h4{
+    font-size: 2rem;
+    font-weight: 200;
+}
+
+select {
+  font-size: 30px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+select {
+  width: 150px;
+  height: 80px;
+  padding: 10px;
+  margin: 5px;
+}
+.but button{
+    width: 12vh;
+    background-color: transparent;
+    border: none;
+    color: #551A8B;
+    font-weight: 600;
+}
+
+select:last-child {
+  width: 200px;
+}
+label{
+    font-size: 2rem;
+}
+@media (max-width: 400px) {
+    .up h1{
+        font-size: 1.5em;
+    }
+    .up input{
+        width: 100%;
+        height: 3vh;
+    }
+    .down input{
+        width: 100%;
+        height: 3vh;
+    }
+    .up label{
+        font-size: 1em;
+    }
+    .mid h2{
+        font-size: 1em;
+        margin-left: 4vh;
+    }
+    .mid label{
+        font-size: 1em;
+    }
+    .dob h2{
+        font-size: 1em;
+    }
+    select {
+        font-size: 1em;
+        padding: 5px;
+    }
+    select {
+      width: 100px;
+      height: 40px;
+      margin: 0;
+    }      
+     select:last-child {
+        width: 80px;
+      }
+      input[type=radio]{
+        margin-right: 3vh;
+        margin-left: 4vh;
+    } 
+     .down label{
+        font-size: 1em;
+     } 
+     .last h4{
+        font-size: 1.2em;
+     }
+     .last button{
+        width: 15vh;
+        height: 5vh;
+    }
+}

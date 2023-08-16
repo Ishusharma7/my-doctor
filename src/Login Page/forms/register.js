@@ -1,8 +1,9 @@
 import React from 'react'
 import css from './register.module.css'
 import { useState } from 'react';
+import TextField from '@mui/material/TextField';
 
-export default function Register() {
+export default function Register(props) {
     const [selectedOption, setSelectedOption] = useState('');
     const [selectedDay, setSelectedDay] = useState('');
   const [selectedMonth, setSelectedMonth] = useState('');
@@ -37,7 +38,7 @@ export default function Register() {
             <h1>Create an account</h1>
             <label>
             Full Name*
-            <input 
+            <TextField
                 placeholder='Enter name'
                 required
             />
@@ -80,7 +81,7 @@ export default function Register() {
 
 
 
-        <div>
+        <div className={css.dob}>
       <h2>Date of Birth*</h2>
       <select value={selectedDay} onChange={handleDayChange}>
         <option value="">Day</option>
@@ -116,32 +117,34 @@ export default function Register() {
         <div className={css.down}>
         <label>
           Mobile Number*
-            <input
+            <TextField
             placeholder='Enter Mobile Number'
              />
              </label>
              <label>
              Email*
-             <input
+             <TextField
             placeholder='abc@gmail.com'
              />
              </label>
              <label>
              Create Password*
-             <input
+             <TextField
             placeholder='Create Password'
              />
              </label>
              <label>
              Confirm Password*
-             <input
+             <TextField
             placeholder='Confirm Password'
              />
              </label>
         </div>
         <div className={css.last}>
         <button>Register</button>
-        <h4>Already have an account? Sign in</h4>
+        <div className={css.but}>
+        <h4>Already have an account? <button onClick={props.handlesiigin}>Sign in</button></h4>
+        </div>
         </div>
     </form>
   )

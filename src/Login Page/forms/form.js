@@ -1,7 +1,7 @@
 import React from 'react'
 import TextField from '@mui/material/TextField';
 import css from './form.module.css'
-function Form() {
+function Form(props) {
   return (
     <form>
     <div className={css.all}>
@@ -15,7 +15,9 @@ function Form() {
     <button>LOGIN</button>
     <h3>Forgot Password ?</h3>
     </div>
-    <h5>Don't have an account? Sign up</h5>
+    <div className={css.sig}>
+    <h5>Don't have an account? <button onClick={props.handleSign}>Sign up</button></h5>
+    </div>
     </form>
   )
 }

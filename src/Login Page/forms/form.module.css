@@ -20,11 +20,14 @@ form{
 }
 .down{
     display: flex;
+    align-items: center;
     gap: 15vh;
     margin-top: 2vh;
 }
 .all input{
     height: 5vh;
+    width: 20vh;
+    border: blue;
 }
 h5{
     font-size: 2rem;
@@ -32,9 +35,17 @@ h5{
 }
 .down h3{
     font-size: 2rem;
+    font-weight: 100;
 }
 .all label{
     font-size: 2rem;
+}
+.sig button{
+    width: 12vh;
+    background-color: transparent;
+    border: none;
+    color: #551A8B;
+    font-weight: 600;
 }
 @media (max-width: 400px) {
     .all input{
