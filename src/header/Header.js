@@ -3,6 +3,7 @@ import a from '../Login Page/images/a.svg'
 import css from './header.module.css'
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
+import { Link } from "react-router-dom";
 
 
 export default function Header () {
@@ -21,12 +22,14 @@ export default function Header () {
   return (
     <div>
         <div className={css.up}>
+        <Link to="/">
             <img 
             src = {a}
             alt='mylogo'
             width={250}
             height={150}
             />
+            </Link>
         <div className={css.bet}>
                 <Autocomplete
                  disablePortal
@@ -41,8 +44,9 @@ export default function Header () {
                 placeholder='Search a Doctor'
             />
             </div>
-
-            <button>LOGIN</button>
+            <Link to="/login">
+            <button  href="/login">LOGIN</button>
+            </Link>
         </div>
         <div className={css.down}>
         <h1>I am here</h1>

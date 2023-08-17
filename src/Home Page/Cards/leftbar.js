@@ -63,8 +63,8 @@ function Left() {
         aria-label="Vertical tabs example"
         sx={{ borderRight: 1, borderColor: 'divider' }}
       >
-        <Tab label= "Doctors" icon={<span className="material-icons"><PersonIcon /></span>} {...a11yProps(0)} /> 
-        <Tab label="Specialities" icon={<span className="material-icons"><BubbleChartIcon /></span>} {...a11yProps(1)} />
+        <Tab label= "Doctors" icon={<PersonIcon  style={{ fontSize: 50 }} />} iconPosition="start" {...a11yProps(0)} /> 
+        <Tab label="Specialities" icon={<BubbleChartIcon  style={{ fontSize: 50 }} />} iconPosition="start" {...a11yProps(1)} />
       </Tabs>
       <TabPanel value={value} index={0}>
       <div className={css.imge}>

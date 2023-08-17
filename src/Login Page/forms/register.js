@@ -75,11 +75,11 @@ export default function Register(props) {
            }
     
           // Check password match
-         if (data.password !== data.confirmPassword) {
-             passwordObj.match = "unchecked";
-         } else {
-           passwordObj.match = "checked";
-          }
+    if (data.password !== data.confirmPassword) {
+      passwordObj.match = "unchecked";
+    } else {
+      passwordObj.match = "checked";
+    }
         return passwordObj;
          });
        };
@@ -180,22 +180,29 @@ export default function Register(props) {
                 validatePassword(value);
               }
             break;
-            case 'confirmpassword':
-              if(!value){
-                setErrors((prevErrors) => ({
-                  ...prevErrors,
-                  [name]: true,
-                }));
-              }
-                else if (data.password && value === data.password) {
-                  setPasswordChecks((prev) => {
-                    return { ...prev, match: "checked" };
-                  });
-                }
-              break;
+            case 'confirmPassword':
+  if (!value) {
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      [name]: true,
+    }));
+  } else if (data.password && value === data.password) {
+    setPasswordChecks((prev) => ({
+      ...prev,
+      match: "checked",
+    }));
+  }
+  break;
+
         default:
           break;
       }
+    };
+
+    const handlePasswordCheck = () => {
+      setPasswordChecks((prev) => {
+        return { ...prev, isOpen: true };
+      });
     };
   
   return (
@@ -325,6 +332,7 @@ export default function Register(props) {
             type='password'
             name = 'password'
             value = {data.password}
+            onClick={handlePasswordCheck}
             onChange={handleFieldBlur}
             error={errors.password}
             helperText={errors.password ? <Typography  style={{ fontSize: '25px' }} >invalid password </Typography>: ''}
@@ -333,14 +341,15 @@ export default function Register(props) {
              <label>
              Confirm Password*
              <TextField
-            placeholder='Confirm Password'
-            type='password'
-            name = 'confirmPassword'
-            value = {data.confirmPassword}
-             onChange={handleFieldBlur}
-             error={errors.confirmPassword}
-             helperText={errors.confirmPassword ? <Typography  style={{ fontSize: '25px' }} >Password does not match </Typography>: ''}
-             />
+              placeholder='Confirm Password'
+              type='password'
+              name='confirmPassword' // Make sure the name matches the key used in the function
+              value={data.confirmPassword}
+              onChange={handleFieldBlur}
+              error={errors.confirmPassword}
+              helperText={errors.confirmPassword ? <Typography style={{ fontSize: '25px' }}>Password does not match</Typography> : ''}
+            />
+
              </label>
         </div>
         <div className={css.hidden}>
