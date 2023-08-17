@@ -8,10 +8,11 @@ import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
 import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
 
 export default function Register(props) {
+  const currentDate = new Date();
     const [selectedOption, setSelectedOption] = useState('');
-    const [selectedDay, setSelectedDay] = useState('');
-  const [selectedMonth, setSelectedMonth] = useState('');
-  const [selectedYear, setSelectedYear] = useState('');
+    const [selectedDay, setSelectedDay] = useState(currentDate.getDate().toString());
+  const [selectedMonth, setSelectedMonth] = useState((currentDate.getMonth() + 1).toString());
+  const [selectedYear, setSelectedYear] = useState(currentDate.getFullYear().toString());
   const [data, setData] = useState({
     fullName: '',
     email: '',
@@ -108,6 +109,7 @@ export default function Register(props) {
     const handleOptionChange = (event) => {
       setSelectedOption(event.target.value);
     };
+
 
     const handleFieldChange = (event) =>{
       const {value,name} = event.target;
