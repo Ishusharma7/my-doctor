@@ -1,3 +1,6 @@
+*{
+    margin: 0;
+}
 .up h1{
     font-size: 3rem;
 }
@@ -8,7 +11,7 @@
     font-size: 2rem;
 }
 .mid h2{
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 100;
 }
 .mid label{
@@ -82,6 +85,14 @@ select:last-child {
 label{
     font-size: 2rem;
 }
+.hidden p{
+    font-size: 1.7em;
+    padding: 0;
+    margin: 0;
+}
+.hidden{
+    margin-top: 1.5em;
+}
 @media (max-width: 400px) {
     .up h1{
         font-size: 1.5em;
@@ -98,7 +109,7 @@ label{
         font-size: 1em;
     }
     .mid h2{
-        font-size: 1em;
+        font-size: 50px;
         margin-left: 4vh;
     }
     .mid label{
@@ -132,5 +143,8 @@ label{
      .last button{
         width: 15vh;
         height: 5vh;
+    }
+    .hidden p{
+        font-size: 1em;
     }
 }

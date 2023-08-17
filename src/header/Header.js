@@ -10,6 +10,7 @@ export default function Header () {
             src = {a}
             alt='mylogo'
             width={250}
+            height={150}
             />
         <div className={css.bet}>
             <input 

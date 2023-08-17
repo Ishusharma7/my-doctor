@@ -211,7 +211,7 @@ export default function Register(props) {
                 onChange={handleFieldChange}
                 error={errors.fullName}
                 helperText={
-                  errors.fullName?<Typography  style={{ fontSize: '35px' }} >'invalid username' </Typography> : ''
+                  errors.fullName?<Typography  style={{ fontSize: '25px' }} >Please enter a valid name </Typography> : ''
                 }
             />
             </label>
@@ -301,7 +301,7 @@ export default function Register(props) {
             onBlur={handleFieldBlur}
             onChange={handleFieldChange}
             error={errors.phone}
-            helperText={errors.phone ?<Typography  style={{ fontSize: '35px' }} >'invalid Mobile Number'</Typography> : ''}
+            helperText={errors.phone ?<Typography  style={{ fontSize: '25px' }} >Please enter a valid 10-digit mobile number!</Typography> : ''}
              />
              </label>
              <label>
@@ -313,7 +313,7 @@ export default function Register(props) {
             onBlur={handleFieldBlur}
             onChange={handleFieldChange}
             error={errors.email}
-            helperText={errors.email ? <Typography  style={{ fontSize: '35px' }} >'invalid email' </Typography>: ''}
+            helperText={errors.email ? <Typography  style={{ fontSize: '25px' }} >Please enter a valid e-mail address! </Typography>: ''}
              />
              </label>
              <label>
@@ -325,7 +325,7 @@ export default function Register(props) {
             value = {data.password}
             onChange={handleFieldBlur}
             error={errors.password}
-            helperText={errors.password ? <Typography  style={{ fontSize: '35px' }} >'invalid password' </Typography>: ''}
+            helperText={errors.password ? <Typography  style={{ fontSize: '25px' }} >invalid password </Typography>: ''}
              />
              </label>
              <label>
@@ -337,62 +337,62 @@ export default function Register(props) {
             value = {data.confirmPassword}
              onChange={handleFieldBlur}
              error={errors.confirmPassword}
-             helperText={errors.confirmPassword ? <Typography  style={{ fontSize: '35px' }} >'Password does not match' </Typography>: ''}
+             helperText={errors.confirmPassword ? <Typography  style={{ fontSize: '25px' }} >Password does not match </Typography>: ''}
              />
              </label>
         </div>
         <div className={css.hidden}>
         <p>
           {passwordChecks.lowercase === "" ?(
-            <CircleOutlinedIcon color = 'primary' />):
+            <CircleOutlinedIcon color = 'primary' sx={{ width: '3vh', height: '3vh' }}/>):
             passwordChecks.lowercase ==="checked" ? (
-            <CheckCircleOutlineOutlinedIcon color ='success' /> ):
-            (<CancelOutlinedIcon color ='error' />)
+            <CheckCircleOutlineOutlinedIcon color ='success' sx={{ width: '3vh', height: '3vh' }}/> ):
+            (<CancelOutlinedIcon color ='error' sx={{ width: '3vh', height: '3vh' }}/>)
           }
           Must contain lowercase letter
         </p>
         <p>
         {passwordChecks.uppercase === "" ?(
-            <CircleOutlinedIcon color = 'primary' />):
+            <CircleOutlinedIcon color = 'primary' sx={{ width: '3vh', height: '3vh' }}/>):
             passwordChecks.uppercase ==="checked" ? (
-            <CheckCircleOutlineOutlinedIcon color ='success' /> ):
-            (<CancelOutlinedIcon color ='error' />)
+            <CheckCircleOutlineOutlinedIcon color ='success' sx={{ width: '3vh', height: '3vh' }}/> ):
+            (<CancelOutlinedIcon color ='error' sx={{ width: '3vh', height: '3vh' }}/>)
           }
           Must contain uppercase letter
         </p>
         <p>
         {passwordChecks.speialcharacter === "" ?(
-            <CircleOutlinedIcon color = 'primary' />):
+            <CircleOutlinedIcon color = 'primary' sx={{ width: '3vh', height: '3vh' }}/>):
             passwordChecks.speialcharacter ==="checked" ? (
-            <CheckCircleOutlineOutlinedIcon color ='success' /> ):
-            (<CancelOutlinedIcon color ='error' />)
+            <CheckCircleOutlineOutlinedIcon color ='success' sx={{ width: '3vh', height: '3vh' }}/> ):
+            (<CancelOutlinedIcon color ='error' sx={{ width: '3vh', height: '3vh' }}/>)
           }
-          Must contain at leasr 1 special character
+          Must contain at leasr one special character
         </p>
         <p>
         {passwordChecks.number === "" ?(
-            <CircleOutlinedIcon color = 'primary' />):
+            <CircleOutlinedIcon color = 'primary' sx={{ width: '3vh', height: '3vh' }}/>):
             passwordChecks.number ==="checked" ? (
-            <CheckCircleOutlineOutlinedIcon color ='success' /> ):
-            (<CancelOutlinedIcon color ='error' />)
+            <CheckCircleOutlineOutlinedIcon color ='success' sx={{ width: '3vh', height: '3vh' }}/> ):
+            (<CancelOutlinedIcon color ='error' sx={{ width: '3vh', height: '3vh' }}/>)
           }
-          Must contain at leat 1 number
+          Must contain at leat one number
         </p>
         <p>
         {passwordChecks.sixcharacters === "" ?(
-            <CircleOutlinedIcon color = 'primary' />):
+            <CircleOutlinedIcon color = 'primary' sx={{ width: '3vh', height: '3vh' }}/>):
             passwordChecks.sixcharacters ==="checked" ? (
-            <CheckCircleOutlineOutlinedIcon color ='success' /> ):
-            (<CancelOutlinedIcon color ='error' />)
+            <CheckCircleOutlineOutlinedIcon color ='success' sx={{ width: '3vh', height: '3vh' }}/> ):
+            (<CancelOutlinedIcon color ='error' sx={{ width: '3vh', height: '3vh' }}/>)
           }
           Must contain at least 6 characters
         </p>
         <p>
         {passwordChecks.match === "" ?(
-            <CircleOutlinedIcon color = 'primary' />):
+            <CircleOutlinedIcon color = 'primary' sx={{ width: '3vh', height: '3vh' }}/>):
             passwordChecks.match ==="checked" ? (
-            <CheckCircleOutlineOutlinedIcon color ='success' /> ):
-            (<CancelOutlinedIcon color ='error' />)
+            <CheckCircleOutlineOutlinedIcon color ='success' sx={{ width: '3vh', height: '3vh' }}/> ):
+            (<CancelOutlinedIcon color ='error' sx={{ width: '3vh', height: '3vh' }}/>)
           }
           Must match
           </p>

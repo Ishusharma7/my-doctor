@@ -41,39 +41,40 @@ export default function Register(props) {
   const validatePassword = (value) => {
              setPasswordChecks((prev) => {
           const passwordObj = { ...prev };
-          // Check lowercase letter
+          //  lowercase letter
           if (!/[a-z]/.test(value)) {
                   passwordObj.lowercase = "unchecked";
          } else{
                   passwordObj.lowercase = "checked";
              }
-          // Check uppercase letter
+          //  uppercase letter
           if (!/[A-Z]/.test(value)) {
                 passwordObj.uppercase = "unchecked";
          } else {
                 passwordObj.uppercase = "checked";
           }
-          // Check special character
+          //  special character
          if (!/[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/.test(value)) {
                   passwordObj.speialcharacter = "unchecked";
          } else {
                  passwordObj.speialcharacter = "checked";
          }
     
-          // Check number
+          //  number
             if (!/[0-9]/.test(value)) {
              passwordObj.number = "unchecked";
            } else {
              passwordObj.number = "checked";
            }
-          // Check length
+          //  length
            if (value.length < 6) {
             passwordObj.sixcharacters = "unchecked";
            } else {
             passwordObj.sixcharacters = "checked";
            }
     
-          // Check password match
+          //  password match
+    console.log(data.password)
          if (data.password !== data.confirmPassword) {
              passwordObj.match = "unchecked";
          } else {
