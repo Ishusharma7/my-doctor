@@ -10,6 +10,7 @@ import { useState } from 'react';
 import Special from './specialities';
 import PersonIcon from '@mui/icons-material/Person';
 import BubbleChartIcon from '@mui/icons-material/BubbleChart';
+import Doc from './doctcard';
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -53,7 +54,7 @@ function Left() {
     <div>
         <div className={css.nav}>
         <Box
-      sx={{ flexGrow: 1, display: 'flex', marginTop: '7rem', position:'fixed'}}
+      sx={{ flexGrow: 1, display: 'flex', marginTop: '7rem'}}
     >
       <Tabs
         orientation="vertical"
@@ -61,7 +62,7 @@ function Left() {
         value={value}
         onChange={handleChange}
         aria-label="Vertical tabs example"
-        sx={{ borderRight: 1, borderColor: 'divider' }}
+        sx={{ position: 'fixed', paddingRight: '4rem' }}
       >
         <Tab label= "Doctors" icon={<PersonIcon  style={{ fontSize: 50 }} />} iconPosition="start" {...a11yProps(0)} /> 
         <Tab label="Specialities" icon={<BubbleChartIcon  style={{ fontSize: 50 }} />} iconPosition="start" {...a11yProps(1)} />
@@ -73,10 +74,11 @@ function Left() {
         src = {d}
          />
          <Special />
+         <Doc />
         </div>
       </TabPanel>
       <TabPanel value={value} index={1}>
-      <div>
+      <div className={css.imge}>
          <Special />
         </div>
       </TabPanel>

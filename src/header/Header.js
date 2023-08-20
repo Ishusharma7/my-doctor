@@ -37,7 +37,7 @@ export default function Header () {
                  options={top100Films}
                  forcePopupIcon={false}
                  renderInput={(params) => (
-                 <TextField {...params} placeholder="Select a Service"  style={{ width: '30vh', height: '5vh', backgroundColor: 'rgb(250, 248, 248)' }} />
+                 <TextField {...params} placeholder="Select a Service"  style={{ width: '30vh', height: '5vh', backgroundColor: 'rgb(250, 248, 248)', border:'none' }} />
                  )}
               />
             <input 
