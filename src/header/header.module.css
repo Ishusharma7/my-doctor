@@ -23,29 +23,54 @@
     align-items: center;
     flex-flow: row wrap;
     position: fixed;
-    z-index: 10;
+    z-index: 12000;
     justify-content: space-between;
     background-color: white;
     width: 99vw;
+    margin-top: -1.5em;
 }
 .bet{
     display: flex;
+    background-color: rgb(250, 248, 248);
+}
+.hidden{
+    display: none;
+}
+.upp button{
+    display: none;
 }
 @media (max-width: 400px) {
     .up img{
         width: 15vh;
         height: 10vh;
     }
-    .up button{
-        padding: 0.5rem;
-        font-size: 1rem;
+    .u button{
+        display: none;
     }
     .bet input{
         height: 2vh;
-        width: 5vh;
+        width: 70%;
         font-size: 1em;
+    }
+    .upp{
+        display: flex;
+        gap: 2.5em;
+    }
+    .upp button{
+        margin-top: .5em;
+        padding: .5em;
+        border: none;
+        display: block;
     }
     .up{
         display: flex;
+        margin: 0;
+        z-index: 100;
+    }
+    .hidden{
+        display: block;
+    }
+    .up img{
+        height: 3em;
     }
 }

@@ -1,87 +1,68 @@
 import React from 'react'
-import PropTypes from 'prop-types';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import Typography from '@mui/material/Typography';
+import { Typography } from '@mui/material';
 import d from '../../Login Page/images/d.svg'
 import Box from '@mui/material/Box';
 import css from './leftbar.module.css'
-import { useState } from 'react';
 import Special from './specialities';
 import PersonIcon from '@mui/icons-material/Person';
 import BubbleChartIcon from '@mui/icons-material/BubbleChart';
 import Doc from './doctcard';
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
+import Drawer from '@mui/material/Drawer';
+import AppBar from '@mui/material/AppBar';
+import CssBaseline from '@mui/material/CssBaseline';
+import Toolbar from '@mui/material/Toolbar';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import { Link } from "react-router-dom";
 
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`vertical-tabpanel-${index}`}
-      aria-labelledby={`vertical-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
-    </div>
-  );
-}
-  
-TabPanel.propTypes = {
-  children: PropTypes.node,
-  index: PropTypes.number.isRequired,
-  value: PropTypes.number.isRequired,
-};
 
-function a11yProps(index) {
-  return {
-    id: `vertical-tab-${index}`,
-    'aria-controls': `vertical-tabpanel-${index}`,
-  };
-}
+
 function Left() {
-  const [value, setValue] = useState(0);
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
   
   return (
     <div>
         <div className={css.nav}>
-        <Box
-      sx={{ flexGrow: 1, display: 'flex', marginTop: '7rem'}}
-    >
-      <Tabs
-        orientation="vertical"
-        variant="scrollable"
-        value={value}
-        onChange={handleChange}
-        aria-label="Vertical tabs example"
-        sx={{ position: 'fixed', paddingRight: '4rem' }}
+        <Box sx={{ display: {md:'flex',xs:'none'} }}>
+      <Drawer
+        variant="permanent"
+        sx={{
+          width: '12vw',
+          flexShrink: 0,
+          [`& .MuiDrawer-paper`]: {
+            width: '18vw',
+            boxSizing: 'border-box',
+          },
+        }}
       >
-        <Tab label= "Doctors" icon={<PersonIcon  style={{ fontSize: 50 }} />} iconPosition="start" {...a11yProps(0)} /> 
-        <Tab label="Specialities" icon={<BubbleChartIcon  style={{ fontSize: 50 }} />} iconPosition="start" {...a11yProps(1)} />
-      </Tabs>
-      <TabPanel value={value} index={0}>
-      <div className={css.imge}>
-        <img 
-        width={2000}
-        src = {d}
-         />
-         <Special />
-         <Doc />
-        </div>
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-      <div className={css.imge}>
-         <Special />
-        </div>
-      </TabPanel>
+        <Toolbar />
+        <Box sx={{ overflow: 'auto', mt:'5em' }}>
+          <List>
+            {['Doctors', 'Specialities'].map((text, index) => (
+              <ListItem key={text} disablePadding>
+              <ListItemButton component={Link} to={text === 'Doctors' ? '/Left' : '/specialities'}>
+          <ListItemIcon>
+            {index % 2 === 0 ? <PersonIcon style={{ fontSize: '50px', paddingLeft: '1em' }} /> : <BubbleChartIcon style={{ fontSize: '50px', paddingLeft: '1em' }} />}
+          </ListItemIcon>
+          <ListItemText
+            primary={
+              <Typography variant="h6" style={{ fontSize: '2rem', padding: '1em' }}>
+                {text}
+              </Typography>
+            }
+          />
+        </ListItemButton>
+              </ListItem>
+            ))}
+          </List>
+        </Box>
+      </Drawer>
+      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+        <Toolbar />
+      </Box>
     </Box>
         </div>
     </div>

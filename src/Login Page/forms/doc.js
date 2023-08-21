@@ -198,6 +198,7 @@ export default function Register(props) {
     };
   
   return (
+    <div className={css.froom}>
     <form>
         <div className={css.up}>
             <h1>Create an account</h1>
@@ -218,7 +219,8 @@ export default function Register(props) {
             </label>
         </div>
         <div className={css.mid}>
-            <h2>Gender*</h2>
+            <div className={css.miid}><h2>Gender*</h2></div>
+            <div>
             <label>
         <input
           type="radio"
@@ -249,6 +251,7 @@ export default function Register(props) {
         />
         Other
       </label>
+      </div>
         </div>
         
 
@@ -405,5 +408,6 @@ export default function Register(props) {
         </div>
         </div>
     </form>
+    </div>
   )
 }

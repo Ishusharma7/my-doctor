@@ -1,6 +1,7 @@
 import React from 'react'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import css from './doc.module.css'
+import Button from '@mui/material/Button';
 
 function Doc() {
   const  data= [
@@ -19,6 +20,7 @@ function Doc() {
                 <div className={css.lower}><h2>Languages</h2><p>{item.lang}</p></div>
                 <div className={css.lower}><h2>Next available</h2><p>{item.aval}</p></div>
                 </div>
+                <Button variant="outlined" style={{width: '15em', fontSize: '14px', height: '2em', borderRadius: '50px', color: '#3f51b5', borderColor: '#3f51b5'}}>BOOK APOINTMENT</Button>
               </div>
             </div>
           ))}

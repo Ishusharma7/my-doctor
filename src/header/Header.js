@@ -4,6 +4,7 @@ import css from './header.module.css'
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import { Link } from "react-router-dom";
+import Drawe from '../drawer/drawer'
 
 
 export default function Header () {
@@ -22,6 +23,8 @@ export default function Header () {
   return (
     <div>
         <div className={css.up}>
+        <div className={css.upp}>
+        <Drawe />
         <Link to="/">
             <img 
             src = {a}
@@ -30,6 +33,10 @@ export default function Header () {
             height={150}
             />
             </Link>
+            <Link to="/login">
+            <button href="/login">LOGIN</button>
+            </Link>
+            </div>
         <div className={css.bet}>
                 <Autocomplete
                  disablePortal
@@ -37,16 +44,24 @@ export default function Header () {
                  options={top100Films}
                  forcePopupIcon={false}
                  renderInput={(params) => (
-                 <TextField {...params} placeholder="Select a Service"  style={{ width: '30vh', height: '5vh', backgroundColor: 'rgb(250, 248, 248)', border:'none' }} />
+                 <TextField {...params} 
+                 sx={{
+     "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+             border: "none",
+            }
+                 }}
+                  placeholder="Select a Service"  style={{ width: '30vh', height: '5vh', backgroundColor: 'rgb(250, 248, 248)', border:'none' }} />
                  )}
               />
             <input 
                 placeholder='Search a Doctor'
             />
             </div>
+            <div className={css.u}>
             <Link to="/login">
             <button  href="/login">LOGIN</button>
             </Link>
+            </div>
         </div>
         <div className={css.down}>
         <h1>I am here</h1>

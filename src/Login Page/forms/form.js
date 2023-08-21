@@ -3,6 +3,7 @@ import TextField from '@mui/material/TextField';
 import css from './form.module.css'
 function Form(props) {
   return (
+    <div className={css.form}>
     <form>
     <div className={css.all}>
     <TextField 
@@ -19,6 +20,7 @@ function Form(props) {
     <h5>Don't have an account? <button onClick={props.handleSign}>Sign up</button></h5>
     </div>
     </form>
+    </div>
   )
 }
 
