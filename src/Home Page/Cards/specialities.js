@@ -20,6 +20,7 @@ function Special() {
     <div className={css.l}>
 <Left  />
 </div>
+<div>
 <div className={css.mee} >
         <h1>20+ Specialities</h1>
         <div className={css.em}></div>
@@ -44,6 +45,7 @@ function Special() {
               <p>{item.para}</p>
             </div>
           ))}
+    </div>
     </div>
     </div>
   )

@@ -1,15 +1,4 @@
-.alll{
+.all{
+    display: flex;
     background-color: #fafafa;
 }
-.imagee {
-    margin-left: 50em;
-}
-@media (max-width: 400px) {
-    .imagee{
-        width: 100vw;
-        margin: 0;
-        margin-top: 5em;
-        padding: 2em;
-        padding-bottom: 0;
-    }
- }

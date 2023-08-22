@@ -6,21 +6,21 @@ import Special from './specialities'
 import Doc from './doctcard'
 function Doctor() {
   return (
-    <div>
+    <div className={css.all}>
+        <div className={css.l}>
         <Left />
-        <div className={css.alll}>
+        </div>
+        <div>
         <img 
         src={d}
         className={css.imagee}
-        width={2000}
+        width={3000}
         />
         <Special />
-        <div className={css.dc}>
         <Doc />
         </div>
         </div>
-        </div>
-  )
+ )
 }
 
 export default Doctor

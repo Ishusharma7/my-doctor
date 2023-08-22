@@ -29,7 +29,7 @@ export default function Header () {
             <img 
             src = {a}
             alt='mylogo'
-            width={250}
+            width={500}
             height={150}
             />
             </Link>

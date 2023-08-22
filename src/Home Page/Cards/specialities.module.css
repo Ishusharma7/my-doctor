@@ -1,12 +1,13 @@
 .image p{
-    font-size: 3.5em;
+    font-size: 60px;
 }
 .he{
-    margin-left: 30em;
     padding-left: 5em;
     padding-top: 5em;
     background-color: #fafafa;
+    display: flex;
 }
+
 .image{
     border: 1px solid rgba(0, 0, 0, 0.12);
     width: 48vh;
@@ -20,7 +21,7 @@
     padding: 3em;
 }
 .mee h1{
-    font-size: 8em;
+    font-size: 100px;
     color:  #3f51b5;
     margin-bottom: 0.5em;
 }
@@ -31,28 +32,32 @@
     gap: 2em;
 }
 .mee{
-    margin-left: 15em;
     display:flex;
     flex-wrap:wrap;
+    margin-top: 5em;
+    margin-left: 23em;
 }
 .lee{
     width:15em;
     height:2.5em;
     background-color:#fafafa;
-    font-size:3em;
+    font-size:50px;
     padding-left: 1em;
     border:1px solid #ccc;
     border-radius: 10px;
     margin-right: .5em;
 }
 #selector{
-    width:3.5em; 
+    width:3em; 
     height: 2.5em;
-    font-size: 3em;
+    font-size: 50px;
     background-Color:#fafafa;
 }
+.l{
+    width: 30vw;
+}
 .em{
-    width: 74em;
+    width: 31vw;
 }
 @media (max-width: 400px) {
     .he{
@@ -90,7 +95,9 @@
         margin-bottom: 1em;
     }
     .mee h1{
-        padding-right: 4em;
+        padding-right: 3em;
+        font-size: 2em;
+        width: 100%;
     }
     #selector{
         width: 3.5em;

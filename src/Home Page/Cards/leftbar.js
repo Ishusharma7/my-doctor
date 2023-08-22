@@ -40,11 +40,11 @@ function Left() {
               <ListItem key={text} disablePadding>
               <ListItemButton component={Link} to={text === 'Doctors' ? '/doctor' : '/specialities'}>
           <ListItemIcon>
-            {index % 2 === 0 ? <PersonIcon style={{ fontSize: '50px', paddingLeft: '1em' }} /> : <BubbleChartIcon style={{ fontSize: '50px', paddingLeft: '1em' }} />}
+            {index % 2 === 0 ? <PersonIcon style={{ fontSize: '80px', paddingLeft: '1em' }} /> : <BubbleChartIcon style={{ fontSize: '80px', paddingLeft: '1em' }} />}
           </ListItemIcon>
           <ListItemText
             primary={
-              <Typography variant="h6" style={{ fontSize: '2rem', padding: '1em' }}>
+              <Typography variant="h6" style={{ fontSize: '4rem', padding: '1em' }}>
                 {text}
               </Typography>
             }
