@@ -4,7 +4,7 @@
 .imagee {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center; 
 }
 @media (max-width: 400px) {
  .imagee img{

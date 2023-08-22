@@ -2,7 +2,7 @@
     height: 5vh;
     width: 30vh;
     border: none;
-    font-size: 5em;
+    font-size: 3em;
     background-color: rgb(250, 248, 248);
     padding: 1rem;
 }
@@ -28,6 +28,7 @@
     background-color: white;
     width: 99vw;
     margin-top: -1.5em;
+    padding: 2em;
 }
 .bet{
     display: flex;

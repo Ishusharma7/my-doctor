@@ -41,7 +41,7 @@
     width:15em;
     height:2.5em;
     background-color:#fafafa;
-    font-size:50px;
+    font-size:60px;
     padding-left: 1em;
     border:1px solid #ccc;
     border-radius: 10px;
@@ -50,14 +50,14 @@
 #selector{
     width:3em; 
     height: 2.5em;
-    font-size: 50px;
+    font-size: 60px;
     background-Color:#fafafa;
 }
 .l{
     width: 30vw;
 }
 .em{
-    width: 31vw;
+    width: 38vw;
 }
 @media (max-width: 400px) {
     .he{

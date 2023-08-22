@@ -25,7 +25,7 @@ export default function Header () {
         <div className={css.up}>
         <div className={css.upp}>
         <Drawe />
-        <Link to="/">
+        <Link to="/doctor">
             <img 
             src = {a}
             alt='mylogo'
