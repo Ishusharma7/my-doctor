@@ -29,7 +29,7 @@ function Drawe() {
           {['Doctors','Specialitist'].map((text, index) => (
             <ListItem  key={text}>
               <ListItemIcon></ListItemIcon>
-              {text === 'Doctors' && <Link to="/Left">Doctors</Link>}
+              {text === 'Doctors' && <Link to="/">Doctors</Link>}
               {text === 'Specialities' && <Link to="/specialities">Specialities</Link>}
             </ListItem>
           ))}

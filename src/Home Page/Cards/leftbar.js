@@ -1,6 +1,5 @@
 import React from 'react'
 import { Typography } from '@mui/material';
-import d from '../../Login Page/images/d.svg'
 import Box from '@mui/material/Box';
 import css from './leftbar.module.css'
 import Special from './specialities';
@@ -8,8 +7,6 @@ import PersonIcon from '@mui/icons-material/Person';
 import BubbleChartIcon from '@mui/icons-material/BubbleChart';
 import Doc from './doctcard';
 import Drawer from '@mui/material/Drawer';
-import AppBar from '@mui/material/AppBar';
-import CssBaseline from '@mui/material/CssBaseline';
 import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -30,20 +27,18 @@ function Left() {
       <Drawer
         variant="permanent"
         sx={{
-          width: '12vw',
-          flexShrink: 0,
           [`& .MuiDrawer-paper`]: {
             width: '18vw',
             boxSizing: 'border-box',
+            mt:'10em',
           },
         }}
       >
-        <Toolbar />
         <Box sx={{ overflow: 'auto', mt:'5em' }}>
           <List>
             {['Doctors', 'Specialities'].map((text, index) => (
               <ListItem key={text} disablePadding>
-              <ListItemButton component={Link} to={text === 'Doctors' ? '/Left' : '/specialities'}>
+              <ListItemButton component={Link} to={text === 'Doctors' ? '/doctor' : '/specialities'}>
           <ListItemIcon>
             {index % 2 === 0 ? <PersonIcon style={{ fontSize: '50px', paddingLeft: '1em' }} /> : <BubbleChartIcon style={{ fontSize: '50px', paddingLeft: '1em' }} />}
           </ListItemIcon>
@@ -60,8 +55,8 @@ function Left() {
           </List>
         </Box>
       </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-        <Toolbar />
+      <Box component="main" sx={{ flexGrow: 1, p: 3, backgroundColor:'#fafafa' }}>
+        <Toolbar sx={{backgroundColor:'#fafafa'}}/>
       </Box>
     </Box>
         </div>
@@ -69,4 +64,4 @@ function Left() {
   )
 }
 
-export default Left
+export default Left;

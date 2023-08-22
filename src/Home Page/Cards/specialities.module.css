@@ -1,5 +1,5 @@
 .image p{
-    font-size: 2em;
+    font-size: 3.5em;
 }
 .he{
     margin-left: 30em;
@@ -9,7 +9,7 @@
 }
 .image{
     border: 1px solid rgba(0, 0, 0, 0.12);
-    width: 46vh;
+    width: 48vh;
     height: 25vh;
     border-radius: 10px;
     display: flex;
@@ -19,9 +19,8 @@
     background-color: white;
     padding: 3em;
 }
-h1{
-    font-size: 5em;
-    margin-left: .5em;
+.mee h1{
+    font-size: 8em;
     color:  #3f51b5;
     margin-bottom: 0.5em;
 }
@@ -31,17 +30,45 @@ h1{
     justify-content: center;
     gap: 2em;
 }
+.mee{
+    margin-left: 15em;
+    display:flex;
+    flex-wrap:wrap;
+}
+.lee{
+    width:15em;
+    height:2.5em;
+    background-color:#fafafa;
+    font-size:3em;
+    padding-left: 1em;
+    border:1px solid #ccc;
+    border-radius: 10px;
+    margin-right: .5em;
+}
+#selector{
+    width:3.5em; 
+    height: 2.5em;
+    font-size: 3em;
+    background-Color:#fafafa;
+}
+.em{
+    width: 74em;
+}
 @media (max-width: 400px) {
     .he{
         margin: 0;
+        padding: 0;
         margin-top: 5em;
     }
     .image img{
         height: 100px;
     }
-    h1{
+    .mee h1{
         font-size: 2em;  
         margin-left: 1em;
+    }
+    .em{
+        display: none;
     }
     .image{
      padding: 1em;   
@@ -51,4 +78,24 @@ h1{
     .image p{
         font-size: 1.2em;
     }
+    .lee{
+        width:13.5em;
+        font-size: 1em;
+        padding-left: 1em;
+    }
+    .mee{
+        display: flex;
+        justify-content: center;
+        margin: 0;
+        margin-bottom: 1em;
+    }
+    .mee h1{
+        padding-right: 4em;
+    }
+    #selector{
+        width: 3.5em;
+        font-size: 1em;
+        margin-left: 1em;
+    }
+    
     }
