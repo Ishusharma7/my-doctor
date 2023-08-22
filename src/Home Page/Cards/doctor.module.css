@@ -1,4 +1,13 @@
 .all{
-    display: flex;
     background-color: #fafafa;
+}
+.imagee {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+@media (max-width: 400px) {
+ .imagee img{
+    width: 300px;
+ }   
 }

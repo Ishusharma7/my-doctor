@@ -1,38 +1,80 @@
 .both{
     margin-top: 10em;
-    border: 1px solid rgba(0, 0, 0, 0.12);
-    width: 25vw;
-    height: 60vh;
+    border: 1px solid rgba(0, 0, 0, 0.12);    
+    height: 50vh;
     display: flex;
     flex-flow: row nowrap;
     gap: 3vh;
+    padding: 1em;
     background-color: white;
 }
 .both h1{
-    font-size: 2em;
+    font-size: 60px;
     color: black;
 }
-
+.a{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: end;
+    width: 85vw;
+    gap: 30px;
+}
 .up{
     display: flex;
-    flex-direction: column;
+    flex-flow: column nowrap;
     justify-content: center;
-    gap: 10px;
+    gap: 80px;
+    width: 16vw;    
+    height: 50vh;
 }
 .up p{
-    font-size: 1.5em;
+    font-size: 60px;
     color: rgba(0, 0, 0, 0.54);
-    width: 15em;
+    width: 100%;
 }
 .low{
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 30px;
 }
 .low h2{
     font-weight: 100;
-    width: 8em;
+    width: 100%;
+    font-size: 40px;
 }
 .lower{
     display: flex;
+    gap: 40px;
+}
+.lower p{
+    white-space: pre-wrap;
+    width: 28vw;
+}
+@media (max-width: 400px) {
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    .both h1{
+        font-size: 20px;
+    }
+    .up p{
+        font-size: 12px;
+    }
+    .low h2{
+        font-size: 13px;
+    }
+    .lower{
+        gap: 10px;
+    }
+    .low{
+        gap: 10px;
+    }
+    .up{
+        gap: 20px;
+        width: 200px;
+    }
+    .a{
+        justify-content: start;
+    }
 }

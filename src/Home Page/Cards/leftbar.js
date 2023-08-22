@@ -44,7 +44,7 @@ function Left() {
           </ListItemIcon>
           <ListItemText
             primary={
-              <Typography variant="h6" style={{ fontSize: '4rem', padding: '1em' }}>
+              <Typography variant="h6" style={{ fontSize: '50px', padding: '1em' }}>
                 {text}
               </Typography>
             }

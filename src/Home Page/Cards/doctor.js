@@ -7,14 +7,13 @@ import Doc from './doctcard'
 function Doctor() {
   return (
     <div className={css.all}>
-        <div className={css.l}>
+        <div>
         <Left />
         </div>
-        <div>
+        <div  className={css.imagee}>
         <img 
         src={d}
-        className={css.imagee}
-        width={3000}
+        width={2500}
         />
         <Special />
         <Doc />
