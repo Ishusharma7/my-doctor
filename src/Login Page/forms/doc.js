@@ -1,413 +1,429 @@
-import React from 'react'
-import css from './register.module.css'
-import { useState } from 'react';
-import TextField from '@mui/material/TextField';
-import Typography from '@mui/material/Typography';
-import CheckCircleOutlineOutlinedIcon from '@mui/icons-material/CheckCircleOutlineOutlined';
-import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
-import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
+import React, { useEffect, useState } from "react";
+import styles from "./register.module.css";
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Button from "@mui/material/Button";
+import FormControl from "@mui/material/FormControl";
+import FormLabel from "@mui/material/FormLabel";
+import CheckCircleOutlineOutlinedIcon from "@mui/icons-material/CheckCircleOutlineOutlined";
+import CircleOutlinedIcon from "@mui/icons-material/CircleOutlined";
+import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 
-export default function Register(props) {
-    const [selectedOption, setSelectedOption] = useState('');
-    const [selectedDay, setSelectedDay] = useState('');
-  const [selectedMonth, setSelectedMonth] = useState('');
-  const [selectedYear, setSelectedYear] = useState('');
-  const [data, setData] = useState({
-    fullName: '',
-    email: '',
-    phone: '',
-    password: '',
-    confirmPassword:'',
+
+const Register = () => {
+  const [formData, setFormData] = useState({
+    fullName: "",
+    gender: "male",
+    day: "",
+    month: "",
+    year: "",
+    mobileNumber: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [inputErrors, setInputErrors] = useState({
+    fullName: "",
+    mobileNumber: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
   });
 
-  const [errors, setErrors] = useState({
-    fullName: false,
-    email: false,
-    phone: false,
-    password: false,
-    confirmPassword:false,
+  const [passwordChecks, setPasswordChecks] = useState({
+    isOpen: false,
+    lowercase: "",
+    uppercase: "",
+    specialChar: "",
+    number: "",
+    passwordLength: "",
+    match: "",
   });
 
-  const [passwordChecks, setPasswordChecks]=useState({
-    lowercase: '',
-    uppercase: '',
-    speialcharacter: '',
-    number: '',
-    sixcharacters: '',
-    match: '',
-  });
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
 
 
-  const validatePassword = (value) => {
-             setPasswordChecks((prev) => {
-          const passwordObj = { ...prev };
-          //  lowercase letter
-          if (!/[a-z]/.test(value)) {
-                  passwordObj.lowercase = "unchecked";
-         } else{
-                  passwordObj.lowercase = "checked";
-             }
-          //  uppercase letter
-          if (!/[A-Z]/.test(value)) {
-                passwordObj.uppercase = "unchecked";
-         } else {
-                passwordObj.uppercase = "checked";
-          }
-          //  special character
-         if (!/[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/.test(value)) {
-                  passwordObj.speialcharacter = "unchecked";
-         } else {
-                 passwordObj.speialcharacter = "checked";
-         }
-    
-          //  number
-            if (!/[0-9]/.test(value)) {
-             passwordObj.number = "unchecked";
-           } else {
-             passwordObj.number = "checked";
-           }
-          //  length
-           if (value.length < 6) {
-            passwordObj.sixcharacters = "unchecked";
-           } else {
-            passwordObj.sixcharacters = "checked";
-           }
-    
-          //  password match
-    console.log(data.password)
-         if (data.password !== data.confirmPassword) {
-             passwordObj.match = "unchecked";
-         } else {
-           passwordObj.match = "checked";
-          }
-        return passwordObj;
-         });
-       };
-
-
-
-  const daysInMonth = Array.from({ length: 31 }, (_, i) => i + 1);
-  const months = [
-    'January', 'February', 'March', 'April', 'May', 'June',
-    'July', 'August', 'September', 'October', 'November', 'December'
-  ];
-  const currentYear = new Date().getFullYear();
-  const years = Array.from({ length: 100 }, (_, i) => currentYear - i);
-
-  const handleDayChange = (event) => {
-    setSelectedDay(event.target.value);
-  };
-
-  const handleMonthChange = (event) => {
-    setSelectedMonth(event.target.value);
-  };
-
-  const handleYearChange = (event) => {
-    setSelectedYear(event.target.value);
-  };
-  
-    const handleOptionChange = (event) => {
-      setSelectedOption(event.target.value);
-    };
-
-    const handleFieldChange = (event) =>{
-      const {value,name} = event.target;
-      setData((prevData) => ({
-        ...prevData,
-        [name]: value,
-      }));
+    if (name === "password" || name === "confirmPassword") {
+      if (!value) {
+        setInputErrors((prev) => ({
+          ...prev,
+          [name]: "Password cannot be empty!",
+        }));
+      } else {
+        validateInput(event);
+      }
     }
+  };
 
-    const handleFieldBlur = (event) => {
-      const {value,name} = event.target;
-      setData((prevData) => ({
-        ...prevData,
-        [name]: value,
-      }));
-      
+  const validateInput = (e) => {
+    let { name, value } = e.target;
+
+    setInputErrors((prev) => {
+      const stateObj = { ...prev, [name]: "" };
+
       switch (name) {
-        case 'fullName':
-          if(value.length<1){
-            setErrors((prevErrors) => ({
-              ...prevErrors,
-              [name]: true,
-            }));
-          }
-          else{
-            setErrors((prevErrors) => ({
-              ...prevErrors,
-              [name]: false,
-            }));
+        case "fullName":
+          if (!value) {
+            stateObj[name] = "Please enter a valid name!";
+          } else {
+            stateObj[name] = "";
           }
           break;
-        case 'email':
-          if(!value.includes('@')){
-            setErrors((prevErrors) => ({
-              ...prevErrors,
-              [name]: true,
-            }));
-          }
-          else{
-            setErrors((prevErrors) => ({
-              ...prevErrors,
-              [name]: false,
-            }));
+        case "mobileNumber":
+          if (!value || !/^[0-9]{10}$/.test(value)) {
+            stateObj[name] = "Please enter a valid 10-digit mobile number!";
+          } else {
+            stateObj[name] = "";
           }
           break;
-        case 'phone':
-          if(value.length !== 10){
-            setErrors((prevErrors) => ({
-              ...prevErrors,
-              [name]: true,
-            }));
-          }
-          else{
-            setErrors((prevErrors) => ({
-              ...prevErrors,
-              [name]: false,
-            }));
+        case "email":
+          if (!value || !/\S+@\S+\.\S+/.test(value)) {
+            stateObj[name] = "Please enter a valid e-mail address!";
+          } else {
+            stateObj[name] = "";
           }
           break;
-          case 'password':
-            if(!value){
-              setErrors((prevErrors) => ({
-                ...prevErrors,
-                [name]: true,
-              }));
-            }
-            else{
-                validatePassword(value);
-              }
-            break;
-            case 'confirmpassword':
-              if(!value){
-                setErrors((prevErrors) => ({
-                  ...prevErrors,
-                  [name]: true,
-                }));
-              }
-                else if (data.password && value === data.password) {
-                  setPasswordChecks((prev) => {
-                    return { ...prev, match: "checked" };
-                  });
-                }
-              break;
+
+        case "password":
+          if (!value) {
+            stateObj[name] = "Password cannot be empty!";
+          } else {
+            validatePassword(value);
+            stateObj[name] = "";
+          }
+          break;
+
+        case "confirmPassword":
+          if (!value) {
+            stateObj[name] = "Please enter Confirm Password.";
+          } else if (formData.password && value === formData.password) {
+            setPasswordChecks((prev) => {
+              return { ...prev, match: "checked" };
+            });
+            stateObj[name] = "";
+          } else {
+            setPasswordChecks((prev) => {
+              return { ...prev, match: "unchecked" };
+            });
+            stateObj[name] = "";
+          }
+          break;
+
         default:
           break;
       }
-    };
-  
+
+      return stateObj;
+    });
+  };
+
+  const validatePassword = (value) => {
+    setPasswordChecks((prev) => {
+      const passwordObj = { ...prev };
+      // Check lowercase letter
+      if (!/[a-z]/.test(value)) {
+        passwordObj.lowercase = "unchecked";
+      } else {
+        passwordObj.lowercase = "checked";
+      }
+      // Check uppercase letter
+      if (!/[A-Z]/.test(value)) {
+        passwordObj.uppercase = "unchecked";
+      } else {
+        passwordObj.uppercase = "checked";
+      }
+      // Check special character
+      if (!/[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/.test(value)) {
+        passwordObj.specialChar = "unchecked";
+      } else {
+        passwordObj.specialChar = "checked";
+      }
+
+      // Check number
+      if (!/[0-9]/.test(value)) {
+        passwordObj.number = "unchecked";
+      } else {
+        passwordObj.number = "checked";
+      }
+      // Check length
+      if (value.length < 6) {
+        passwordObj.passwordLength = "unchecked";
+      } else {
+        passwordObj.passwordLength = "checked";
+      }
+
+      // Check password match
+      if (formData.password !== formData.confirmPassword) {
+        passwordObj.match = "unchecked";
+      } else {
+        passwordObj.match = "checked";
+      }
+      return passwordObj;
+    });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    // Check for unfilled inputs and set errors
+    const newInputErrors = {};
+    for (const field in formData) {
+      if (formData[field] === "") {
+        newInputErrors[field] = true;
+      }
+    }
+    setInputErrors(newInputErrors);
+
+    // Check if there are any errors
+    if (Object.keys(newInputErrors).length === 0) {
+      console.log(formData); // Handle form submission logic here
+    }
+  };
+
+  const handlePasswordCheck = () => {
+    setPasswordChecks((prev) => {
+      return { ...prev, isOpen: true };
+    });
+  };
+
+  useEffect(() => {
+    const currentDate = new Date();
+    const currentYear = currentDate.getFullYear();
+    const currentMonth = (currentDate.getMonth() + 1)
+      .toString()
+      .padStart(2, "0");
+    const currentDay = currentDate.getDate().toString().padStart(2, "0");
+
+    setFormData((prevData) => ({
+      ...prevData,
+      day: currentDay,
+      month: currentMonth,
+      year: currentYear.toString(),
+    }));
+  }, []);
+
   return (
-    <div className={css.froom}>
-    <form>
-        <div className={css.up}>
-            <h1>Create an account</h1>
-            <label>
-            Full Name*
-            <TextField
-                placeholder='Enter name'
-                required
-                name = 'fullName'
-                value = {data.fullName}
-                onBlur={handleFieldBlur}
-                onChange={handleFieldChange}
-                error={errors.fullName}
-                helperText={
-                  errors.fullName?<Typography  style={{ fontSize: '35px' }} >'invalid username' </Typography> : ''
-                }
-            />
-            </label>
+    <div className={styles.registration_form_container}>
+      <h2 className={styles.form_title}>Create An Account</h2>
+      <form className={styles.registration_form} onSubmit={handleSubmit}>
+        <div className={styles.registration_form_child}>
+          <label className={styles.label_tag}>Full Name*</label>
+          <input
+            type="text"
+            name="fullName"
+            value={formData.fullName}
+            placeholder="Enter name"
+            onChange={handleInputChange}
+            onBlur={validateInput}
+            className={`${styles.input} ${
+              inputErrors.fullName ? styles.errorBorder : ""
+            }`}
+            required
+          />
+          {inputErrors.fullName && (
+            <p className={styles.error}>{inputErrors.fullName}</p>
+          )}
         </div>
-        <div className={css.mid}>
-            <div className={css.miid}><h2>Gender*</h2></div>
-            <div>
-            <label>
-        <input
-          type="radio"
-          value="Male"
-          className={css.radio}
-          checked={selectedOption === 'Male'}
-          onChange={handleOptionChange}
-        />
-        Male
-      </label>
-      <label>
-        <input
-          type="radio"
-          value="Female"
-          className={css.radio}
-          checked={selectedOption === 'Female'}
-          onChange={handleOptionChange}
-        />
-        Female
-      </label>
-      <label>
-        <input
-          type="radio"
-          value="Other"
-          className={css.radio}
-          checked={selectedOption === 'Other'}
-          onChange={handleOptionChange}
-        />
-        Other
-      </label>
-      </div>
+        <div className={styles.registration_form_child}>
+          <FormControl>
+            <FormLabel id="demo-customized-radios" sx={{ color: "#000" }}>
+              Gender*
+            </FormLabel>
+            <RadioGroup
+              row
+              aria-labelledby="gender"
+              name="gender"
+              value={formData.gender}
+              onChange={handleInputChange}
+            >
+              <FormControlLabel value="male" control={<Radio />} label="Male" />
+               
+              <FormControlLabel
+                value="female"
+                control={<Radio />}
+                label="Female"
+              />
+              <FormControlLabel
+                value="other"
+                control={<Radio />}
+                label="Other"
+              />
+            </RadioGroup>
+          </FormControl>
         </div>
-        
-
-
-
-        <div className={css.dob}>
-      <h2>Date of Birth*</h2>
-      <select value={selectedDay} onChange={handleDayChange}>
-        <option value="">Day</option>
-        {daysInMonth.map((day) => (
-          <option key={day} value={day}>
-            {day}
-          </option>
-        ))}
-      </select>
-      <select value={selectedMonth} onChange={handleMonthChange}>
-        <option value="">Month</option>
-        {months.map((month, index) => (
-          <option key={month} value={index + 1}>
-            {month}
-          </option>
-        ))}
-      </select>
-      <select value={selectedYear} onChange={handleYearChange}>
-        <option value="">Year</option>
-        {years.map((year) => (
-          <option key={year} value={year}>
-            {year}
-          </option>
-        ))}
-      </select>
-    </div>
-
-
-
-
-
-
-        <div className={css.down}>
-        <label>
-          Mobile Number*
-            <TextField
-            placeholder='Enter Mobile Number'
-            InputProps={{
-            inputProps: {
-          maxLength: 10,
-          },
-          }}
-            name = 'phone'
-            value = {data.phone}
-            onBlur={handleFieldBlur}
-            onChange={handleFieldChange}
-            error={errors.phone}
-            helperText={errors.phone ?<Typography  style={{ fontSize: '35px' }} >'invalid Mobile Number'</Typography> : ''}
-             />
-             </label>
-             <label>
-             Email*
-             <TextField
-            placeholder='abc@gmail.com'
-            name = 'email'
-            value = {data.email}
-            onBlur={handleFieldBlur}
-            onChange={handleFieldChange}
-            error={errors.email}
-            helperText={errors.email ? <Typography  style={{ fontSize: '35px' }} >'invalid email' </Typography>: ''}
-             />
-             </label>
-             <label>
-             Create Password*
-             <TextField
-            placeholder='Create Password'
-            type='password'
-            name = 'password'
-            value = {data.password}
-            onChange={handleFieldBlur}
-            error={errors.password}
-            helperText={errors.password ? <Typography  style={{ fontSize: '35px' }} >'invalid password' </Typography>: ''}
-             />
-             </label>
-             <label>
-             Confirm Password*
-             <TextField
-            placeholder='Confirm Password'
-            type='password'
-            name = 'confirmPassword'
-            value = {data.confirmPassword}
-             onChange={handleFieldBlur}
-             error={errors.confirmPassword}
-             helperText={errors.confirmPassword ? <Typography  style={{ fontSize: '35px' }} >'Password does not match' </Typography>: ''}
-             />
-             </label>
+        <div className={styles.registration_form_child}>
+          <label className={styles.label_tag}>Mobile Number*</label>
+          <input
+            type="tel"
+            name="mobileNumber"
+            value={formData.mobileNumber}
+            onChange={handleInputChange}
+            placeholder="Enter Mobile Number"
+            onBlur={validateInput}
+            className={`${styles.input} ${
+              inputErrors.mobileNumber ? styles.errorBorder : ""
+            }`}
+            maxLength="10"
+            required
+          />
+          {inputErrors.mobileNumber && (
+            <p className={styles.error}>{inputErrors.mobileNumber}</p>
+          )}
         </div>
-        <div className={css.hidden}>
-        <p>
-          {passwordChecks.lowercase === "" ?(
-            <CircleOutlinedIcon color = 'primary' />):
-            passwordChecks.lowercase ==="checked" ? (
-            <CheckCircleOutlineOutlinedIcon color ='success' /> ):
-            (<CancelOutlinedIcon color ='error' />)
+        <div className={styles.registration_form_child}>
+          <label className={styles.label_tag}>Email*</label>
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            className={`${styles.input} ${
+              inputErrors.email ? styles.errorBorder : ""
+            }`}
+            onChange={handleInputChange}
+            onBlur={validateInput}
+            placeholder="abc@gmail.com"
+            required
+          />
+          {inputErrors.email && (
+            <p className={styles.error}>{inputErrors.email}</p>
+          )}
+        </div>
+        <div className={styles.registration_form_child}>
+          <label className={styles.label_tag}>Create Password*</label>
+          <input
+            type="password"
+            name="password"
+            value={formData.password}
+            className={`${styles.input} ${
+              inputErrors.password ? styles.errorBorder : ""
+            }`}
+            onChange={handleInputChange}
+            onBlur={validateInput}
+            onClick={handlePasswordCheck}
+            placeholder="create password"
+            required
+          />
+          {inputErrors.password && (
+            <p className={styles.error}>{inputErrors.password}</p>
+          )}
+        </div>
+        <div className={styles.registration_form_child}>
+          <label className={styles.label_tag}>Confirm Password*</label>
+          <input
+            type="password"
+            name="confirmPassword"
+            value={formData.confirmPassword}
+            className={styles.input}
+            onChange={handleInputChange}
+            onBlur={validateInput}
+            placeholder="confirm password"
+            required
+          />
+        </div>
+        {passwordChecks.isOpen && (
+          <div>
+            <p className={styles.icon}>
+              {passwordChecks.lowercase === "" ? (
+                <CircleOutlinedIcon color="primary" />
+              ) : passwordChecks.lowercase === "checked" ? (
+                <CheckCircleOutlineOutlinedIcon color="success" />
+              ) : (
+                <CancelOutlinedIcon color="error" />
+              )}
+              Must contain lowercase letter.
+            </p>
+
+            <p className={styles.icon}>
+              {passwordChecks.uppercase === "" ? (
+                <CircleOutlinedIcon color="primary" />
+              ) : passwordChecks.uppercase === "checked" ? (
+                <CheckCircleOutlineOutlinedIcon color="success" />
+              ) : (
+                <CancelOutlinedIcon color="error" />
+              )}
+              Must contain uppercase letter.
+            </p>
+
+            <p className={styles.icon}>
+              {passwordChecks.specialChar === "" ? (
+                <CircleOutlinedIcon color="primary" />
+              ) : passwordChecks.specialChar === "checked" ? (
+                <CheckCircleOutlineOutlinedIcon color="success" />
+              ) : (
+                <CancelOutlinedIcon color="error" />
+              )}
+              Mustcontain at least one special character.
+            </p>
+
+            <p className={styles.icon}>
+              {passwordChecks.number === "" ? (
+                <CircleOutlinedIcon color="primary" />
+              ) : passwordChecks.number === "checked" ? (
+                <CheckCircleOutlineOutlinedIcon color="success" />
+              ) : (
+                <CancelOutlinedIcon color="error" />
+              )}
+              Must contain at least one number.
+            </p>
+
+            <p className={styles.icon}>
+              {passwordChecks.passwordLength === "" ? (
+                <CircleOutlinedIcon color="primary" />
+              ) : passwordChecks.passwordLength === "checked" ? (
+                <CheckCircleOutlineOutlinedIcon color="success" />
+              ) : (
+                <CancelOutlinedIcon color="error" />
+              )}
+              Must contain at least 6 characters.
+            </p>
+
+            <p className={styles.icon}>
+              {passwordChecks.match === "" ? (
+                <CircleOutlinedIcon color="primary" />
+              ) : passwordChecks.match === "checked" ? (
+                <CheckCircleOutlineOutlinedIcon color="success" />
+              ) : (
+                <CancelOutlinedIcon color="error" />
+              )}
+              Passwords must match.
+            </p>
+          </div>
+        )}
+        <Button
+          sx={{ width: "6rem", mt: 2 }}
+          type="submit"
+          variant="contained"
+          onClick={handleSubmit}
+          disabled={
+            !(
+              passwordChecks.lowercase === "checked" &&
+              passwordChecks.match === "checked" &&
+              passwordChecks.uppercase === "checked" &&
+              passwordChecks.number === "checked" &&
+              passwordChecks.passwordLength === "checked" &&
+              passwordChecks.specialChar === "checked" &&
+              inputErrors.fullName === "" &&
+              inputErrors.mobileNumber === "" &&
+              inputErrors.email === "" &&
+              inputErrors.password === "" &&
+              inputErrors.confirmPassword === ""
+            )
           }
-          Must contain lowercase letter
+        >
+          REGISTER
+        </Button>
+        <p>
+          Already have an account? <p>Sign in</p>
         </p>
-        <p>
-        {passwordChecks.uppercase === "" ?(
-            <CircleOutlinedIcon color = 'primary' />):
-            passwordChecks.uppercase ==="checked" ? (
-            <CheckCircleOutlineOutlinedIcon color ='success' /> ):
-            (<CancelOutlinedIcon color ='error' />)
-          }
-          Must contain uppercase letter
-        </p>
-        <p>
-        {passwordChecks.speialcharacter === "" ?(
-            <CircleOutlinedIcon color = 'primary' />):
-            passwordChecks.speialcharacter ==="checked" ? (
-            <CheckCircleOutlineOutlinedIcon color ='success' /> ):
-            (<CancelOutlinedIcon color ='error' />)
-          }
-          Must contain at leasr 1 special character
-        </p>
-        <p>
-        {passwordChecks.number === "" ?(
-            <CircleOutlinedIcon color = 'primary' />):
-            passwordChecks.number ==="checked" ? (
-            <CheckCircleOutlineOutlinedIcon color ='success' /> ):
-            (<CancelOutlinedIcon color ='error' />)
-          }
-          Must contain at leat 1 number
-        </p>
-        <p>
-        {passwordChecks.sixcharacters === "" ?(
-            <CircleOutlinedIcon color = 'primary' />):
-            passwordChecks.sixcharacters ==="checked" ? (
-            <CheckCircleOutlineOutlinedIcon color ='success' /> ):
-            (<CancelOutlinedIcon color ='error' />)
-          }
-          Must contain at least 6 characters
-        </p>
-        <p>
-        {passwordChecks.match === "" ?(
-            <CircleOutlinedIcon color = 'primary' />):
-            passwordChecks.match ==="checked" ? (
-            <CheckCircleOutlineOutlinedIcon color ='success' /> ):
-            (<CancelOutlinedIcon color ='error' />)
-          }
-          Must match
-          </p>
-        </div>
-        <div className={css.last}>
-        <button>Register</button>
-        <div className={css.but}>
-        <h4>Already have an accout? <button onClick={props.handleSigin}>Sign in</button></h4>
-        </div>
-        </div>
-    </form>
+      </form>
     </div>
   )
 }
+export default Register

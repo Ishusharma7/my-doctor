@@ -24,13 +24,15 @@ export default function Header () {
     <div>
         <div className={css.up}>
         <div className={css.upp}>
+        <div className={css.hidden}>
         <Drawe />
+        </div>
         <Link to="/doctor">
             <img 
             src = {a}
             alt='mylogo'
-            width={500}
-            height={150}
+            width={250}
+            height={100}
             />
             </Link>
             <Link to="/login">

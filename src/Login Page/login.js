@@ -1,124 +1,99 @@
-import React from 'react'
-import b from './images/b.svg'
+import * as React from "react";
+import Box from "@mui/material/Box";
 import c from './images/c.svg'
-import css from './login.module.css'
-import { useState } from 'react';
-import PropTypes from 'prop-types';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import Form from './forms/form';
+import b from './images/b.svg'
+import Tab from "@mui/material/Tab";
+import TabContext from "@mui/lab/TabContext";
+import TabList from "@mui/lab/TabList";
+import TabPanel from "@mui/lab/TabPanel";
+import { Divider } from "@mui/material";
+import Form from "./forms/form";
 import Register from './forms/register';
 import Doc from './forms/doc';
+import styles from './login.module.css'
 
-
-
-function CustomTabPanel(props) {
-    const { children, value, index, ...other } = props;
-  
-    return (
-      <div
-        role="tabpanel"
-        hidden={value !== index}
-        id={`simple-tabpanel-${index}`}
-        aria-labelledby={`simple-tab-${index}`}
-        {...other}
-      >
-        {value === index && (
-          <Box sx={{ p: 3 }}>
-            <Typography>{children}</Typography>
-          </Box>
-        )}
-      </div>
-    );
-  }
-  
-  CustomTabPanel.propTypes = {
-    children: PropTypes.node,
-    index: PropTypes.number.isRequired,
-    value: PropTypes.number.isRequired,
-  };
-  
-  function a11yProps(index) {
-    return {
-      id: `simple-tab-${index}`,
-      'aria-controls': `simple-tabpanel-${index}`,
-    };
-  }
-
-
-function Login() {
-    const [value, setValue] = useState(0);
+export default function LabTabs() {
+  const [value, setValue] = React.useState("1");
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-  const handleSign =()=>{
-    setValue(1);
-  }
-  const handleSigin=()=>{
-    setValue(0)
-  }
-  const handlesiigin=()=>{
-    setValue(0)
-  }
-  return (
-    <>
-        <div>
-        <div className={css.nav}>
-        <Box sx={{ width: '100%' }}>
-      <Box sx={{ borderBottom: 0, borderColor: 'divider'}}>
-      <div className={css.fl}>
-      <div className={css.empt}></div>
-        <div className={css.lab}>
-        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-          <Tab label="LOGIN" {...a11yProps(0)} />
-          <Tab label="PATIENT SIGN UP" {...a11yProps(1)} />
-          <Tab label="DOCTOR SIGN UP" {...a11yProps(2)} />
-        </Tabs>
-          </div>
-          </div>
-      </Box>
-      <CustomTabPanel value={value} index={0}>
-      <div className={css.imge}>
-        <img
-            src ={b}
-            alt='img here'
-            width={1200}
-            height={1200}
-        />
-       <Form handleSign={handleSign} />
-        </div>
- 
-      </CustomTabPanel>
-      <CustomTabPanel value={value} index={1}>
-      <div className={css.imge}>
-        <img
-            src ={c}
-            alt='img here'
-            width={1200}
-            height={1200}
-        />
-        <Register handlesiigin={handlesiigin} />
-        </div>
-      </CustomTabPanel>
-      <CustomTabPanel value={value} index={2}>
-      <div className={css.imge}>
-        <img
-            src ={c}
-            alt='img here'
-            width={1200}
-            height={1200}
-        />
-        <Doc handleSigin={handleSigin} />
-        </div>
-      </CustomTabPanel>
-    </Box>
-        </div>
-        </div>
-    </>
-  )
-}
 
-export default Login;
+  return (
+    <Box sx={{ marginTop: "15em", backgroundColor: "#fafafa" }}>
+    <TabContext value={value}>
+      <Box sx={{ display: "flex", justifyContent: "center" }}>
+        <Box sx={{ width: { xs: "0", md: "60%" } }}></Box>
+        <Box
+          sx={{
+            border: 1,
+            borderColor: "divider",
+            width: { xs: "90%", md: "40%" },
+            mr: { lg: "10rem", md: "4rem" },
+            ml: { lg: "10rem", md: "4rem" },
+          }}
+        >
+          <TabList
+            variant="fullWidth"
+            onChange={handleChange}
+            aria-label="wrapped label tabs example"
+            sx={{backgroundColor:'white'}}
+          >
+            <Tab  sx={{ fontSize: "1.5rem", padding: "2rem" }}label="LOGIN" value="1" />
+            <Divider
+              orientation="vertical"
+              style={{
+                height: "4rem",
+                alignSelf: "center",
+              }}
+            />
+            <Tab sx={{ fontSize: "1.5rem", padding: "2rem" }} label="PATIENT SIGN UP" value="2" />
+            <Divider
+              orientation="vertical"
+              style={{
+                height: "4rem",
+                alignSelf: "center",
+              }}
+            />
+            <Tab sx={{ fontSize: "1.5rem", padding: "2rem" }} label="DOCTOR SIGN UP" value="3" />
+          </TabList>
+        </Box>
+      </Box>
+      <Box sx={{ display: "flex", justifyContent: "center" }}>
+        <Box sx={{ width: { xs: "0", md: "60%" } }}>
+          {value === "1" ? (
+            <img
+              className={styles.image}
+              src={b}
+              alt="background image"
+            />
+          ) : (
+            <img
+              className={styles.image}
+              src={c}
+              alt="background image"
+            />
+          )}
+        </Box>
+        <Box
+          sx={{
+            width: { xs: "90%", md: "40%" },
+            mr: { lg: "10rem", md: "4rem" },
+            ml: { lg: "10rem", md: "4rem" },
+          }}
+        >
+          <TabPanel sx={{ p: 0, pt: 4 }} value="1">
+            <Form />
+          </TabPanel>
+          <TabPanel sx={{ p: 0, pt: 4 }} value="2">
+            <Register />
+          </TabPanel>
+          <TabPanel sx={{ p: 0, pt: 4 }} value="3">
+          <Doc />
+          </TabPanel>
+        </Box>
+      </Box>
+    </TabContext>
+    </Box>
+  );
+}

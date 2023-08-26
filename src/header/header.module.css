@@ -1,8 +1,8 @@
 .bet input{
-    height: 5vh;
-    width: 30vh;
+    height: 4vh;
+    width: 40vh;
     border: none;
-    font-size: 3em;
+    font-size: 2em;
     background-color: rgb(250, 248, 248);
     padding: 1rem;
 }
@@ -14,7 +14,7 @@
     font-size: 2.5vh;
     background-color: #3f51b5;
     color: white;
-    border-radius: 5px;
+    border-radius: 10px;
     margin-right: 5vh;
     border: none;
 }

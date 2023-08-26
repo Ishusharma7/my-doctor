@@ -1,76 +1,76 @@
 .down button{
-background-Color:#3f51b5;
-color: white;
-width: 12vh;
-height: 5vh;
-}
-.down h3{
-    color: #3f51b5;
-}
-.all{
-    display: flex;
-    flex-direction: column;
-    gap: 5vh;
-    margin-top: 5vh;
-}
-.form form{
-    background-color: white;
-    padding: 2rem 10rem 0rem 6rem;
-    border: 2px solid #eeebeb;
-}
-.down{
-    display: flex;
-    align-items: center;
-    gap: 10vh;
-    margin-top: 2vh;
-}
-.all input{
-    height: 5vh;
-    width: 20vh;
-    border: blue;
-}
-h5{
-    font-size: 2rem;
-    font-weight: 100;
-}
-.down h3{
-    font-size: 2rem;
-    font-weight: 100;
-}
-.all label{
-    font-size: 2rem;
-}
-.sig button{
+    background-Color:#3f51b5;
+    color: white;
     width: 12vh;
-    background-color: transparent;
-    border: none;
-    color: #551A8B;
-    font-weight: 600;
-}
-@media (max-width: 400px) {
-    .all input{
-        height: 2vh;
-    }
-    .all label{
-        font-size: 1rem;
+    height: 5vh;
     }
     .down h3{
-        font-size: 1rem;
+        color: #3f51b5;
     }
-    .sig{
-        margin-top: 3rem;
+    .all{
+        display: flex;
+        flex-direction: column;
+        gap: 5vh;
+        margin-top: 5vh;
+    }
+    .form form{
+        background-color: white;
+        padding: 2rem 10rem 0rem 6rem;
+        border: 2px solid #eeebeb;
+    }
+    .down{
+        display: flex;
+        align-items: center;
+        gap: 10vh;
+        margin-top: 2vh;
+    }
+    .all input{
+        height: 5vh;
+        width: 20vh;
+        border: blue;
     }
     h5{
-        font-size: 1rem;
+        font-size: 2rem;
+        font-weight: 100;
+    }
+    .down h3{
+        font-size: 2rem;
+        font-weight: 100;
+    }
+    .all label{
+        font-size: 2rem;
     }
     .sig button{
-        width: 20vw;
-        font-size: 1em;
+        width: 12vh;
+        background-color: transparent;
+        border: none;
+        color: #551A8B;
+        font-weight: 600;
     }
- }
- @media (max-width: 1700px) {
-   .form form{
-    width: 70vw;
-    padding: 1em;
-   }
-    }
+    @media (max-width: 400px) {
+        .all input{
+            height: 2vh;
+        }
+        .all label{
+            font-size: 1rem;
+        }
+        .down h3{
+            font-size: 1rem;
+        }
+        .sig{
+            margin-top: 3rem;
+        }
+        h5{
+            font-size: 1rem;
+        }
+        .sig button{
+            width: 20vw;
+            font-size: 1em;
+        }
+     }
+     @media (max-width: 1700px) {
+       .form form{
+        width: 70vw;
+        padding: 1em;
+       }
+        }
