@@ -40,7 +40,7 @@ function Special() {
             <div className={css.image} key={index}>
               <img
                src={item.src} 
-                width={300}
+                width={200}
                />
               <p>{item.para}</p>
             </div>

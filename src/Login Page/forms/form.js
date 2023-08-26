@@ -3,6 +3,7 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
+import css from './form.module.css'
 
 function Form() {
   const handleSubmit = (event) => {
@@ -11,7 +12,7 @@ function Form() {
   };
 
   return (
-    <Container sx={{ boxShadow: 2, p: 4, 
+    <Container sx={{ border:'2px solid #ccc' ,p: 4, 
       backgroundColor:'white' }}>
       <Box
         sx={{
@@ -20,7 +21,7 @@ function Form() {
           alignItems: "center"
         }}
       >
-        <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
+        <Box className={css.all} component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
           <TextField
             margin="normal"
             required
@@ -52,14 +53,14 @@ function Form() {
               type="submit"
               variant="contained"
               color="primary"
-              sx={{ mt: 3, mb: 2 }}
+              sx={{ mt: 3, mb: 2, width:'4vw', height:'5vh', fontSize:'1.5rem' }}
             >
               LOGIN
             </Button>
             <p>Forget password</p>
           </Box>
           <p>
-            Don't have an account <p>Sign up</p>
+            Don't have an account ? <button style={{backgroundColor:'transparent', border:'none', fontSize:'1.5rem'}}>Sign up</button>
           </p>
         </Box>
       </Box>

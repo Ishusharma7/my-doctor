@@ -34,17 +34,17 @@ function Left() {
           },
         }}
       >
-        <Box sx={{ overflow: 'auto', mt:'5em' }}>
+        <Box sx={{ overflow: 'auto' }}>
           <List>
             {['Doctors', 'Specialities'].map((text, index) => (
               <ListItem key={text} disablePadding>
               <ListItemButton component={Link} to={text === 'Doctors' ? '/doctor' : '/specialities'}>
           <ListItemIcon>
-            {index % 2 === 0 ? <PersonIcon style={{ fontSize: '80px', paddingLeft: '1em' }} /> : <BubbleChartIcon style={{ fontSize: '80px', paddingLeft: '1em' }} />}
+            {index % 2 === 0 ? <PersonIcon style={{ fontSize: '50px', paddingLeft: '1em' }} /> : <BubbleChartIcon style={{ fontSize: '50px', paddingLeft: '1em' }} />}
           </ListItemIcon>
           <ListItemText
             primary={
-              <Typography variant="h6" style={{ fontSize: '50px', padding: '1em' }}>
+              <Typography variant="h6" style={{ fontSize: '30px', padding: '1em' }}>
                 {text}
               </Typography>
             }

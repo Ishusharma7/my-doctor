@@ -13,7 +13,7 @@ function Doctor() {
         <div  className={css.imagee}>
         <img 
         src={d}
-        width={3000}
+        width={1800}
         />
         <Special />
         <Doc />

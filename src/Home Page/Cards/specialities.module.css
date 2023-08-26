@@ -6,6 +6,7 @@
     padding-top: 5em;
     background-color: #fafafa;
     display: flex;
+    margin-left: 10rem;
 }
 
 .image{
@@ -21,7 +22,7 @@
     padding: 3em;
 }
 .mee h1{
-    font-size: 100px;
+    font-size: 80px;
     color:  #3f51b5;
     margin-bottom: 0.5em;
 }
@@ -35,13 +36,13 @@
     display:flex;
     flex-wrap:wrap;
     margin-top: 5em;
-    margin-left: 23em;
+    margin-left: 1em;
 }
 .lee{
-    width:15em;
+    width:18em;
     height:2.5em;
     background-color:#fafafa;
-    font-size:60px;
+    font-size:30px;
     padding-left: 1em;
     border:1px solid #ccc;
     border-radius: 10px;
@@ -49,15 +50,18 @@
 }
 #selector{
     width:3em; 
-    height: 2.5em;
-    font-size: 60px;
+    border:1px solid #ccc;
+    border-radius: 10px;
+    height: 2.6em;
+    font-size: 30px;
     background-Color:#fafafa;
+    padding: 1rem;
 }
 .l{
     width: 30vw;
 }
 .em{
-    width: 38vw;
+    width: 34vw;
 }
 @media (max-width: 400px) {
     .he{

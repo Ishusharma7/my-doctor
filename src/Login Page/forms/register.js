@@ -193,25 +193,10 @@ const Register = () => {
     });
   };
 
-  useEffect(() => {
-    const currentDate = new Date();
-    const currentYear = currentDate.getFullYear();
-    const currentMonth = (currentDate.getMonth() + 1)
-      .toString()
-      .padStart(2, "0");
-    const currentDay = currentDate.getDate().toString().padStart(2, "0");
-
-    setFormData((prevData) => ({
-      ...prevData,
-      day: currentDay,
-      month: currentMonth,
-      year: currentYear.toString(),
-    }));
-  }, []);
 
   return (
     <div className={styles.registration_form_container}>
-      <h2 className={styles.form_title}>Create An Account</h2>
+      <h2 className={styles.form_title}>Create an account</h2>
       <form className={styles.registration_form} onSubmit={handleSubmit}>
         <div className={styles.registration_form_child}>
           <label className={styles.label_tag}>Full Name*</label>
@@ -233,7 +218,7 @@ const Register = () => {
         </div>
         <div className={styles.registration_form_child}>
           <FormControl>
-            <FormLabel id="demo-customized-radios" sx={{ color: "#000" }}>
+            <FormLabel id="demo-customized-radios" sx={{ color: "#000",fontSize:'2rem' }}>
               Gender*
             </FormLabel>
             <RadioGroup
@@ -243,17 +228,17 @@ const Register = () => {
               value={formData.gender}
               onChange={handleInputChange}
             >
-              <FormControlLabel value="male" control={<Radio />} label="Male" />
-               
+              <FormControlLabel value="male" control={<Radio />} label={<span style={{ fontSize: "2rem" }}>Male</span>} />
+              
               <FormControlLabel
                 value="female"
                 control={<Radio />}
-                label="Female"
+                label={<span style={{ fontSize: "2rem" }}>Female</span>}
               />
               <FormControlLabel
                 value="other"
                 control={<Radio />}
-                label="Other"
+                label={<span style={{ fontSize: "2rem" }}>Other</span>}
               />
             </RadioGroup>
           </FormControl>
@@ -397,7 +382,7 @@ const Register = () => {
           </div>
         )}
         <Button
-          sx={{ width: "6rem", mt: 2 }}
+          sx={{ width: "6rem", mt: 2,  width:'7vw', height:'5vh', fontSize:'1.5rem', borderRadius:'5px' }}
           type="submit"
           variant="contained"
           onClick={handleSubmit}
@@ -420,7 +405,7 @@ const Register = () => {
           REGISTER
         </Button>
         <p>
-          Already have an account? <p>Sign in</p>
+          Already have an account? <button style={{backgroundColor:'transparent', border:'none', fontSize:'2rem'}}>Sign in</button>
         </p>
       </form>
     </div>

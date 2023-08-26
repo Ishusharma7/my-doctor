@@ -9,7 +9,7 @@
     background-color: white;
 }
 .both h1{
-    font-size: 60px;
+    font-size: 40px;
     color: black;
 }
 .a{
@@ -23,24 +23,24 @@
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
-    gap: 80px;
+    gap: 40px;
     width: 16vw;    
     height: 50vh;
 }
 .up p{
-    font-size: 60px;
+    font-size: 30px;
     color: rgba(0, 0, 0, 0.54);
     width: 100%;
 }
 .low{
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 20px;
 }
 .low h2{
     font-weight: 100;
     width: 100%;
-    font-size: 40px;
+    font-size: 23px;
 }
 .lower{
     display: flex;

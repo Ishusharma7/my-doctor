@@ -17,7 +17,7 @@ function Doc() {
     <div className={css.a}>
         {data.map((item, index) => (
             <div  className={css.both} key={index}>
-              <div><AccountCircleIcon  sx={{ fontSize: {xs:'50px',md:'300px'}, marginTop: '.5em' }} /></div>
+              <div><AccountCircleIcon  sx={{ fontSize: {xs:'50px',md:'150px'}, marginTop: '.5em' }} /></div>
               <div className={css.up}>
                 <h1>{item.h1}</h1>
                 <p>{item.p}</p>
@@ -26,7 +26,7 @@ function Doc() {
                 <div className={css.lower}><h2>Languages</h2><p>{item.lang}</p></div>
                 <div className={css.lower}><h2>Next available</h2><p>{item.aval}</p></div>
                 </div>
-                <Button variant="outlined" sx={{width: {xs:'150px',md:'500px'}, fontSize: {xs:'10px',md:'45px'}, height: {xs:'30px', md:'100px'}, borderRadius: '20px', color: '#3f51b5', borderColor: '#3f51b5'}}>BOOK APOINTMENT</Button>
+                <Button variant="outlined" sx={{width: {xs:'150px',md:'300px'}, fontSize: {xs:'10px',md:'25px'}, height: {xs:'30px', md:'60px'}, borderRadius: '20px', color: '#3f51b5', borderColor: '#3f51b5'}}>BOOK APOINTMENT</Button>
               </div>
             </div>
           ))}

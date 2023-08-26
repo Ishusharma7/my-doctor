@@ -37,7 +37,6 @@ export default function LabTabs() {
             variant="fullWidth"
             onChange={handleChange}
             aria-label="wrapped label tabs example"
-            sx={{backgroundColor:'white'}}
           >
             <Tab  sx={{ fontSize: "1.5rem", padding: "2rem" }}label="LOGIN" value="1" />
             <Divider

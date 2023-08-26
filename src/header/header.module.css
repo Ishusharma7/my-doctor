@@ -33,6 +33,7 @@
 .bet{
     display: flex;
     background-color: rgb(250, 248, 248);
+    margin-bottom: 3rem;
 }
 .hidden{
     display: none;
