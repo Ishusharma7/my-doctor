@@ -3,6 +3,7 @@ import Header from './header/Header'
 import Special from './Home Page/Cards/specialities';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Doctor from './Home Page/Cards/doctor';
+import Footer from './footer/footer';
 function App() {
   return (
     <div className="App">
@@ -17,6 +18,7 @@ function App() {
           <Route path="/Specialities" element={<Special />} />
         </Routes>
     </Router>
+    <Footer />
     </div>
   );
 }
