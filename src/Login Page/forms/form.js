@@ -53,14 +53,14 @@ function Form() {
               type="submit"
               variant="contained"
               color="primary"
-              sx={{ mt: 3, mb: 2, width:'4vw', height:'5vh', fontSize:'1.5rem' }}
+              sx={{ mt: 3, mb: 2, width:'4vw', height:'5vh', fontSize:{xs:'1rem', md:'1.5rem'} }}
             >
               LOGIN
             </Button>
             <p>Forget password</p>
           </Box>
           <p>
-            Don't have an account ? <button style={{backgroundColor:'transparent', border:'none', fontSize:'1.5rem'}}>Sign up</button>
+            Don't have an account ? <button className={css.btm}>Sign up</button>
           </p>
         </Box>
       </Box>

@@ -38,7 +38,7 @@ export default function LabTabs() {
             onChange={handleChange}
             aria-label="wrapped label tabs example"
           >
-            <Tab  sx={{ fontSize: "1.5rem", padding: "2rem" }}label="LOGIN" value="1" />
+            <Tab  sx={{ fontSize: {xs:'1rem', md:'1.5rem'}, padding: {xs:'1rem', md:'2rem'} }}label="LOGIN" value="1" />
             <Divider
               orientation="vertical"
               style={{
@@ -46,7 +46,7 @@ export default function LabTabs() {
                 alignSelf: "center",
               }}
             />
-            <Tab sx={{ fontSize: "1.5rem", padding: "2rem" }} label="PATIENT SIGN UP" value="2" />
+            <Tab  sx={{ fontSize: {xs:'1rem', md:'1.5rem'}, padding: {xs:'1rem', md:'2rem'} }} label="PATIENT SIGN UP" value="2" />
             <Divider
               orientation="vertical"
               style={{
@@ -54,7 +54,7 @@ export default function LabTabs() {
                 alignSelf: "center",
               }}
             />
-            <Tab sx={{ fontSize: "1.5rem", padding: "2rem" }} label="DOCTOR SIGN UP" value="3" />
+            <Tab sx={{ fontSize: {xs:'1rem', md:'1.5rem'}, padding: {xs:'1rem', md:'2rem'} }} label="DOCTOR SIGN UP" value="3" />
           </TabList>
         </Box>
       </Box>

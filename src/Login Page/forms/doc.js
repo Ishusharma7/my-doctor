@@ -11,7 +11,7 @@ import CircleOutlinedIcon from "@mui/icons-material/CircleOutlined";
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 
 
-const Register = () => {
+const Doc = () => {
   const [formData, setFormData] = useState({
     fullName: "",
     gender: "male",
@@ -218,7 +218,7 @@ const Register = () => {
         </div>
         <div className={styles.registration_form_child}>
           <FormControl>
-            <FormLabel id="demo-customized-radios" sx={{ color: "#000",fontSize:'2rem' }}>
+            <FormLabel id="demo-customized-radios" sx={{ color: "#000",fontSize:{xs:'1.5rem', md:'2rem'} }}>
               Gender*
             </FormLabel>
             <RadioGroup
@@ -228,17 +228,17 @@ const Register = () => {
               value={formData.gender}
               onChange={handleInputChange}
             >
-              <FormControlLabel value="male" control={<Radio />} label={<span style={{ fontSize: "2rem" }}>Male</span>} />
+              <FormControlLabel value="male" control={<Radio />} label={<span className={styles.hq}>Male</span>} />
               
               <FormControlLabel
                 value="female"
                 control={<Radio />}
-                label={<span style={{ fontSize: "2rem" }}>Female</span>}
+                label={<span className={styles.hq}>Female</span>}
               />
               <FormControlLabel
                 value="other"
                 control={<Radio />}
-                label={<span style={{ fontSize: "2rem" }}>Other</span>}
+                label={<span className={styles.hq}>Other</span>}
               />
             </RadioGroup>
           </FormControl>
@@ -382,7 +382,7 @@ const Register = () => {
           </div>
         )}
         <Button
-          sx={{ width: "6rem", mt: 2,  width:'7vw', height:'5vh', fontSize:'1.5rem', borderRadius:'5px' }}
+          sx={{ mt: 2,  width:'7vw', height:'5vh', fontSize:{xs:'.8rem', md:'1.5rem'}, borderRadius:'5px' }}
           type="submit"
           variant="contained"
           onClick={handleSubmit}
@@ -405,10 +405,10 @@ const Register = () => {
           REGISTER
         </Button>
         <p>
-          Already have an account? <button style={{backgroundColor:'transparent', border:'none', fontSize:'1.5rem'}}>Sign in</button>
+          Already have an account? <button className={styles.btm}>Sign in</button>
         </p>
       </form>
     </div>
   )
 }
-export default Register
+export default Doc

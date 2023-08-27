@@ -12,3 +12,24 @@
     font-size: 2rem;
     padding: .5rem;
 }
+.btm{
+    background-Color: transparent;
+    border:none;
+    font-Size:2rem;
+}
+@media (max-width: 400px) {
+    .all input {
+        height: 3vh;
+        width: '5vw';
+    }  
+    .all p{
+        font-size: 1rem;
+    }
+    .all label{
+        font-size: 1rem;
+        padding: 0;
+    }
+    .btm{
+        font-size: 1rem;
+    }
+   }
