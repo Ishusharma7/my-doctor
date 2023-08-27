@@ -1,10 +1,10 @@
 .both{
     margin-top: 10em;
     border: 1px solid rgba(0, 0, 0, 0.12);    
-    height: 50vh;
+    height: 100%;
     display: flex;
     flex-flow: row nowrap;
-    gap: 3vh;
+    gap:3vh;
     padding: 1em;
     background-color: white;
 }
@@ -22,9 +22,10 @@
 }
 .up{
     display: flex;
+    flex: 1;
     flex-flow: column nowrap;
-    justify-content: center;
-    gap: 40px;
+    justify-content: space-between  ;
+    gap: 30px;
     width: 16vw;    
     height: 50vh;
 }
@@ -52,10 +53,7 @@
     width: 28vw;
 }
 @media (max-width: 400px) {
-    *{
-        margin: 0;
-        padding: 0;
-    }
+
     .both h1{
         font-size: 20px;
     }
@@ -76,6 +74,7 @@
         width: 200px;
     }
     .a{
-        justify-content: start;
+        justify-content: center;
+        margin: 0;
     }
 }

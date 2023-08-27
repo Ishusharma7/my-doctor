@@ -1,5 +1,5 @@
 .image p{
-    font-size: 60px;
+    font-size: 40px;
 }
 .he{
     padding-left: 5em;
@@ -95,7 +95,7 @@
     .mee{
         display: flex;
         justify-content: center;
-        margin: 0;
+        margin-top: 7em;
         margin-bottom: 1em;
     }
     .mee h1{
