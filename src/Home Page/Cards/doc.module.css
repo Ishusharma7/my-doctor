@@ -15,10 +15,10 @@
 .a{
     display: flex;
     flex-flow: row wrap;
-    justify-content: end;
+    justify-content: start;
     width: 85vw;
     gap: 30px;
-    margin-left: 8em;
+    margin-left: 32.5em;
 }
 .up{
     display: flex;

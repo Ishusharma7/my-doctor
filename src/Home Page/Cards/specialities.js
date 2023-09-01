@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import css from './specialities.module.css';
 import Left from './leftbar';
 import { Pagination } from '@mui/material';
+import { Navigate } from 'react-router-dom';
+
 
 function Special() {
   const [specialData, setSpecialData] = useState([]);
@@ -13,13 +15,11 @@ function Special() {
   const getSpecializationData = async () => {
     try {
       const response = await fetch(
-        "http://my-doctors.net:8090/specializations"
+        "http://my-doctors.net:8090/specializations?$limit=100"
       );
       let data = await response.json();
       let returnedData = data.data;
       let totalSpecializations = data.total;
-      console.log(totalSpecializations);
-      console.log(returnedData);
       const details = [];
       for (let elem in returnedData) {
         details.push({
@@ -53,6 +53,9 @@ function Special() {
     setCurrentPage(1);
   }, [searchKeyword]);
 
+  const handleSpDetail =(special)=>{
+    Navigate(`search?q=&sp=${special}`)
+  }
   return (
     <div className={css.he}>
       <div className={css.l}>
@@ -77,7 +80,7 @@ function Special() {
         </div>
         <div className={css.main}>
           {displayedSpecialData.map((item, index) => (
-            <div className={css.image} key={index}>
+            <div className={css.image} key={index}  onClick={() => handleSpDetail(item.name)}>
               <img
                 src={`http://my-doctors.net/${item.image}`} 
                 width={200}

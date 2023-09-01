@@ -1,24 +1,42 @@
 import React from 'react'
+import { useState, useEffect } from 'react'
 
 function Dodet() {
+  const [data , setData] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await axios.get('http://my-doctors.net:8090/doctors');
+        const data = response.data.data; // Accessing the 'data' array from the response
+        setData(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    }
+
+    fetchData();
+  }, []);
+
   return (
     <>
+    {data.map((item, index)=>(
     <div>
-        <div>
-        <h1>Dr.Name</h1>
+        <div key={index}>
+        <h1>{`${item.firstName} ${item.lastName}`}</h1>
         <h2>experience</h2>
-        <p>bio</p>
+        <p>{item.bio}</p>
         <button>Like</button>
         <button>Share</button>
         </div>
         <div>
-            <h1>slots availability</h1>
+            <h1>No slots available</h1>
         </div>
-    </div>
     <div>
-        <h3>consulation fee</h3>
-        <h4>6 mui type dropdown </h4>
+        <h3>Consultation Fee: {item.consultationFee}</h3>
     </div>
+    </div>
+    ))}
     </>
   )
 }

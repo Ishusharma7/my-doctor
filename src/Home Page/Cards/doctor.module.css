@@ -1,11 +1,6 @@
 .all{
     background-color: #fafafa;
 }
-.imagee {
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
-}
 .g input{
     display: none;
 }
@@ -14,9 +9,6 @@
     font-size: 3rem;
     text-align: end;
 }
-.g button{
-    display: none;
-}
 .g h5:hover{
     color: blue;
     cursor: pointer;
@@ -24,8 +16,11 @@
 .g select{
     display: none;
 }
-@media (max-width: 400px) {
- .imagee img{
-    width: 300px;
- }   
+.g button{
+    display: none;
+}
+@media (max-width: 400px) { 
+ .g h5{
+    font-size: 1rem;
+}
 }

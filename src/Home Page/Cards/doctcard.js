@@ -13,7 +13,7 @@ function Doc() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await axios.get('http://my-doctors.net:8090/doctors');
+        const response = await axios.get('http://my-doctors.net:8090/doctors?$limit=650');
         const data = response.data.data; // Accessing the 'data' array from the response
         setDoctors(data);
       } catch (error) {
@@ -88,7 +88,7 @@ function Doc() {
           onChange={handlePageChange}
           variant="outlined"
           size='large'
-          sx={{marginTop:'2rem'}}
+          sx={{marginTop:'2rem',alignItems:'center', justifyContent:'center',display:'flex',marginBottom:'1rem'}}
         />
     </>
   );
