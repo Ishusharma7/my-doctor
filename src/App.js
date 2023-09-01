@@ -11,10 +11,10 @@ function App() {
         <Header />
         <div className="space"></div>
         <Routes>
-          <Route path="/doctor" element={<Doctor />} />
+          <Route path="/" element={<Doctor />} />
           <Route path="/login" element={<Login />} />
           
-          <Route path="/doctor" element={<Doctor />} />
+          <Route path="/" element={<Doctor />} />
           <Route path="/Specialities" element={<Special />} />
         </Routes>
     </Router>

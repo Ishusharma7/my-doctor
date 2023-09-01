@@ -15,8 +15,14 @@ function Doctor() {
         src={d}
         width={1800}
         />
+        <div className={css.g}>
         <Special />
+        <h5>View all specialities</h5>
+        </div>
+        <div className={css.dd}>
+        <h5>360+ doctors</h5>
         <Doc />
+        </div>
         </div>
         </div>
  )

@@ -9,8 +9,8 @@ import TabPanel from "@mui/lab/TabPanel";
 import { Divider } from "@mui/material";
 import Form from "./forms/form";
 import Register from './forms/register';
-import Doc from './forms/doc';
-import styles from './login.module.css'
+import Doct from './forms/doc';
+import css from './login.module.css'
 
 export default function LabTabs() {
   const [value, setValue] = React.useState("1");
@@ -62,13 +62,13 @@ export default function LabTabs() {
         <Box sx={{ width: { xs: "0", md: "60%" } }}>
           {value === "1" ? (
             <img
-              className={styles.image}
+              className={css.image}
               src={b}
               alt="background image"
             />
           ) : (
             <img
-              className={styles.image}
+              className={css.image}
               src={c}
               alt="background image"
             />
@@ -88,7 +88,7 @@ export default function LabTabs() {
             <Register />
           </TabPanel>
           <TabPanel sx={{ p: 0, pt: 4 }} value="3">
-          <Doc />
+          <Doct />
           </TabPanel>
         </Box>
       </Box>

@@ -27,7 +27,7 @@ export default function Header () {
         <div className={css.hidden}>
         <Drawe />
         </div>
-        <Link to="/doctor">
+        <Link to="/">
             <img 
             src = {a}
             alt='mylogo'
@@ -57,6 +57,7 @@ export default function Header () {
               />
             <input 
                 placeholder='Search a Doctor'
+                
             />
             </div>
             <div className={css.u}>

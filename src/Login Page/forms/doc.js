@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import styles from "./register.module.css";
+import React, {useState } from "react";
+import css from "./register.module.css";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -11,7 +11,7 @@ import CircleOutlinedIcon from "@mui/icons-material/CircleOutlined";
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 
 
-const Doc = () => {
+const Doct = () => {
   const [formData, setFormData] = useState({
     fullName: "",
     gender: "male",
@@ -195,11 +195,11 @@ const Doc = () => {
 
 
   return (
-    <div className={styles.registration_form_container}>
-      <h2 className={styles.form_title}>Create an account</h2>
-      <form className={styles.registration_form} onSubmit={handleSubmit}>
-        <div className={styles.registration_form_child}>
-          <label className={styles.label_tag}>Full Name*</label>
+    <div className={css.every}>
+      <h2 className={css.form_title}>Create an account</h2>
+      <form className={css.form} onSubmit={handleSubmit}>
+        <div className={css.registration_form_child}>
+          <label className={css.full}>Full Name*</label>
           <input
             type="text"
             name="fullName"
@@ -207,16 +207,16 @@ const Doc = () => {
             placeholder="Enter name"
             onChange={handleInputChange}
             onBlur={validateInput}
-            className={`${styles.input} ${
-              inputErrors.fullName ? styles.errorBorder : ""
+            className={`${css.input} ${
+              inputErrors.fullName ? css.errorBorder : ""
             }`}
             required
           />
           {inputErrors.fullName && (
-            <p className={styles.error}>{inputErrors.fullName}</p>
+            <p className={css.error}>{inputErrors.fullName}</p>
           )}
         </div>
-        <div className={styles.registration_form_child}>
+        <div className={css.registration_form_child}>
           <FormControl>
             <FormLabel id="demo-customized-radios" sx={{ color: "#000",fontSize:{xs:'1.5rem', md:'2rem'} }}>
               Gender*
@@ -228,23 +228,23 @@ const Doc = () => {
               value={formData.gender}
               onChange={handleInputChange}
             >
-              <FormControlLabel value="male" control={<Radio />} label={<span className={styles.hq}>Male</span>} />
+              <FormControlLabel value="male" control={<Radio />} label={<span className={css.hq}>Male</span>} />
               
               <FormControlLabel
                 value="female"
                 control={<Radio />}
-                label={<span className={styles.hq}>Female</span>}
+                label={<span className={css.hq}>Female</span>}
               />
               <FormControlLabel
                 value="other"
                 control={<Radio />}
-                label={<span className={styles.hq}>Other</span>}
+                label={<span className={css.hq}>Other</span>}
               />
             </RadioGroup>
           </FormControl>
         </div>
-        <div className={styles.registration_form_child}>
-          <label className={styles.label_tag}>Mobile Number*</label>
+        <div className={css.registration_form_child}>
+          <label className={css.full}>Mobile Number*</label>
           <input
             type="tel"
             name="mobileNumber"
@@ -252,24 +252,24 @@ const Doc = () => {
             onChange={handleInputChange}
             placeholder="Enter Mobile Number"
             onBlur={validateInput}
-            className={`${styles.input} ${
-              inputErrors.mobileNumber ? styles.errorBorder : ""
+            className={`${css.input} ${
+              inputErrors.mobileNumber ? css.errorBorder : ""
             }`}
             maxLength="10"
             required
           />
           {inputErrors.mobileNumber && (
-            <p className={styles.error}>{inputErrors.mobileNumber}</p>
+            <p className={css.error}>{inputErrors.mobileNumber}</p>
           )}
         </div>
-        <div className={styles.registration_form_child}>
-          <label className={styles.label_tag}>Email*</label>
+        <div className={css.registration_form_child}>
+          <label className={css.full}>Email*</label>
           <input
             type="email"
             name="email"
             value={formData.email}
-            className={`${styles.input} ${
-              inputErrors.email ? styles.errorBorder : ""
+            className={`${css.input} ${
+              inputErrors.email ? css.errorBorder : ""
             }`}
             onChange={handleInputChange}
             onBlur={validateInput}
@@ -277,17 +277,17 @@ const Doc = () => {
             required
           />
           {inputErrors.email && (
-            <p className={styles.error}>{inputErrors.email}</p>
+            <p className={css.error}>{inputErrors.email}</p>
           )}
         </div>
-        <div className={styles.registration_form_child}>
-          <label className={styles.label_tag}>Create Password*</label>
+        <div className={css.registration_form_child}>
+          <label className={css.full}>Create Password*</label>
           <input
             type="password"
             name="password"
             value={formData.password}
-            className={`${styles.input} ${
-              inputErrors.password ? styles.errorBorder : ""
+            className={`${css.input} ${
+              inputErrors.password ? css.errorBorder : ""
             }`}
             onChange={handleInputChange}
             onBlur={validateInput}
@@ -296,16 +296,16 @@ const Doc = () => {
             required
           />
           {inputErrors.password && (
-            <p className={styles.error}>{inputErrors.password}</p>
+            <p className={css.error}>{inputErrors.password}</p>
           )}
         </div>
-        <div className={styles.registration_form_child}>
-          <label className={styles.label_tag}>Confirm Password*</label>
+        <div className={css.registration_form_child}>
+          <label className={css.full}>Confirm Password*</label>
           <input
             type="password"
             name="confirmPassword"
             value={formData.confirmPassword}
-            className={styles.input}
+            className={css.input}
             onChange={handleInputChange}
             onBlur={validateInput}
             placeholder="confirm password"
@@ -314,7 +314,7 @@ const Doc = () => {
         </div>
         {passwordChecks.isOpen && (
           <div>
-            <p className={styles.icon}>
+            <p className={css.icon}>
               {passwordChecks.lowercase === "" ? (
                 <CircleOutlinedIcon color="primary" />
               ) : passwordChecks.lowercase === "checked" ? (
@@ -325,7 +325,7 @@ const Doc = () => {
               Must contain lowercase letter.
             </p>
 
-            <p className={styles.icon}>
+            <p className={css.icon}>
               {passwordChecks.uppercase === "" ? (
                 <CircleOutlinedIcon color="primary" />
               ) : passwordChecks.uppercase === "checked" ? (
@@ -336,7 +336,7 @@ const Doc = () => {
               Must contain uppercase letter.
             </p>
 
-            <p className={styles.icon}>
+            <p className={css.icon}>
               {passwordChecks.specialChar === "" ? (
                 <CircleOutlinedIcon color="primary" />
               ) : passwordChecks.specialChar === "checked" ? (
@@ -347,7 +347,7 @@ const Doc = () => {
               Mustcontain at least one special character.
             </p>
 
-            <p className={styles.icon}>
+            <p className={css.icon}>
               {passwordChecks.number === "" ? (
                 <CircleOutlinedIcon color="primary" />
               ) : passwordChecks.number === "checked" ? (
@@ -358,7 +358,7 @@ const Doc = () => {
               Must contain at least one number.
             </p>
 
-            <p className={styles.icon}>
+            <p className={css.icon}>
               {passwordChecks.passwordLength === "" ? (
                 <CircleOutlinedIcon color="primary" />
               ) : passwordChecks.passwordLength === "checked" ? (
@@ -369,7 +369,7 @@ const Doc = () => {
               Must contain at least 6 characters.
             </p>
 
-            <p className={styles.icon}>
+            <p className={css.icon}>
               {passwordChecks.match === "" ? (
                 <CircleOutlinedIcon color="primary" />
               ) : passwordChecks.match === "checked" ? (
@@ -405,10 +405,10 @@ const Doc = () => {
           REGISTER
         </Button>
         <p>
-          Already have an account? <button className={styles.btm}>Sign in</button>
+          Already have an account? <button className={css.btm}>Sign in</button>
         </p>
       </form>
     </div>
   )
 }
-export default Doc
+export default Doct

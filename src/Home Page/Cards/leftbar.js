@@ -38,7 +38,7 @@ function Left() {
           <List>
             {['Doctors', 'Specialities'].map((text, index) => (
               <ListItem key={text} disablePadding>
-              <ListItemButton component={Link} to={text === 'Doctors' ? '/doctor' : '/specialities'}>
+              <ListItemButton component={Link} to={text === 'Doctors' ? '/' : '/specialities'}>
           <ListItemIcon>
             {index % 2 === 0 ? <PersonIcon style={{ fontSize: '50px', paddingLeft: '1em' }} /> : <BubbleChartIcon style={{ fontSize: '50px', paddingLeft: '1em' }} />}
           </ListItemIcon>

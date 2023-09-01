@@ -3,9 +3,12 @@ import axios from 'axios';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import css from './doc.module.css';
 import Button from '@mui/material/Button';
+import { Pagination } from '@mui/material'; // Import Pagination from @mui/material
 
 function Doc() {
   const [doctors, setDoctors] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 6; // Number of items per page
 
   useEffect(() => {
     async function fetchData() {
@@ -21,9 +24,18 @@ function Doc() {
     fetchData();
   }, []);
 
+  const handlePageChange = (event, newPage) => {
+    setCurrentPage(newPage);
+  };
+  
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const displayeddocData = doctors.slice(startIndex, endIndex);
+
   return (
+    <>
     <div className={css.a}>
-      {doctors.map((item, index) => (
+      {displayeddocData.map((item, index) => (
         <div className={css.both} key={index}>
           <div>
             <AccountCircleIcon
@@ -70,6 +82,15 @@ function Doc() {
         </div>
       ))}
     </div>
+      <Pagination
+          count={Math.ceil(doctors.length / itemsPerPage)}
+          page={currentPage}
+          onChange={handlePageChange}
+          variant="outlined"
+          size='large'
+          sx={{marginTop:'2rem'}}
+        />
+    </>
   );
 }
 

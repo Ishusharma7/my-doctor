@@ -1,4 +1,4 @@
-.registration_form_container {
+.every {
     height: auto;
     margin: 0 auto;
     padding: 1rem 3rem 1rem 3rem;
@@ -6,11 +6,11 @@
     border-radius: 5px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
-.registration_form_container input{
+.every input{
     padding: 2rem;
     font-size: 2rem;
 }
-.registration_form_container p{
+.every p{
     font-size: 2.5rem;
 }
 
@@ -19,7 +19,7 @@
     margin-bottom: 20px;
 }
 
-.registration_form {
+.form {
     display: flex;
     flex-direction: column;
 }
@@ -27,14 +27,7 @@
 .registration_form_child {
     margin-bottom: 15px;
 }
-
-.input_DOB {
-    margin-right: 1rem;
-    padding: .8rem;
-    border-radius: 5px;
-}
-
-.label_tag {
+.full {
     font-size: 2rem;
     font-weight: 400;
     margin-bottom: 5px;
@@ -49,11 +42,9 @@
     font-size: 16px;
 }
 
-.input:focus,
-.input_DOB:focus {
+.input:focus{
     outline: none;
     border: 2px solid #3f51b5;
-    /* box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); */
 }
 
 .input_radio {
@@ -99,14 +90,14 @@
     .form_title {
         font-size: 1.5rem;
     }
-    .registration_form_container input{
+    .every input{
         font-size: 1rem;
         padding: 1.5rem;
     }
-    .registration_form_container p{
+    .every p{
         font-size: 1rem;
     }
-    .label_tag {
+    .full {
         font-size: 1rem;
     }
     .input{
