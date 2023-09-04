@@ -4,6 +4,7 @@ import Special from './Home Page/Cards/specialities';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Doctor from './Home Page/Cards/doctor';
 import Footer from './footer/footer';
+import Spdet from './Home Page/Cards/specdet';
 function App() {
   return (
     <div className="App">
@@ -13,7 +14,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Doctor />} />
           <Route path="/login" element={<Login />} />
-          
+          <Route path="/Specialities/search" element={<Spdet />} />
+          <Route path="/search" element={<Spdet />} />
           <Route path="/" element={<Doctor />} />
           <Route path="/Specialities" element={<Special />} />
         </Routes>

@@ -17,7 +17,9 @@ function Doctor() {
         <Special />
        <Link to='/Specialities'> <h5>View all specialities</h5> </Link>
         </div>
+        <div>
         <Doc />
+        </div>
         </div>
  )
 }

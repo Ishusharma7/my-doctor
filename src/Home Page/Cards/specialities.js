@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import css from './specialities.module.css';
 import Left from './leftbar';
 import { Pagination } from '@mui/material';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 function Special() {
@@ -11,6 +11,7 @@ function Special() {
   const [searchKeyword, setSearchKeyword] = useState('');
   const itemsPerPage = 6; // Number of items per page
 
+  const navigate = useNavigate();
 
   const getSpecializationData = async () => {
     try {
@@ -54,7 +55,7 @@ function Special() {
   }, [searchKeyword]);
 
   const handleSpDetail =(special)=>{
-    Navigate(`search?q=&sp=${special}`)
+    navigate(`search?q=&sp=${special}`)
   }
   return (
     <div className={css.he}>
@@ -82,6 +83,7 @@ function Special() {
           {displayedSpecialData.map((item, index) => (
             <div className={css.image} key={index}  onClick={() => handleSpDetail(item.name)}>
               <img
+                alt='imge was here'
                 src={`http://my-doctors.net/${item.image}`} 
                 width={200}
               />

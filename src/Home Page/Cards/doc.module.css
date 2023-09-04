@@ -15,8 +15,8 @@
 .a{
     display: flex;
     flex-flow: row wrap;
-    justify-content: start;
-    width: 85vw;
+    justify-content: flex-start;
+    width: 75vw;
     gap: 30px;
     margin-left: 32.5em;
 }
