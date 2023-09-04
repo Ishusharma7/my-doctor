@@ -19,6 +19,9 @@
 .g button{
     display: none;
 }
+.g{
+    margin-top: -8rem;
+}
 @media (max-width: 400px) { 
  .g h5{
     font-size: 1rem;

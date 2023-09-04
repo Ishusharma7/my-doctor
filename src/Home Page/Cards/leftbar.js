@@ -34,7 +34,7 @@ function Left() {
           },
         }}
       >
-        <Box sx={{ overflow: 'auto' }}>
+        <Box sx={{ overflow: 'auto', marginTop:'2vh' }}>
           <List>
             {['Doctors', 'Specialities'].map((text, index) => (
               <ListItem key={text} disablePadding>

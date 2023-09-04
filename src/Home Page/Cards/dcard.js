@@ -2,10 +2,12 @@ import React from 'react';
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import css from './doc.module.css';
 import Button from '@mui/material/Button';
+import { useNavigate } from 'react-router-dom';
 
 
 const Doct = ({ displayedData }) => {
 
+  const navigate = useNavigate();
 
   return (
     <div className={css.a}>
@@ -56,6 +58,7 @@ const Doct = ({ displayedData }) => {
                 borderColor: '#3f51b5',
                 marginTop: 'auto',
               }}
+              onClick={() => navigate(`/doctors/${item._id}`)}
             >
               BOOK APPOINTMENT
             </Button>

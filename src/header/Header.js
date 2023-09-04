@@ -7,6 +7,7 @@ import TextField from '@mui/material/TextField';
 import { Link } from "react-router-dom";
 import Drawe from '../drawer/drawer'
 import { useNavigate } from 'react-router-dom';
+import Swiperr from './swiper';
 
 
 export default function Header () {
@@ -107,9 +108,7 @@ const handleSpDetail = () => {
             </Link>
             </div>
         </div>
-        <div className={css.down}>
-        <h1>I am here</h1>
-        </div>
+        <Swiperr />
     </div>
   )
 }
