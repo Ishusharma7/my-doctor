@@ -15,7 +15,7 @@ const Doct = ({ displayedData }) => {
         <div className={css.both} key={item.id}>
           <div>
             <AccountCircleIcon
-              sx={{ fontSize: { xs: '50px', md: '150px' }, marginTop: '.5em' }}
+              sx={{ fontSize: { xs: '50px', md: '200px' },mt:'5px' }}
             />
           </div>
           <div className={css.up}>
@@ -53,7 +53,7 @@ const Doct = ({ displayedData }) => {
                 width: { xs: '150px', md: '320px' },
                 fontSize: { xs: '10px', md: '25px' },
                 height: { xs: '30px', md: '60px' },
-                borderRadius: '20px',
+                borderRadius: '30px',
                 color: '#3f51b5',
                 borderColor: '#3f51b5',
                 marginTop: 'auto',

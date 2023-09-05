@@ -3,7 +3,7 @@
 }
 .he{
     padding-left: 5em;
-    padding-top: 8em;
+    padding-top: 10em;
     background-color: #fafafa;
     display: flex;
     margin-left: 10rem;
@@ -48,7 +48,7 @@
     margin-right: .5em;
 }
 #selector{
-    width:3em; 
+    width:4em; 
     border:1px solid #ccc;
     border-radius: 10px;
     height: 2.6em;

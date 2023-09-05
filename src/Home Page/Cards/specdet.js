@@ -72,7 +72,7 @@ const Spdet = () => {
         component="main"
         sx={{
           flexGrow: 1,
-          width: { sm: `calc(100% - ${drawerWidth}px)` },
+          width: { sm: `calc(100% - ${drawerWidth}px)`,marginTop:'10em' },
         }}
       >
         <Box component="section" sx={{ p: "0 2rem 2rem 2rem" }}>

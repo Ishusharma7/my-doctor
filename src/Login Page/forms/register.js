@@ -9,7 +9,7 @@ import FormLabel from "@mui/material/FormLabel";
 import CheckCircleOutlineOutlinedIcon from "@mui/icons-material/CheckCircleOutlineOutlined";
 import CircleOutlinedIcon from "@mui/icons-material/CircleOutlined";
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
-
+import axios from 'axios'; 
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -82,6 +82,7 @@ const Register = () => {
           } else {
             stateObj[name] = "";
           }
+          handleMobile()
           break;
         case "email":
           if (!value || !/\S+@\S+\.\S+/.test(value)) {
@@ -89,6 +90,7 @@ const Register = () => {
           } else {
             stateObj[name] = "";
           }
+          handleEmail()
           break;
 
         case "password":
@@ -169,7 +171,45 @@ const Register = () => {
     });
   };
 
-  const handleSubmit = (event) => {
+  const handleEmail = async (event) =>{
+    const newInputErrors = {};
+    for (const field in formData) {
+      if (formData[field] === "") {
+        newInputErrors[field] = true;
+      }
+    }
+    try {
+      // Check if email exists
+      const emailResponse = await axios.get(`http://my-doctors.net:8090/accounts?email=${formData.email}`);
+      if (emailResponse.data.exists) {
+        newInputErrors.email = "Email already exists.";
+      }
+  }
+  catch (error) {
+    // Handle API request errors here
+    console.error('Email already exists', error);
+  }
+}
+
+const handleMobile = async (event) =>{
+  const newInputErrors = {};
+  for (const field in formData) {
+    if (formData[field] === "") {
+      newInputErrors[field] = true;
+    }
+  }
+  try {
+  const mobileResponse = await axios.get(`http://my-doctors.net:8090/accounts?contactNumber=${formData.mobileNumber}`);
+  if (mobileResponse.data.exists) {
+    newInputErrors.mobileNumber = "Mobile number already exists.";
+  }
+} catch (error) {
+  // Handle API request errors here
+  console.error('MOBILE NUMBER ALREADY EXISTS', error);
+}
+}
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     // Check for unfilled inputs and set errors
@@ -179,6 +219,7 @@ const Register = () => {
         newInputErrors[field] = true;
       }
     }
+
     setInputErrors(newInputErrors);
 
     // Check if there are any errors
@@ -186,6 +227,69 @@ const Register = () => {
       console.log(formData); // Handle form submission logic here
     }
   };
+
+
+  // const handleSubmit = async (event) => {
+  //   event.preventDefault();
+  
+  //   // Check for unfilled inputs and set errors
+  //   const newInputErrors = {};
+  //   for (const field in formData) {
+  //     if (formData[field] === "") {
+  //       newInputErrors[field] = true;
+  //     }
+  //   }  
+  //   setInputErrors(newInputErrors);
+  
+  //   // Check if there are any errors
+  //   if (Object.keys(newInputErrors).length === 0) {
+  //     console.log(formData); // Handle form submission logic here
+  //     try {
+  //       // Check if email exists
+  //       const emailResponse = await axios.get(`http://my-doctors.net:8090/accounts?email=${formData.email}`);
+        
+  //       // Check if mobile number exists
+  //       const mobileResponse = await axios.get(`http://my-doctors.net:8090/accounts?contactNumber=${formData.mobileNumber}`);
+    
+  //       // If email and mobile number don't exist, proceed with updating data
+  //       if (!emailResponse.data.exists && !mobileResponse.data.exists) {
+  //         // Create an object with the data to update
+  //         const userDataToUpdate = {
+  //           mobileNumber: formData.mobileNumber,
+  //           email: formData.email,
+  //         };
+    
+  //         // Update the user data for email
+  //         const updateEmailResponse = await axios.put(`http://my-doctors.net:8090/accounts?email=${formData.email}`, {
+  //           email: formData.email,
+  //           data: userDataToUpdate,
+  //         });
+  //         console.log('Email updated successfully:', updateEmailResponse.data);
+    
+  //         // Update the user data for mobile number
+  //         const updateMobileResponse = await axios.put(`http://my-doctors.net:8090/accounts?contactNumber=${formData.mobileNumber}`, {
+  //           mobileNumber: formData.mobileNumber,
+  //           data: userDataToUpdate,
+  //         });
+  //         console.log('Mobile number updated successfully:', updateMobileResponse.data);
+    
+  //         // Handle any success messages or navigation after successful registration/update
+  //       } else {
+  //         // If email or mobile number exists, set error messages accordingly
+  //         if (emailResponse.data.exists) {
+  //           newInputErrors.email = "Email already exists.";
+  //         }
+  //         if (mobileResponse.data.exists) {
+  //           newInputErrors.mobileNumber = "Mobile number already exists.";
+  //         }
+  //       }
+  //     } catch (error) {
+  //       // Handle API request errors here
+  //       console.error('Error checking email or mobile number existence or updating user data:', error);
+  //     }
+  //   }
+  // };
+
 
   const handlePasswordCheck = () => {
     setPasswordChecks((prev) => {
@@ -292,6 +396,7 @@ const Register = () => {
             onChange={handleInputChange}
             onBlur={validateInput}
             onClick={handlePasswordCheck}
+            autoComplete="new-password"
             placeholder="create password"
             required
           />
@@ -309,6 +414,7 @@ const Register = () => {
             onChange={handleInputChange}
             onBlur={validateInput}
             placeholder="confirm password"
+            autoComplete="new-password"
             required
           />
         </div>

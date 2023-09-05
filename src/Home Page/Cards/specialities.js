@@ -9,7 +9,7 @@ function Special() {
   const [specialData, setSpecialData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [searchKeyword, setSearchKeyword] = useState('');
-  const itemsPerPage = 6; // Number of items per page
+  const [itemsPerPage, setItemsPerPage] = useState(8); // Number of items per page
 
   const navigate = useNavigate();
 
@@ -57,6 +57,11 @@ function Special() {
   const handleSpDetail =(special)=>{
     navigate(`search?q=&sp=${special}`)
   }
+
+  const handleItemsPerPageChange = (e) => {
+    const selectedItemsPerPage = parseInt(e.target.value);
+    setItemsPerPage(selectedItemsPerPage);
+  };
   return (
     <div className={css.he}>
       <div className={css.l}>
@@ -73,7 +78,7 @@ function Special() {
             value={searchKeyword}
             onChange={(e) => setSearchKeyword(e.target.value)}
           />
-          <select id={css.selector}>
+          <select id={css.selector}  onChange={handleItemsPerPageChange} value={itemsPerPage}>
             <option value="8">8</option>
             <option value="12">12</option>
             <option value="16">16</option>

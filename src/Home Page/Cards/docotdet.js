@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 
 function Dodet() {
   const [data , setData] = useState([]);
+  const { id } = useParams();
 
   useEffect(() => {
     async function fetchData() {
@@ -16,7 +17,7 @@ function Dodet() {
     }
 
     fetchData();
-  }, []);
+  }, [id]);
 
   return (
     <>

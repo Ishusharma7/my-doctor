@@ -23,6 +23,8 @@
     align-items: center;
     flex-flow: row wrap;
     position: fixed;
+    top: 0;
+    left: 0;
     z-index: 12000;
     justify-content: space-between;
     background-color: white;

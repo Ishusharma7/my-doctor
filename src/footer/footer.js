@@ -29,9 +29,10 @@ export default function Footer() {
         backgroundColor: "#eeeeee",
         borderTopColor: "#e0e0e0",
         position: "sticky",
+        fontSize: {xs:'1rem', md:'2.2rem'},
       }}
     >
-      <p style={{ fontSize: '2.2rem' }}>This is some content in sticky footer</p>
+      <p>This is some content in sticky footer</p>
     </Box>
   );
 }

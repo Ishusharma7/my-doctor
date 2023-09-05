@@ -1,5 +1,4 @@
 .both{
-    margin-top: 10em;
     border: 1px solid rgba(0, 0, 0, 0.12);    
     height: 100%;
     display: flex;
@@ -10,6 +9,7 @@
 }
 .both h1{
     font-size: 40px;
+    margin-top: 25px;
     color: black;
 }
 .a{
@@ -17,8 +17,9 @@
     flex-flow: row wrap;
     justify-content: flex-start;
     width: 75vw;
-    gap: 30px;
+    gap: 40px;
     margin-left: 32.5em;
+    margin-bottom: 3em;
 }
 .up{
     display: flex;
@@ -26,8 +27,8 @@
     flex-flow: column nowrap;
     justify-content: space-between  ;
     gap: 30px;
-    width: 16vw;    
-    height: 50vh;
+    width: 14vw;    
+    height: 58vh;
 }
 .up p{
     font-size: 30px;
@@ -41,7 +42,7 @@
 }
 .low h2{
     font-weight: 100;
-    width: 100%;
+    width: 20vw;
     font-size: 23px;
 }
 .lower{

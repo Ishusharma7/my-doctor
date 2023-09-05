@@ -6,7 +6,7 @@ import { Pagination } from '@mui/material';
 function Doc() {
   const [doctors, setDoctors] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 6; // Number of items per page
+  const itemsPerPage = 3; // Number of items per page
 
   useEffect(() => {
     async function fetchData() {
