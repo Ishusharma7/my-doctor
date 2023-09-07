@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Doctor from './Home Page/Cards/doctor';
 import Footer from './footer/footer';
 import Spdet from './Home Page/Cards/specdet';
-import Doct from './Home Page/Cards/dcard';
+import Dodet from './Home Page/Cards/docotdet';
 function App() {
   return (
     <div className="App">
@@ -19,7 +19,7 @@ function App() {
           <Route path="/search" element={<Spdet />} />
           <Route path="/" element={<Doctor />} />
           <Route path="/Specialities" element={<Special />} />
-          <Route path="/doctors/:id" element={<Doct />} />
+          <Route path="/doctors/:id" element={<Dodet />} />
         </Routes>
     </Router>
     <Footer />

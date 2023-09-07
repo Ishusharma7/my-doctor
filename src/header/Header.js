@@ -43,7 +43,11 @@ export default function Header () {
       }, []);
 
 
-  
+      const customGetOptionLabel = (selectedOption) => {
+        return (
+          <span style={{ fontSize: '2rem'}}>{selectedOption}</span>
+        );
+      };
 
 const handleSpDetail = () => {
     if (selectedOption) {
@@ -82,6 +86,7 @@ const handleSpDetail = () => {
                  onChange={(event, value) => {
               setSelectedOption(value);
             }}
+                 getOptionLabel={(selectedOption) => customGetOptionLabel(selectedOption)}
                  renderInput={(params) => (
                  <TextField {...params} 
                  sx={{
@@ -89,6 +94,7 @@ const handleSpDetail = () => {
              border: "none",
             }
                  }}
+
                   placeholder="Select a Service"  style={{ width: '30vh', height: '5vh', backgroundColor: 'rgb(250, 248, 248)', border:'none' }} />
                  )}
                  onKeyPress={(event) => {

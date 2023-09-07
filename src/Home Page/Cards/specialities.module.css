@@ -8,7 +8,13 @@
     display: flex;
     margin-left: 10rem;
 }
-
+.he button{
+    font-size: 1.5rem;
+    height: 60px;
+    width: 60px;
+    border-radius: 100rem 100rem 100rem 100rem;
+    margin-bottom: 1rem;
+}
 .image{
     border: 1px solid rgba(0, 0, 0, 0.12);
     width: 48vh;
@@ -70,6 +76,12 @@
     }
     .image img{
         height: 100px;
+    }
+    .he button{
+        height: 1.5rem;
+        width: 1rem;
+        border-radius: 10000rem 10000rem 10000rem 10000rem;
+        font-size: 1rem;
     }
     .mee h1{
         font-size: 2em;  

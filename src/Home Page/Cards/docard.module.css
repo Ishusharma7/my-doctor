@@ -1,0 +1,15 @@
+.hee button{
+    font-size: 1.5rem;
+    height: 60px;
+    width: 60px;
+    border-radius: 100rem 100rem 100rem 100rem;
+    margin-bottom: 1rem;
+}
+@media (max-width: 400px) { 
+    .hee button{
+        height: 1.5rem;
+        width: 1rem;
+        border-radius: 10000rem 10000rem 10000rem 10000rem;
+        font-size: 1rem;
+    }
+   }

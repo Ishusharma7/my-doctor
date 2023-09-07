@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Doct from './dcard'; // Renamed the imported component
 import { Pagination } from '@mui/material';
+import css from './docard.module.css'
 
 function Doc() {
   const [doctors, setDoctors] = useState([]);
@@ -31,10 +32,11 @@ function Doc() {
   const displayeddocData = doctors.slice(startIndex, endIndex);
 
   return (
-    <>
+    <div >
       {displayeddocData.map((doctor, index) => (
         <Doct key={index} displayedData={displayeddocData} />
       ))}
+      <div className={css.hee}>
       <Pagination
           count={Math.ceil(doctors.length / itemsPerPage)}
           page={currentPage}
@@ -43,7 +45,8 @@ function Doc() {
           size='large'
           sx={{marginTop:'2rem',alignItems:'center', justifyContent:'center',display:'flex',marginBottom:'1rem'}}
         />
-    </>
+        </div>
+    </div>
   );
 }
 

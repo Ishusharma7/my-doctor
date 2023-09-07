@@ -25,12 +25,12 @@
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 12000;
+    z-index: 120000;
     justify-content: space-between;
     background-color: white;
     width: 99vw;
     margin-top: -1.5em;
-    padding: 2em;
+    padding: 1em;
 }
 .bet{
     display: flex;
@@ -76,5 +76,8 @@
     }
     .up img{
         height: 3em;
+    }
+    .swipe{
+        font-size: 1.5em;
     }
 }

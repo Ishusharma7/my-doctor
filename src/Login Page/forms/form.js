@@ -29,7 +29,6 @@ function Form() {
             id="username"
             label="Email or Mobile Number"
             name="username"
-            autoComplete="username"
             autoFocus
           />
           <TextField
@@ -40,7 +39,6 @@ function Form() {
             label="Password"
             type="password"
             id="password"
-            autoComplete="current-password"
           />
           <Box
             sx={{

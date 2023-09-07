@@ -17,7 +17,8 @@ function Doctor() {
         <Special />
        <Link to='/Specialities'> <h5>View all specialities</h5> </Link>
         </div>
-        <div>
+        <div className={css.h}>
+        <h3>100+ doctors</h3>
         <Doc />
         </div>
         </div>

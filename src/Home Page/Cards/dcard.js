@@ -11,7 +11,8 @@ const Doct = ({ displayedData }) => {
 
   return (
     <div className={css.a}>
-      {displayedData.map((item) => (
+      {displayedData && displayedData.length > 0 ? (
+  displayedData.map((item) => (
         <div className={css.both} key={item.id}>
           <div>
             <AccountCircleIcon
@@ -64,7 +65,9 @@ const Doct = ({ displayedData }) => {
             </Button>
           </div>
         </div>
-      ))}
+      )) ): (
+  <p>No data available</p>
+)}
     </div>
   );
 };

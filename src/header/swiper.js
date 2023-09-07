@@ -61,7 +61,7 @@ const Swiperr = () => {
   return (
     <>
       <Swiper
-        style={{ display: "flex", zIndex: 13000, backgroundColor: "#F0F0F0", padding:'10px', position:'fixed', top:'8rem', width:'100vw',fontSize:'2.5rem'}}
+        style={{ display: "flex", zIndex: 12000, backgroundColor: "#F0F0F0", padding:'10px', position:'fixed', top:'8rem', width:'100vw',fontSize:'2.5rem'}}
         spaceBetween={12}
         pagination={{
           clickable: true,

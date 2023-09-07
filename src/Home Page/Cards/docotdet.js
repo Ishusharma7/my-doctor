@@ -1,30 +1,37 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
+import { useParams } from "react-router-dom";
+import axios from 'axios';
 
 function Dodet() {
   const [data , setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
   const { id } = useParams();
+  console.log(id);
 
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await axios.get('http://my-doctors.net:8090/doctors');
+        const response = await axios.get(`http://my-doctors.net:8090/doctors${id}`);
         const data = response.data.data; // Accessing the 'data' array from the response
         setData(data);
+        setIsLoading(false);
       } catch (error) {
+        setIsLoading(false);
         console.error('Error fetching data:', error);
       }
     }
 
     fetchData();
-  }, [id]);
-
+  }, []);
+console.log(data);
   return (
     <>
     {data.map((item, index)=>(
     <div>
         <div key={index}>
-        <h1>{`${item.firstName} ${item.lastName}`}</h1>
+        <h1 style={{fontSize:'50rem', color:'black'}}>{`${item.firstName} ${item.lastName}`}</h1>
         <h2>experience</h2>
         <p>{item.bio}</p>
         <button>Like</button>
@@ -42,4 +49,4 @@ function Dodet() {
   )
 }
 
-export default Dodet
+export default Dodet;
