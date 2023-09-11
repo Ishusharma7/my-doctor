@@ -3,14 +3,70 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
-import css from './form.module.css'
+import css from './form.module.css';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 
 function Form() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Add  login logic here
-  };
+  const [details, setDetails] = useState({ input: '', password: '' });
 
+  const handleLogInInput = (e) => {
+    setDetails((prevState) => ({ ...prevState, input: e.target.value }));
+  };
+  const handlePasswordInput = (e) => {
+    setDetails((prevState) => ({ ...prevState, password: e.target.value }));
+  };
+  
+  const logInData = { password: details.password };
+
+  const navigate = useNavigate();
+
+
+  const handleSubmit = async (event) => {    
+      event.preventDefault();
+
+      if (!isNaN(+details.input)) {
+        console.log("number");
+        logInData.contactNumber = details.input;
+        logInData.strategy = "local-mobile";
+      } else {
+        logInData.email = details.input;
+        logInData.strategy = "local";
+      }
+      console.log(logInData);
+  
+      try {
+        const response = await fetch(
+          "http://my-doctors.net:8090/authentication",
+          {
+            method: "POST",
+            body: JSON.stringify(logInData),
+            headers: {
+              "Content-type": "application/json; charset=UTF-8",
+            },
+          }
+        );
+        const data = await response.json();
+        console.log(data);
+        if (data.name === "NotAuthenticated") {
+          // setShowAlert(true);
+          console.log('true1')
+        }
+        console.log(data.name);
+  
+        if (data.user) {
+          localStorage.setItem("userContext", JSON.stringify(data));
+          // setShowAlert(false);
+          console.log('false')
+          navigate("/");
+        }
+      } catch (error) {
+        // setShowAlert(false);
+        console.log('false2')
+        console.log(error);
+      }
+    };
   return (
     <Container sx={{ border:'2px solid #ccc' ,p: 4, 
       backgroundColor:'white' }}>
@@ -23,7 +79,9 @@ function Form() {
       >
         <Box className={css.all} component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
           <TextField
+            onChange={handleLogInInput}
             margin="normal"
+            value={ details.input}
             required
             fullWidth
             id="username"
@@ -33,8 +91,10 @@ function Form() {
           />
           <TextField
             margin="normal"
+            onChange={handlePasswordInput}
             required
             fullWidth
+            value={ details.password}
             name="password"
             label="Password"
             type="password"
@@ -64,7 +124,7 @@ function Form() {
       </Box>
     </Container>
   )
-}
+          }
 
 
 export default Form;

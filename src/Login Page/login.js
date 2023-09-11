@@ -42,7 +42,7 @@ export default function LabTabs() {
             <Divider
               orientation="vertical"
               style={{
-                height: "4rem",
+                height: "6rem",
                 alignSelf: "center",
               }}
             />
@@ -50,7 +50,7 @@ export default function LabTabs() {
             <Divider
               orientation="vertical"
               style={{
-                height: "4rem",
+                height: "6rem",
                 alignSelf: "center",
               }}
             />

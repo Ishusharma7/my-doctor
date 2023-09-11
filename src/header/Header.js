@@ -72,8 +72,8 @@ const handleSpDetail = () => {
             height={100}
             />
             </Link>
-            <Link to="/login">
-            <button href="/login">LOGIN</button>
+            <Link to="/auth/login">
+            <button href="/auth/login">LOGIN</button>
             </Link>
             </div>
         <div className={css.bet}>
@@ -109,8 +109,8 @@ const handleSpDetail = () => {
             />
             </div>
             <div className={css.u}>
-            <Link to="/login">
-            <button  href="/login">LOGIN</button>
+            <Link to="/auth/login">
+            <button  href="/auth/login">LOGIN</button>
             </Link>
             </div>
         </div>

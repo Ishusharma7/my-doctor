@@ -10,8 +10,10 @@ import CheckCircleOutlineOutlinedIcon from "@mui/icons-material/CheckCircleOutli
 import CircleOutlinedIcon from "@mui/icons-material/CircleOutlined";
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 import axios from 'axios'; 
+import TaskAltIcon from '@mui/icons-material/TaskAlt';
 
 const Register = () => {
+  const [formSubmitted, setFormSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     fullName: "",
     gender: "male",
@@ -82,6 +84,7 @@ const Register = () => {
           } else {
             stateObj[name] = "";
           }
+          handleMobile()
           break;
         case "email":
           if (!value || !/\S+@\S+\.\S+/.test(value)) {
@@ -89,6 +92,7 @@ const Register = () => {
           } else {
             stateObj[name] = "";
           }
+          handleEmail()
           break;
 
         case "password":
@@ -170,21 +174,79 @@ const Register = () => {
   };
 
 
-
-  const handleSubmit = async (event) => {
-    event.preventDefault()
-      fetch(`http://my-doctors.net:8090/doctors`,{
-      method : "post",
-      body: JSON.stringify(formData)
-    }).then ((res) =>{
-      console.log('success');
-    }).catch((error) =>{
-      console.log('error');
-    })
-
- 
-  };
+  const handleEmail = async (event) => {
+    const newInputErrors = { ...inputErrors }; // Create a copy of the existing inputErrors state
   
+    // Check if email exists
+    try {
+      const emailResponse = await axios.get(`http://my-doctors.net:8090/accounts?email=${formData.email}`);
+      if (emailResponse.data.exists) {
+        newInputErrors.email = "Email already exists.";
+      } else {
+        newInputErrors.email ='';
+      }
+    } catch (error) {
+      // Handle API request errors here
+      console.error('Email already exists', error);
+      newInputErrors.email = "Email address already exists!"; // Set a generic error message on API request error
+    }
+  
+    setInputErrors(newInputErrors); // Update the input errors state
+  }
+  
+  const handleMobile = async (event) => {
+    const newInputErrors = { ...inputErrors }; // Create a copy of the existing inputErrors state
+  
+    // Check if mobile number exists
+    try {
+      const mobileResponse = await axios.get(`http://my-doctors.net:8090/accounts?contactNumber=${formData.mobileNumber}`);
+      if (mobileResponse.data.exists) {
+        newInputErrors.mobileNumber = "Mobile number already exists.";
+      } else {
+        newInputErrors.mobileNumber ='';
+      }
+    } catch (error) {
+      // Handle API request errors here
+      console.error('MOBILE NUMBER ALREADY EXISTS', error);
+      newInputErrors.mobileNumber = "Mobile number already exists!"; // Set a generic error message on API request error
+    }
+  
+    setInputErrors(newInputErrors); // Update the input errors state
+  }
+  
+  
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+     const details={
+      email : formData.email,
+      mobileNumber: formData.mobileNumber,
+     }
+    try {
+      const response = await fetch("http://my-doctors.net:8090/patients", {
+        method: "POST",
+        body: JSON.stringify(details),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      });
+      const data = await response.json();
+      console.log(data);
+      setFormSubmitted(true);
+      setFormData({
+        fullName: "",
+        gender: "male",
+        day: "",
+        month: "",
+        year: "",
+        mobileNumber: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
+      })
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const handlePasswordCheck = () => {
     setPasswordChecks((prev) => {
@@ -195,6 +257,10 @@ const Register = () => {
 
   return (
     <div className={css.every}>
+    <div className={formSubmitted ? css.suc : css.hidden}>
+    <TaskAltIcon  style={{fontSize:'2.8rem', color:'#4caf50'}}/>
+    <h7>Signed up successfully!</h7>
+    </div>
       <h2 className={css.form_title}>Create an account</h2>
       <form className={css.form} onSubmit={handleSubmit}>
         <div className={css.registration_form_child}>
