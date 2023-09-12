@@ -27,14 +27,12 @@ function Form() {
       event.preventDefault();
 
       if (!isNaN(+details.input)) {
-        console.log("number");
         logInData.contactNumber = details.input;
         logInData.strategy = "local-mobile";
       } else {
         logInData.email = details.input;
         logInData.strategy = "local";
       }
-      console.log(logInData);
   
       try {
         const response = await fetch(
@@ -48,22 +46,14 @@ function Form() {
           }
         );
         const data = await response.json();
-        console.log(data);
         if (data.name === "NotAuthenticated") {
-          // setShowAlert(true);
-          console.log('true1')
         }
-        console.log(data.name);
   
         if (data.user) {
           localStorage.setItem("userContext", JSON.stringify(data));
-          // setShowAlert(false);
-          console.log('false')
           navigate("/");
         }
       } catch (error) {
-        // setShowAlert(false);
-        console.log('false2')
         console.log(error);
       }
     };

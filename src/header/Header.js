@@ -8,14 +8,49 @@ import { Link } from "react-router-dom";
 import Drawe from '../drawer/drawer'
 import { useNavigate } from 'react-router-dom';
 import Swiperr from './swiper';
+import PermIdentityIcon from '@mui/icons-material/PermIdentity';
+import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import IconButton from "@mui/material/IconButton";
+import AccountCircle from "@mui/icons-material/AccountCircle";
+import MenuItem from "@mui/material/MenuItem";
+import Menu from "@mui/material/Menu";
+import { Typography } from '@mui/material';
 
 
 export default function Header () {
     const [specialData, setSpecialData] = useState([]);
     const [selectedOption, setSelectedOption] = useState(null);
+    const [anchorEl, setAnchorEl] = useState(null);
 
     const navigate = useNavigate();
 
+
+    const user = JSON.parse(localStorage.getItem("userContext"));
+    
+  const handleMenu = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleLogOut = ()=>{
+    setAnchorEl(null);
+    localStorage.removeItem("userContext");
+    navigate('/')
+  }
+
+  const handleAppointment = ()=>{
+    setAnchorEl(null);
+    navigate('/appointments')
+  }
+
+  const handleAccount = ()=>{
+    setAnchorEl(null);
+    navigate('/myprofile')
+  }
     const getSpecializationData = async () => {
         try {
           const response = await fetch(
@@ -109,9 +144,38 @@ const handleSpDetail = () => {
             />
             </div>
             <div className={css.u}>
-            <Link to="/auth/login">
-            <button  href="/auth/login">LOGIN</button>
-            </Link>
+
+
+
+
+            {user && (
+              <div className={css.lu}>
+                <IconButton
+                  size="large"
+                  onClick={handleMenu}
+                >
+                  <AccountCircle color="disabled" sx={{ fontSize: "5rem" }} />
+                </IconButton>
+                <Menu
+                sx={{zIndex:1300000}}
+                  anchorEl={anchorEl}
+                  keepMounted
+                  open={Boolean(anchorEl)}
+                  onClose={handleClose}
+                >
+                  <MenuItem onClick={handleAccount} selected><PermIdentityIcon sx={{fontSize:'3rem'}}/><Typography sx={{fontSize:'2rem'}}>Account Settings</Typography></MenuItem>
+                  <MenuItem onClick={handleAppointment}><CalendarTodayIcon sx={{fontSize:'3rem'}}/><Typography sx={{fontSize:'2rem'}}>My Appointments</Typography></MenuItem>
+                  <MenuItem onClick={handleLogOut}><ExitToAppIcon sx={{fontSize:'3rem'}}/><Typography sx={{fontSize:'2rem'}}>Logout</Typography></MenuItem>
+                </Menu>
+              </div>
+            )}
+            {!user && (
+              <Link to="/auth/login">
+                <button className={css.bt} variant="contained">
+                  Log In
+                </button>
+              </Link>
+            )}
             </div>
         </div>
         <Swiperr />

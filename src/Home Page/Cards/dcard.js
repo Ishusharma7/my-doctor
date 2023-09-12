@@ -15,7 +15,7 @@ const Doct = ({ displayedData }) => {
   displayedData.map((item) => (
         <div className={css.both} key={item.id}>
           <div>
-            <AccountCircleIcon
+            <AccountCircleIcon color='disabled'
               sx={{ fontSize: { xs: '50px', md: '200px' },mt:'5px' }}
             />
           </div>

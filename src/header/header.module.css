@@ -18,6 +18,10 @@
     margin-right: 5vh;
     border: none;
 }
+.lu button{
+    background-color: transparent;
+    padding: 0%;
+}
 .up {
     display: flex;
     align-items: center;
