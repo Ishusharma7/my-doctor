@@ -12,10 +12,9 @@ import PermIdentityIcon from '@mui/icons-material/PermIdentity';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import IconButton from "@mui/material/IconButton";
-import AccountCircle from "@mui/icons-material/AccountCircle";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
-import { Typography } from '@mui/material';
+import { Avatar, Typography } from '@mui/material';
 
 
 export default function Header () {
@@ -154,7 +153,7 @@ const handleSpDetail = () => {
                   size="large"
                   onClick={handleMenu}
                 >
-                  <AccountCircle color="disabled" sx={{ fontSize: "5rem" }} />
+                  <Avatar color="disabled" sx={{width:'5rem', height:'5rem' }} />
                 </IconButton>
                 <Menu
                 sx={{zIndex:1300000}}

@@ -32,9 +32,9 @@ const NestedDrawer = () => {
     return ( 
         <List sx={{ml:'4.3rem', cursor:'pointer', mt:'-1rem'}}>
         {itemsList.map((item, index) => {
-          const { text, to, icon } = item;
+          const { text, location, icon } = item;
           return (
-            <ListItem key={text} disablePadding onClick={()=>handleNav(to)} sx={{pb:'12px'}}>
+            <ListItem key={text} disablePadding onClick={()=>handleNav(location)} sx={{pb:'12px'}}>
               <ListItemButton>
                 <ListItemIcon>
                   {icon}

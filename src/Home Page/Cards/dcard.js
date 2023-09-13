@@ -1,8 +1,8 @@
 import React from 'react';
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import css from './doc.module.css';
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
+import { Avatar } from '@mui/material';
 
 
 const Doct = ({ displayedData }) => {
@@ -15,8 +15,8 @@ const Doct = ({ displayedData }) => {
   displayedData.map((item) => (
         <div className={css.both} key={item.id}>
           <div>
-            <AccountCircleIcon color='disabled'
-              sx={{ fontSize: { xs: '50px', md: '200px' },mt:'5px' }}
+            <Avatar color='disabled'
+              sx={{ width: { xs: '50px', md: '150px' }, height:{ xs: '50px', md: '150px' }, mt:'5px' }}
             />
           </div>
           <div className={css.up}>

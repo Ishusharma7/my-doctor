@@ -6,6 +6,7 @@ import Doctor from './Home Page/Cards/doctor';
 import Footer from './footer/footer';
 import Spdet from './Home Page/Cards/specdet';
 import Dodet from './Home Page/Cards/docotdet';
+import Profile from './loggedin/logedincomponents/Profile';
 function App() {
   return (
     <div className="App">
@@ -20,6 +21,7 @@ function App() {
           <Route path="/" element={<Doctor />} />
           <Route path="/Specialities" element={<Special />} />
           <Route path="/doctors/:id" element={<Dodet />} />
+          <Route path="/myprofile" element={<Profile />} />
         </Routes>
     </Router>
     <Footer />

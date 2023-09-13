@@ -12,6 +12,8 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { Link } from 'react-router-dom';
+import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
+
 
 function Left() {
   const [hasAppointment, setHasAppointment] = useState(false);
@@ -21,7 +23,6 @@ function Left() {
     const storedAppointment = localStorage.getItem('userContext');
     setHasAppointment(!!storedAppointment); // Set to true if there is content in local storage
   }, []);
-
   return (
     <div>
       <div className={css.nav}>
@@ -44,13 +45,15 @@ function Left() {
                     <ListItem key={text} disablePadding>
                       <ListItemButton
                         component={Link}
-                        to={text === 'Doctors' ? '/' : text === 'Specialities' ? '/specialities' : '/appointments'}
-                      >
+                        to={text === 'Doctors' ? '/' : text === 'Specialities' ? '/specialities' :text === 'My Appointments' ? '/appointments':'/myprofile'}
+                         >
                         <ListItemIcon>
-                          {index % 2 === 0 ? (
-                            <PersonIcon style={{ fontSize: '50px', paddingLeft: '1em' }} />
-                          ) : (
-                            <BubbleChartIcon style={{ fontSize: '50px', paddingLeft: '1em' }} />
+                          { text === 'Specialities' ?(
+                            <BubbleChartIcon style={{ fontSize: '50px' }} />
+                          ): text === 'My Appointments' ?(
+                            <CalendarTodayIcon style={{ fontSize: '50px' }} />
+                          ):(
+                            <PersonIcon style={{ fontSize: '50px' }} />
                           )}
                         </ListItemIcon>
                         <ListItemText

@@ -1,0 +1,48 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.main button{
+    padding: 20px 30px 20px 30px;
+    font-size: 2.5vh;
+    background-color: #3f51b5;
+    color: white;
+    border-radius: 10px;
+    margin-right: 5vh;
+    border: none;
+}
+.main{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.avtside{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+}
+.avtside h1{
+    font-size: 4rem;
+    color: #3f51b5;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.avtside p{
+    font-size: 1.5rem;
+    color: grey;
+    margin-left: 2rem;
+}
+.fiel{
+    margin-top: 5rem;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    width: 100%;
+    justify-items: center;
+    gap: 5rem;
+}
+.fiel label{
+    font-size: 1.5rem;
+}
+.fiel input{
+    background-color: #fafafa;
+}
