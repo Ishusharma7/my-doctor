@@ -2,15 +2,21 @@ import React from 'react'
 import Left from '../../Home Page/Cards/leftbar'
 import { Avatar, TextField } from '@mui/material'
 import css from './profile.module.css'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import CameraAltIcon from '@mui/icons-material/CameraAlt';
+import CloseIcon from '@mui/icons-material/Close';
+
 
 function Profile() {
     const [isEditing, setIsEditing] = useState(false);
     const [data, setData] = useState('EDIT');
+    const [selectedImage, setSelectedImage] = useState(null);
     
     const user = JSON.parse(localStorage.getItem("userContext"));
     console.log(user)
-    const name = user.user.firstName + user.user.lastName;
+    const initialName = user.user.firstName +' '+ user.user.lastName;
+    const [names, setNames] = useState(initialName)
+
     const toggleEditing = () => {
       setIsEditing(!isEditing);
       setData(!isEditing?'SAVE':'EDIT')
@@ -21,6 +27,18 @@ function Profile() {
           fontSize:'2rem',
         },
       };
+      const handleChange =(e)=>{
+        setNames(e.target.value)
+      }
+      const handleImageChange = (e) => {
+        const file = e.target.files[0];
+        setSelectedImage(URL.createObjectURL(file));
+      }
+      useEffect(() => {
+        const [firstName, lastName] = names.split(' ');
+        const updatedUser = { ...user.user, firstName, lastName };
+        localStorage.setItem("userContext", JSON.stringify({ user: updatedUser }));
+      }, [names]);
   return (
     <div style={{marginTop:'13rem',marginLeft:'31rem', backgroundColor:'#fafafa', paddingBottom:'5rem'}}>
     <div>
@@ -29,7 +47,20 @@ function Profile() {
     <div className={css.main}>
     <div className={css.avtside}>
         <h1>My Profile</h1>
-        <Avatar sx={{height:'15rem', width:'15rem'}}/>
+        {selectedImage ? (
+            <img src={selectedImage} alt="Uploaded" style={{ height: '15rem', width: '15rem' }} />
+          ) : (
+            <Avatar sx={{ height: '15rem', width: '15rem' }} />
+          )}
+          <input type="file" accept="image/*" onChange={handleImageChange} id="fileInput" style={{ display: 'none'}} />
+          <div style={{display:'flex', gap:'1rem'}}>
+          {isEditing ? (
+            <>
+          <label htmlFor="fileInput" className={css.uploadButton}>
+            <CameraAltIcon  sx={{fontSize:'3rem', color:'blue'}} />
+          </label>
+            <CloseIcon sx={{fontSize:'3rem'}} disabled /></>):(null)}
+            </div>
         <p>JPEG, JPG or PNG image less than 1 MB<br />
 (Close up face picture looks great)</p>
     </div>
@@ -39,9 +70,9 @@ function Profile() {
     </div>
     <div className={css.fiel}>
     <TextField
-    value={name}
-    focused
+    value={names}
     label='Name'
+    onChange={handleChange}
     sx={{ ...textFieldPadding, width: '23vw', "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
              border: '1px solid grey',
             }}}
@@ -53,7 +84,7 @@ function Profile() {
     sx={{ ...textFieldPadding, width: '23vw', "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
              border: '1px solid grey',
             }}}
-            disabled={!isEditing} />
+            disabled />
     <TextField
     label='Email'
     value={user.user.email}
@@ -61,11 +92,11 @@ function Profile() {
     sx={{ ...textFieldPadding, width: '23vw', "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
              border: '1px solid grey',
             }}}
-            disabled={!isEditing} />
+            disabled />
     <TextField
     label='Gender'
     value={user.user.gender}
-    focused
+    
     sx={{ ...textFieldPadding, width: '23vw', "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
              border: '1px solid grey',
             }}}

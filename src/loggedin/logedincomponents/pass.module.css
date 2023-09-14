@@ -1,0 +1,29 @@
+.alll{
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 2rem;
+    margin-left: 50rem;
+}
+.alll h1{
+    font-size: 4rem;
+    color: #3f51b5;
+}
+.alll button{
+    border: 1px solid;
+    max-width: 20vw;
+    height: 5vh;
+    font-size: 1.8rem;
+    background-color:#3f51b5;
+    color: white;
+    border-radius: 15px;
+}
+.icon{
+    display: flex;
+    gap: 10px;
+    font-size: 1.5rem;
+}
+.alll button:disabled{
+    background-color: #ccc; /* Set the desired disabled color */
+    color: #999; /* Set the text color for disabled state */
+    cursor: not-allowed; /* Change the cursor for disabled state */
+  }

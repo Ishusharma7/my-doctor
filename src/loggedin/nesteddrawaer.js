@@ -15,12 +15,12 @@ const NestedDrawer = () => {
         {
             text: "My Profile",
             location: "/myprofile",
-            icon :  <AccountCircle/>
+            icon :  <AccountCircle sx={{fontSize:'3rem'}}/>
           },
         {
           text: "Change Password",
           location: "/changepassword",
-          icon : <LockOutlinedIcon/> 
+          icon : <LockOutlinedIcon sx={{fontSize:'3rem'}}/> 
         }
       ];
 
@@ -30,7 +30,7 @@ const NestedDrawer = () => {
       }
 
     return ( 
-        <List sx={{ml:'4.3rem', cursor:'pointer', mt:'-1rem'}}>
+        <List sx={{ml:'8rem', cursor:'pointer', mt:'-1rem'}}>
         {itemsList.map((item, index) => {
           const { text, location, icon } = item;
           return (

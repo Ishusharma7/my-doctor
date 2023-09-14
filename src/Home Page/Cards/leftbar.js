@@ -13,16 +13,24 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { Link } from 'react-router-dom';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
+import NestedDrawer from '../../loggedin/nesteddrawaer'
 
 
 function Left() {
   const [hasAppointment, setHasAppointment] = useState(false);
+  const [display, setDisplay] = useState("none")
 
   // Check if there is content stored in local storage when the component mounts
   useEffect(() => {
     const storedAppointment = localStorage.getItem('userContext');
     setHasAppointment(!!storedAppointment); // Set to true if there is content in local storage
   }, []);
+
+  const handleAccountSettingsClick =() =>{
+    setDisplay("block");
+  }
+
+
   return (
     <div>
       <div className={css.nav}>
@@ -44,6 +52,7 @@ function Left() {
                   hasAppointment || (text !== 'My Appointments' && text !== 'Account Settings')? (
                     <ListItem key={text} disablePadding>
                       <ListItemButton
+                        onClick={text === 'Account Settings' ? handleAccountSettingsClick : undefined}
                         component={Link}
                         to={text === 'Doctors' ? '/' : text === 'Specialities' ? '/specialities' :text === 'My Appointments' ? '/appointments':'/myprofile'}
                          >
@@ -69,6 +78,9 @@ function Left() {
                 ))}
               </List>
             </Box>
+            <Box display={display}>
+      <NestedDrawer />
+      </Box>
           </Drawer>
           <Box component="main" sx={{ flexGrow: 1, p: 3, backgroundColor: '#fafafa' }}>
             <Toolbar sx={{ backgroundColor: '#fafafa' }} />
