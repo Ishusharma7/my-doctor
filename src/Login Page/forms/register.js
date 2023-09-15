@@ -224,7 +224,7 @@ const Register = () => {
     try {
       const response = await fetch("http://my-doctors.net:8090/patients", {
         method: "POST",
-        body: JSON.stringify(details),
+        body: JSON.stringify({...details}),
         headers: {
           "Content-type": "application/json; charset=UTF-8",
         },

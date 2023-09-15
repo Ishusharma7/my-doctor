@@ -5,6 +5,7 @@ import css from './profile.module.css'
 import { useState, useEffect } from 'react'
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
 import CloseIcon from '@mui/icons-material/Close';
+import axios from 'axios'
 
 
 function Profile() {
@@ -17,10 +18,36 @@ function Profile() {
     const initialName = user.user.firstName +' '+ user.user.lastName;
     const [names, setNames] = useState(initialName)
 
-    const toggleEditing = () => {
+    const toggleEditing =() => {
       setIsEditing(!isEditing);
-      setData(!isEditing?'SAVE':'EDIT')
+      setData(!isEditing?'SAVE':'EDIT');   
     };
+
+
+    async function getPatientImage() {
+      const queryParams = new URLSearchParams({
+          avatar: 1,
+          "$select[]": "avatarId",
+      });
+      let response = await fetch(
+          `http://my-doctors.net:8090/patients/${user.user._id
+          }?${queryParams.toString()}`,
+          {
+              method: "GET",
+              headers: {
+                  Authorization: `Bearer ${user.accessToken}`,
+              },
+
+          });
+      response = await response.json();
+      setSelectedImage(response?.avatar?.buffer);
+  }
+  useEffect(()=>{
+      getPatientImage();
+  },[])
+
+
+
     const textFieldPadding = {
         '& .MuiInputBase-input': {
           padding: '2rem', // Adjust the padding as needed
@@ -30,10 +57,13 @@ function Profile() {
       const handleChange =(e)=>{
         setNames(e.target.value)
       }
-      const handleImageChange = (e) => {
+      const handleImageChange = async(e) => {
         const file = e.target.files[0];
-        setSelectedImage(URL.createObjectURL(file));
+        const imageUrl = URL.createObjectURL(file);
+        setSelectedImage(imageUrl); // Set in state
       }
+      
+      
       useEffect(() => {
         const [firstName, lastName] = names.split(' ');
         const updatedUser = { ...user.user, firstName, lastName };

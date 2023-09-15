@@ -5,7 +5,6 @@ import axios from 'axios';
 
 function Dodet() {
   const [data , setData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
 
   const { id } = useParams();
   console.log(id);
@@ -16,9 +15,7 @@ function Dodet() {
         const response = await axios.get(`http://my-doctors.net:8090/doctors${id}`);
         const data = response.data.data; // Accessing the 'data' array from the response
         setData(data);
-        setIsLoading(false);
       } catch (error) {
-        setIsLoading(false);
         console.error('Error fetching data:', error);
       }
     }
