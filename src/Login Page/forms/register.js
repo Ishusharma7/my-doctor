@@ -15,19 +15,19 @@ import TaskAltIcon from '@mui/icons-material/TaskAlt';
 const Register = () => {
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [formData, setFormData] = useState({
-    fullName: "",
+    firstName: "",
     gender: "male",
     day: "",
     month: "",
     year: "",
-    mobileNumber: "",
+    contactNumber: "",
     email: "",
     password: "",
     confirmPassword: "",
   });
   const [inputErrors, setInputErrors] = useState({
-    fullName: "",
-    mobileNumber: "",
+    firstName: "",
+    contactNumber: "",
     email: "",
     password: "",
     confirmPassword: "",
@@ -71,14 +71,14 @@ const Register = () => {
       const stateObj = { ...prev, [name]: "" };
 
       switch (name) {
-        case "fullName":
+        case "firstName":
           if (!value) {
             stateObj[name] = "Please enter a valid name!";
           } else {
             stateObj[name] = "";
           }
           break;
-        case "mobileNumber":
+        case "contactNumber":
           if (!value || !/^[0-9]{10}$/.test(value)) {
             stateObj[name] = "Please enter a valid 10-digit mobile number!";
           } else {
@@ -199,16 +199,16 @@ const Register = () => {
   
     // Check if mobile number exists
     try {
-      const mobileResponse = await axios.get(`http://my-doctors.net:8090/accounts?contactNumber=${formData.mobileNumber}`);
+      const mobileResponse = await axios.get(`http://my-doctors.net:8090/accounts?contactNumber=${formData.contactNumber}`);
       if (mobileResponse.data.exists) {
-        newInputErrors.mobileNumber = "Mobile number already exists.";
+        newInputErrors.contactNumber = "Mobile number already exists.";
       } else {
-        newInputErrors.mobileNumber ='';
+        newInputErrors.contactNumber ='';
       }
     } catch (error) {
       // Handle API request errors here
       console.error('MOBILE NUMBER ALREADY EXISTS', error);
-      newInputErrors.mobileNumber = "Mobile number already exists!"; // Set a generic error message on API request error
+      newInputErrors.contactNumber = "Mobile number already exists!"; // Set a generic error message on API request error
     }
   
     setInputErrors(newInputErrors); // Update the input errors state
@@ -217,14 +217,10 @@ const Register = () => {
   
   const handleSubmit = async (e) => {
     e.preventDefault()
-     const details={
-      email : formData.email,
-      mobileNumber: formData.mobileNumber,
-     }
     try {
       const response = await fetch("http://my-doctors.net:8090/patients", {
         method: "POST",
-        body: JSON.stringify({...details}),
+        body: JSON.stringify(formData),
         headers: {
           "Content-type": "application/json; charset=UTF-8",
         },
@@ -233,16 +229,17 @@ const Register = () => {
       console.log(data);
       setFormSubmitted(true);
       setFormData({
-        fullName: "",
+        firstName: "",
         gender: "male",
         day: "",
         month: "",
         year: "",
-        mobileNumber: "",
+        contactNumber: "",
         email: "",
         password: "",
         confirmPassword: "",
       })
+      console.log(data);
     } catch (error) {
       console.log(error);
     }
@@ -267,18 +264,18 @@ const Register = () => {
           <label className={css.full}>Full Name*</label>
           <input
             type="text"
-            name="fullName"
-            value={formData.fullName}
+            name="firstName"
+            value={formData.firstName}
             placeholder="Enter name"
             onChange={handleInputChange}
             onBlur={validateInput}
             className={`${css.input} ${
-              inputErrors.fullName ? css.errorBorder : ""
+              inputErrors.firstName ? css.errorBorder : ""
             }`}
             required
           />
-          {inputErrors.fullName && (
-            <p className={css.error}>{inputErrors.fullName}</p>
+          {inputErrors.firstName && (
+            <p className={css.error}>{inputErrors.firstName}</p>
           )}
         </div>
         <div className={css.registration_form_child}>
@@ -312,19 +309,19 @@ const Register = () => {
           <label className={css.full}>Mobile Number*</label>
           <input
             type="tel"
-            name="mobileNumber"
-            value={formData.mobileNumber}
+            name="contactNumber"
+            value={formData.contactNumber}
             onChange={handleInputChange}
             placeholder="Enter Mobile Number"
             onBlur={validateInput}
             className={`${css.input} ${
-              inputErrors.mobileNumber ? css.errorBorder : ""
+              inputErrors.contactNumber ? css.errorBorder : ""
             }`}
             maxLength="10"
             required
           />
-          {inputErrors.mobileNumber && (
-            <p className={css.error}>{inputErrors.mobileNumber}</p>
+          {inputErrors.contactNumber && (
+            <p className={css.error}>{inputErrors.contactNumber}</p>
           )}
         </div>
         <div className={css.registration_form_child}>
@@ -461,8 +458,8 @@ const Register = () => {
               passwordChecks.number === "checked" &&
               passwordChecks.passwordLength === "checked" &&
               passwordChecks.specialChar === "checked" &&
-              inputErrors.fullName === "" &&
-              inputErrors.mobileNumber === "" &&
+              inputErrors.firstName === "" &&
+              inputErrors.contactNumber === "" &&
               inputErrors.email === "" &&
               inputErrors.password === "" &&
               inputErrors.confirmPassword === ""

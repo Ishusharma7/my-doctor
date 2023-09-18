@@ -30,11 +30,14 @@ function Doc() {
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const displayeddocData = doctors.slice(startIndex, endIndex);
+  
 
   return (
     <div >
       {displayeddocData.map((doctor, index) => (
-        <Doct key={index} displayedData={displayeddocData} />
+        <div key={index}>
+        <Doct displayedData={displayeddocData} />
+        </div>
       ))}
       <div className={css.hee}>
       <Pagination

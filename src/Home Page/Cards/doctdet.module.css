@@ -1,0 +1,36 @@
+.al{
+    background-color: #fafafa;
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+    min-height: 100vh;
+    margin-top: 5rem;
+    margin-left: 31rem;
+    padding-left: 5rem;
+}
+.upleft{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    width: 28vw;
+    padding: 2vw;
+    box-shadow: 0.5px 2px 2px 0px #888;
+    gap: 2rem   ;
+}
+.bt{
+    display: flex;
+    gap: 2rem;
+}
+.bt button{
+    background-color: transparent;
+    border: none;
+    color: #919191;
+}
+.drpdwn{
+    background-color: white;
+    width: 50vw;
+}
+.drpdwn h3{
+    font-size: 2rem;
+    font-weight: 100;
+}
