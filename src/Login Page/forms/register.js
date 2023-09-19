@@ -15,7 +15,7 @@ import TaskAltIcon from '@mui/icons-material/TaskAlt';
 const Register = () => {
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [formData, setFormData] = useState({
-    firstName: "",
+    fullName: "",
     gender: "male",
     day: "",
     month: "",
@@ -26,7 +26,7 @@ const Register = () => {
     confirmPassword: "",
   });
   const [inputErrors, setInputErrors] = useState({
-    firstName: "",
+    fullName: "",
     contactNumber: "",
     email: "",
     password: "",
@@ -71,7 +71,7 @@ const Register = () => {
       const stateObj = { ...prev, [name]: "" };
 
       switch (name) {
-        case "firstName":
+        case "fullName":
           if (!value) {
             stateObj[name] = "Please enter a valid name!";
           } else {
@@ -217,10 +217,22 @@ const Register = () => {
   
   const handleSubmit = async (e) => {
     e.preventDefault()
+     // Split the full name into first name and last name
+  const fullNameArray = formData.fullName.split(' ');
+  const firstName = fullNameArray[0];
+  const lastName = fullNameArray.slice(1).join(' ');
+
+  // Update the formData object with firstName and lastName
+  const updatedFormData = {
+    ...formData,
+    firstName: firstName,
+    lastName: lastName,
+  };
+  console.log(updatedFormData)
     try {
       const response = await fetch("http://my-doctors.net:8090/patients", {
         method: "POST",
-        body: JSON.stringify(formData),
+        body: JSON.stringify(updatedFormData),
         headers: {
           "Content-type": "application/json; charset=UTF-8",
         },
@@ -229,7 +241,7 @@ const Register = () => {
       console.log(data);
       setFormSubmitted(true);
       setFormData({
-        firstName: "",
+        fullName: "",
         gender: "male",
         day: "",
         month: "",
@@ -264,18 +276,18 @@ const Register = () => {
           <label className={css.full}>Full Name*</label>
           <input
             type="text"
-            name="firstName"
-            value={formData.firstName}
+            name="fullName"
+            value={formData.fullName}
             placeholder="Enter name"
             onChange={handleInputChange}
             onBlur={validateInput}
             className={`${css.input} ${
-              inputErrors.firstName ? css.errorBorder : ""
+              inputErrors.fullName ? css.errorBorder : ""
             }`}
             required
           />
-          {inputErrors.firstName && (
-            <p className={css.error}>{inputErrors.firstName}</p>
+          {inputErrors.fullName && (
+            <p className={css.error}>{inputErrors.fullName}</p>
           )}
         </div>
         <div className={css.registration_form_child}>
@@ -458,7 +470,7 @@ const Register = () => {
               passwordChecks.number === "checked" &&
               passwordChecks.passwordLength === "checked" &&
               passwordChecks.specialChar === "checked" &&
-              inputErrors.firstName === "" &&
+              inputErrors.fullName === "" &&
               inputErrors.contactNumber === "" &&
               inputErrors.email === "" &&
               inputErrors.password === "" &&

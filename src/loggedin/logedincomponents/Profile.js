@@ -5,22 +5,76 @@ import css from './profile.module.css'
 import { useState, useEffect } from 'react'
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
 import CloseIcon from '@mui/icons-material/Close';
-import axios from 'axios'
+import {  MenuItem, Select } from '@mui/material';
+
 
 
 function Profile() {
-    const [isEditing, setIsEditing] = useState(false);
-    const [data, setData] = useState('EDIT');
+    const [isEditable, setIsEditable] = useState(false);
     const [selectedImage, setSelectedImage] = useState(null);
     
     const user = JSON.parse(localStorage.getItem("userContext"));
     console.log(user)
     const initialName = user.user.firstName +' '+ user.user.lastName;
-    const [names, setNames] = useState(initialName)
 
+    const [names, setNames] = useState(initialName);
+    const [contactNumber, setContactNumber] = useState(user.user.contactNumber);
+    const [email, setEmail] = useState(user.user.email);
+    const [gender, setGender] = useState(user.user.gender);
+    const [bloodgroup, setBloodgroup] = useState('');
+    const [house, setHouse] = useState('');
+    const [colony, setColony] = useState('');
+    const [city, setCity] = useState('');
+    const [state, setState] = useState('');
+    const [country, setCountry] = useState('');
+    const [pincode, setPincode] = useState('');
+    const handleGenderChange = (event) => {
+        setGender(event.target.value);
+    };
+
+
+
+    const handleBloodgroupChange = (event) => {
+      setBloodgroup(event.target.value);
+  };
+
+  function handleName(e) {
+      setNames(e.target.value);
+  }
+
+  function handlePhone(e) {
+      setContactNumber(e.target.value);
+  }
+
+  function handleEmail(e) {
+      setEmail(e.target.value);
+  }
+
+  function handleHouse(e) {
+      setHouse(e.target.value);
+  }
+
+  function handleColony(e) {
+      setColony(e.target.value);
+  }
+
+  function handleCity(e) {
+      setCity(e.target.value);
+  }
+
+  function handleState(e) {
+      setState(e.target.value);
+  }
+
+  function handleCountry(e) {
+      setCountry(e.target.value);
+  }
+
+  function handlePincode(e) {
+      setPincode(e.target.value);
+  }
     const toggleEditing =() => {
-      setIsEditing(!isEditing);
-      setData(!isEditing?'SAVE':'EDIT');   
+      setIsEditable(!isEditable);  
     };
 
 
@@ -35,16 +89,40 @@ function Profile() {
           {
               method: "GET",
               headers: {
-                  Authorization: `Bearer ${user.accessToken}`,
+                  // Authorization: `Bearer ${user.accessToken}`,
               },
 
           });
       response = await response.json();
       setSelectedImage(response?.avatar?.buffer);
   }
-  useEffect(()=>{
+
+  async function uploadPatientImage(selectedImage) {
+      try {
+          console.log("uploading image...")
+          let response = await fetch(
+              `http://my-doctors.net:8090/patients/${user.user._id}`,
+              {
+                  method: "PATCH",
+                  headers: {
+                      // Authorization: `Bearer ${user.accessToken}`,
+                  },
+                  body: selectedImage,
+              }
+          );
+          response = await response.json();
+          console.log("upload status",response)
+          // await navigate("/myprofile")
+          return response;
+      } catch (error) {
+          console.error("Error:", error);
+          throw error;
+      }
+  }
+
+  useEffect(() => {
       getPatientImage();
-  },[])
+  }, [])
 
 
 
@@ -54,9 +132,6 @@ function Profile() {
           fontSize:'2rem',
         },
       };
-      const handleChange =(e)=>{
-        setNames(e.target.value)
-      }
       const handleImageChange = async(e) => {
         const file = e.target.files[0];
         const imageUrl = URL.createObjectURL(file);
@@ -64,11 +139,35 @@ function Profile() {
       }
       
       
-      useEffect(() => {
-        const [firstName, lastName] = names.split(' ');
-        const updatedUser = { ...user.user, firstName, lastName };
-        localStorage.setItem("userContext", JSON.stringify({ user: updatedUser }));
-      }, [names]);
+      // useEffect(() => {
+      //   const [firstName, lastName] = names.split(' ');
+      //   const updatedUser = { ...user.user, firstName, lastName };
+      //   localStorage.setItem("userContext", JSON.stringify({ user: updatedUser }));
+      // }, [names]);
+
+      const handleSave = async () => {
+        uploadPatientImage()
+        try {
+          const response = await fetch(
+            `http://my-doctors.net:8090/patients/${user.user._id}`,
+            {
+              method: "PATCH",
+              body: JSON.stringify(),
+              headers: {
+                "Content-type": "application/json; charset=UTF-8",
+                // Authorization: `Bearer ${user.accessToken}`,
+              },
+            }
+          );
+          const data = await response.json();
+          console.log(data);
+          setIsEditable(false);
+          // setDetails(initialState);
+        } catch (error) {
+          console.log(error);
+        }
+      };      
+
   return (
     <div style={{marginTop:'13rem',marginLeft:'31rem', backgroundColor:'#fafafa', paddingBottom:'5rem'}}>
     <div>
@@ -84,7 +183,7 @@ function Profile() {
           )}
           <input type="file" accept="image/*" onChange={handleImageChange} id="fileInput" style={{ display: 'none'}} />
           <div style={{display:'flex', gap:'1rem'}}>
-          {isEditing ? (
+          {isEditable ? (
             <>
           <label htmlFor="fileInput" className={css.uploadButton}>
             <CameraAltIcon  sx={{fontSize:'3rem', color:'blue'}} />
@@ -95,21 +194,39 @@ function Profile() {
 (Close up face picture looks great)</p>
     </div>
     <div>
-        <button onClick={toggleEditing}>{data}</button>
+    {isEditable ? (
+                <button
+                  variant="contained"
+                  sx={{ mt: "5px" ,backgroundColor:'rgb(63, 81, 181)'}}
+                  onClick={handleSave}
+                  // disabled={!formValidity}
+                >
+                  Save
+                </button>
+              ) : (
+                <button
+                  variant="contained"
+                  sx={{ mt: "5px", backgroundColor:'rgb(63, 81, 181)' }}
+                  onClick={toggleEditing}
+                >
+                  Edit
+                </button>
+              )}
     </div>
     </div>
     <div className={css.fiel}>
     <TextField
     value={names}
+    onChange={handleName}
     label='Name'
-    onChange={handleChange}
     sx={{ ...textFieldPadding, width: '23vw', "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
              border: '1px solid grey',
             }}}
-        disabled={!isEditing} />
+        disabled={!isEditable} />
     <TextField
     label='Phone Number'
-    value={user.user.contactNumber}
+    onChange={handlePhone}
+    value={contactNumber}
     focused
     sx={{ ...textFieldPadding, width: '23vw', "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
              border: '1px solid grey',
@@ -117,69 +234,90 @@ function Profile() {
             disabled />
     <TextField
     label='Email'
-    value={user.user.email}
+    value={email}
+    onChange={handleEmail}
     focused
     sx={{ ...textFieldPadding, width: '23vw', "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
              border: '1px solid grey',
             }}}
             disabled />
-    <TextField
-    label='Gender'
-    value={user.user.gender}
-    
-    sx={{ ...textFieldPadding, width: '23vw', "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+     <Select
+        label="Gender"
+        id="gender-select"
+        value={gender}
+        onChange={handleGenderChange}
+        sx={{ ...textFieldPadding,width: '23vw', "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
              border: '1px solid grey',
             }}}
-            disabled={!isEditing} />
+            disabled={!isEditable}
+      >
+        <MenuItem value="male" sx={{fontSize:'1.5rem'}}>Male</MenuItem>
+        <MenuItem value="female" sx={{fontSize:'1.5rem'}}>Female</MenuItem>
+        <MenuItem value="other" sx={{fontSize:'1.5rem'}}>Other</MenuItem>
+      </Select>
     <TextField
     label='Date of Birth'
     sx={{ ...textFieldPadding, width: '23vw', "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
              border: '1px solid grey',
             }}}
-            disabled={!isEditing} />
+            disabled={!isEditable} />
     <TextField
     label='BloodGroup'
+    value={bloodgroup}
+    onChange={handleBloodgroupChange}
     sx={{ ...textFieldPadding, width: '23vw', "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
              border: '1px solid grey',
             }}}
-            disabled={!isEditing} />
+            disabled={!isEditable} />
     <TextField
     label='House No./Street/Area'
+    value={house}
+    onChange={handleHouse}
     sx={{ ...textFieldPadding, width: '23vw', "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
              border: '1px solid grey',
             }}}
-            disabled={!isEditing} />
+            disabled={!isEditable} />
     <TextField
     label='Colony/Street/ Locality'
+    value={colony}
+    onChange={handleColony}
     sx={{ ...textFieldPadding, width: '23vw', "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
              border: '1px solid grey',
             }}}
-            disabled={!isEditing} />
+            disabled={!isEditable} />
     <TextField
     label='City'
+    value={city}
+    onChange={handleCity}
     sx={{ ...textFieldPadding, width: '23vw', "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
              border: '1px solid grey',
             }}}
-            disabled={!isEditing}
+            disabled={!isEditable}
      />
     <TextField
     label='State'
+    value={state}
+    onChange={handleState}
     sx={{ ...textFieldPadding, width: '23vw', "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
              border: '1px solid grey',
             }}}
-            disabled={!isEditing} />
+            disabled={!isEditable} />
     <TextField
     label='Country'
+    value={country}
+    onChange={handleCountry}
     sx={{ ...textFieldPadding, width: '23vw', "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
              border: '1px solid grey',
             }}}
-            disabled={!isEditing} />
+            disabled={!isEditable} />
     <TextField
     label='Pincode'
+    value={pincode}
+    onChange={handlePincode}
     sx={{ ...textFieldPadding, width: '23vw', "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
              border: '1px solid grey',
             }}}
-            disabled={!isEditing} />
+            disabled={!isEditable} />
     </div>
     </div>
   )
