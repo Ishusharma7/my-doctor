@@ -77,6 +77,39 @@ function Profile() {
       setIsEditable(!isEditable);  
     };
 
+    
+const[img,setImg] = useState(null)
+    const handleImageChange = async(e) => {
+      const file = e.target.files[0];
+      const imageUrl = URL.createObjectURL(file);
+      setSelectedImage(imageUrl); // Set in state
+      setImg(file);
+    }
+
+
+
+    
+  async function uploadPatientImage() {
+    try {
+        console.log("uploading image...", img)
+        let response = await fetch(
+            `http://my-doctors.net:8090/patients/${user.user._id}`,
+            {
+                method: "PATCH",
+                headers: {
+                    Authorization: `Bearer ${user.accessToken}`,
+                },
+                body: img,
+            }
+        );
+        response = await response.json();
+        console.log("upload status",response)
+        return response;
+    } catch (error) {
+        console.error("Error:", error);
+        throw error;
+    }
+}
 
     async function getPatientImage() {
       const queryParams = new URLSearchParams({
@@ -89,36 +122,15 @@ function Profile() {
           {
               method: "GET",
               headers: {
-                  // Authorization: `Bearer ${user.accessToken}`,
+                  Authorization: `Bearer ${user.accessToken}`,
               },
 
           });
       response = await response.json();
+      console.log('got image', response)
       setSelectedImage(response?.avatar?.buffer);
   }
 
-  async function uploadPatientImage(selectedImage) {
-      try {
-          console.log("uploading image...")
-          let response = await fetch(
-              `http://my-doctors.net:8090/patients/${user.user._id}`,
-              {
-                  method: "PATCH",
-                  headers: {
-                      // Authorization: `Bearer ${user.accessToken}`,
-                  },
-                  body: selectedImage,
-              }
-          );
-          response = await response.json();
-          console.log("upload status",response)
-          // await navigate("/myprofile")
-          return response;
-      } catch (error) {
-          console.error("Error:", error);
-          throw error;
-      }
-  }
 
   useEffect(() => {
       getPatientImage();
@@ -132,11 +144,7 @@ function Profile() {
           fontSize:'2rem',
         },
       };
-      const handleImageChange = async(e) => {
-        const file = e.target.files[0];
-        const imageUrl = URL.createObjectURL(file);
-        setSelectedImage(imageUrl); // Set in state
-      }
+   
       
       
       // useEffect(() => {
@@ -155,7 +163,7 @@ function Profile() {
               body: JSON.stringify(),
               headers: {
                 "Content-type": "application/json; charset=UTF-8",
-                // Authorization: `Bearer ${user.accessToken}`,
+                Authorization: `Bearer ${user.accessToken}`,
               },
             }
           );

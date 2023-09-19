@@ -11,7 +11,10 @@ import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 function Dodet() {
-  const [data, setData] = useState({});
+  const [data, setData] = useState({
+    languages: [] // Provide an empty array as the default value for languages
+  });
+  
   const { id } = useParams();
 
   const getDoctorsDetails = async () => {
@@ -122,7 +125,9 @@ function Dodet() {
         </AccordionSummary>
         <AccordionDetails>
           <Typography sx={{fontSize:'1.5rem'}}>
-           {data.languages}
+            {data.languages.map((language, index) => (
+              <li key={index}>{language}</li>
+            ))}
           </Typography>
         </AccordionDetails>
       </Accordion>

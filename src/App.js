@@ -8,6 +8,7 @@ import Spdet from './Home Page/Cards/specdet';
 import Dodet from './Home Page/Cards/docotdet';
 import Profile from './loggedin/logedincomponents/Profile';
 import ChPassword from './loggedin/logedincomponents/Password';
+import PatientDetails from './loggedin/logedincomponents/PatientDetails';
 function App() {
   return (
     <div className="App">
@@ -23,7 +24,8 @@ function App() {
           <Route path="/Specialities" element={<Special />} />
           <Route path="/doctors/:id" element={<Dodet />} />
           <Route path="/myprofile" element={<Profile />} />
-          <Route path="//changepassword" element={<ChPassword />} />
+          <Route path="/changepassword" element={<ChPassword />} />
+          <Route path="/appointments" element={<PatientDetails />} />
         </Routes>
     </Router>
     <Footer />
