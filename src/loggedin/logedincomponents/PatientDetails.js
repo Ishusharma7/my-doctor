@@ -49,12 +49,12 @@ function PatientDetails() {
             </label>
             <p>Please provide the following information about the patient:</p>
         <div className={css.fl}>
-            <TextField sx={{...textFieldPadding}}
+            <TextField sx={{...textFieldPadding, width:'22vw', paddingLeft:'1rem'}}
                 label='Patient Name'
                 value={selectedOption === 'myself' ? initialName : ''}
             disabled={selectedOption === 'myself'}
             />
-            <TextField  sx={{...textFieldPadding}}
+            <TextField sx={{...textFieldPadding, width:'22vw',paddingLeft:'1rem'}}
                 label="Patient's Mobile Number"
                 value={selectedOption === 'myself' ? user.user.contactNumber : ''}
             disabled={selectedOption === 'myself'}
@@ -62,6 +62,10 @@ function PatientDetails() {
 
             <h3>Fee : Rs</h3>
         </div>
+        </div>
+        <div style={{display:'flex', gap:'2rem'}}>
+          <button disabled>Back</button>
+          <button className={css.nex}>Next</button>
         </div>
     </div>
   )

@@ -21,6 +21,7 @@ export default function Header () {
     const [specialData, setSpecialData] = useState([]);
     const [selectedOption, setSelectedOption] = useState(null);
     const [anchorEl, setAnchorEl] = useState(null);
+    const[selectedImage, setSelectedImage] = useState(null);
 
     const navigate = useNavigate();
 
@@ -91,6 +92,31 @@ const handleSpDetail = () => {
 
     const top100Films = 
        specialData.map((item) => item.name);
+
+       async function getPatientImage() {
+        const queryParams = new URLSearchParams({
+            avatar: 1,
+            "$select[]": "avatarId",
+        });
+        let response = await fetch(
+            `http://my-doctors.net:8090/patients/${user.user._id
+            }?${queryParams.toString()}`,
+            {
+                method: "GET",
+                headers: {
+                    Authorization: `Bearer ${user.accessToken}`,
+                },
+  
+            });
+        response = await response.json();
+        console.log('got image', response)
+        setSelectedImage(response?.avatar?.buffer);
+    }
+    useEffect(() => {
+      getPatientImage();
+  }, [])
+
+
   return (
     <div>
         <div className={css.up}>
@@ -153,7 +179,11 @@ const handleSpDetail = () => {
                   size="large"
                   onClick={handleMenu}
                 >
-                  <Avatar color="disabled" sx={{width:'5rem', height:'5rem' }} />
+                 <Avatar 
+                 color="disabled"
+                      sx={{width:'5rem', height:'5rem'}}
+                      src={selectedImage || "/broken-image.jpg"}
+                    />
                 </IconButton>
                 <Menu
                 sx={{zIndex:1300000}}

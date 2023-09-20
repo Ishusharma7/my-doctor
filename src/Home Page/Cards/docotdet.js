@@ -14,6 +14,7 @@ function Dodet() {
   const [data, setData] = useState({
     languages: [] // Provide an empty array as the default value for languages
   });
+  const[slots,setSlots] = useState()
   
   const { id } = useParams();
 
@@ -45,12 +46,35 @@ function Dodet() {
     getDoctorsDetails();
   }, [id]);
 
+  async function getSlots() {
+    let response = await fetch(
+      `http://my-doctors.net:8090/slots?doctorId=${id}&startTime[$gte]=2023-09-19T09:04:15.225Z&$sort[startTime]=1`,
+      {
+        method: "GET",
+      }
+    );
+    response = await response.json();
+  
+    const slot = response.data.map((slot) => ({
+      starttime: slot.startTime,
+      endtime: slot.endTime,
+    }));
+  
+    setSlots(slot);
+  }
+  
+  useEffect(() => {
+    getSlots();
+  }, [id]);
+  
+  console.log('hero', slots)
   // Function to convert months to years
   const convertMonthsToYears = (months) => {
     const years = Math.floor(months / 12);
     const remainingMonths = months % 12;
     return `${years} years ${remainingMonths > 0 ? `and ${remainingMonths} months` : ''}`;
   };
+
 
   return (
     <div className={css.al}>
@@ -68,7 +92,7 @@ function Dodet() {
         </div>
       </div>
       <div>
-        <h1>No slots available</h1>
+        <h1></h1>
       </div>
       </div>
       <div className={css.drpdwn}>

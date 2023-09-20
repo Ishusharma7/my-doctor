@@ -8,11 +8,9 @@ import CloseIcon from '@mui/icons-material/Close';
 import {  MenuItem, Select } from '@mui/material';
 
 
-
 function Profile() {
     const [isEditable, setIsEditable] = useState(false);
     const [selectedImage, setSelectedImage] = useState(null);
-    
     const user = JSON.parse(localStorage.getItem("userContext"));
     console.log(user)
     const initialName = user.user.firstName +' '+ user.user.lastName;
@@ -89,27 +87,31 @@ const[img,setImg] = useState(null)
 
 
     
-  async function uploadPatientImage() {
-    try {
-        console.log("uploading image...", img)
-        let response = await fetch(
-            `http://my-doctors.net:8090/patients/${user.user._id}`,
-            {
-                method: "PATCH",
-                headers: {
-                    Authorization: `Bearer ${user.accessToken}`,
-                },
-                body: img,
-            }
+    async function uploadPatientImage() {
+      try {
+        const formData = new FormData();
+        formData.append('avatar', img);
+    
+        const response = await fetch(
+          `http://my-doctors.net:8090/patients/${user.user._id}`,
+          {
+            method: 'PATCH',
+            headers: {
+              Authorization: `Bearer ${user.accessToken}`,
+            },
+            body: formData, // Use FormData to send the file
+            
+          }
         );
-        response = await response.json();
-        console.log("upload status",response)
-        return response;
-    } catch (error) {
-        console.error("Error:", error);
+    
+        const data = await response.json();
+        console.log('upload status', data);
+        return data;
+      } catch (error) {
+        console.error('Error:', error);
         throw error;
+      }
     }
-}
 
     async function getPatientImage() {
       const queryParams = new URLSearchParams({
@@ -170,7 +172,8 @@ const[img,setImg] = useState(null)
           const data = await response.json();
           console.log(data);
           setIsEditable(false);
-          // setDetails(initialState);
+          
+          // window.location.reload(); 
         } catch (error) {
           console.log(error);
         }
@@ -185,9 +188,9 @@ const[img,setImg] = useState(null)
     <div className={css.avtside}>
         <h1>My Profile</h1>
         {selectedImage ? (
-            <img src={selectedImage} alt="Uploaded" style={{ height: '15rem', width: '15rem' }} />
+            <img src={selectedImage} alt="Uploaded" style={{ height: '10rem', width: '10rem' }} />
           ) : (
-            <Avatar sx={{ height: '15rem', width: '15rem' }} />
+            <Avatar sx={{ height: '10rem', width: '10rem' }} />
           )}
           <input type="file" accept="image/*" onChange={handleImageChange} id="fileInput" style={{ display: 'none'}} />
           <div style={{display:'flex', gap:'1rem'}}>
