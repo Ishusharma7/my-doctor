@@ -1,14 +1,20 @@
 .al{
-    margin-top: 18vh;
+    margin-top: 15vh;
     background-color: #fafafa;
-    padding-left: 40vw;
-    min-height: 73vh;
+    min-height: 76.2vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 .al h1{
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
     font-weight: 200;
     font-size: 1.5rem;
-    border-bottom: 1px solid #cdcbcb;
+}
+.al h2{
+    font-size: 3rem;
+    font-weight: 300;
 }
 button{
     width: 13vw;
@@ -32,4 +38,15 @@ button{
     display: flex;
     flex-direction: column;
     gap: 1rem;
+}
+.ddet{
+    display: flex;
+    border-bottom: 1px solid #cdcbcb;
+    justify-content: space-between;
+}
+.ddet h3{
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 200;
+    font-size: 1.5rem;
+    margin-right: 15rem;
 }

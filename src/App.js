@@ -8,7 +8,7 @@ import Spdet from './Home Page/Cards/specdet';
 import Dodet from './Home Page/Cards/docotdet';
 import Profile from './loggedin/logedincomponents/Profile';
 import ChPassword from './loggedin/logedincomponents/Password';
-import AppointmentDet from './loggedin/logedincomponents/AppointmentDet';
+import Payment from './loggedin/logedincomponents/Payment';
 function App() {
   return (
     <div className="App">
@@ -25,7 +25,7 @@ function App() {
           <Route path="/doctors/:id" element={<Dodet />} />
           <Route path="/myprofile" element={<Profile />} />
           <Route path="/changepassword" element={<ChPassword />} />
-          <Route path="/appointments" element={<AppointmentDet />} />
+          <Route path="/appointments" element={<Payment />} />
         </Routes>
     </Router>
     <Footer />

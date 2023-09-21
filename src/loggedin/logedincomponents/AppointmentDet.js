@@ -8,23 +8,29 @@ function AppointmentDet() {
         <Left />
         <h2>Appointment Details</h2>
        <div className={css.ch}>
-    <div>
+    <div className={css.ddet}>
         <h1>Patient name</h1>
+        <h3>dsfds</h3>
     </div>
-    <div>
+    <div className={css.ddet}>
     <h1>Patient's contact number</h1>
+    <h3>dsfds</h3>
     </div>
-    <div>
+    <div className={css.ddet}>
         <h1>Consulation Fee</h1>
+        <h3>dsfds</h3>
     </div>
-    <div>
+    <div className={css.ddet}>
         <h1>Doctor's name</h1>
+        <h3>dsfds</h3>
     </div>
-    <div>
+    <div className={css.ddet}>
         <h1>Appointment date</h1>
+        <h3>dsfds</h3>
     </div>
-    <div>
+    <div  className={css.ddet}>
         <h1>Appointment time</h1>
+        <h3>dsfds</h3>
     </div>
        </div>
        <div style={{display:'flex', gap:'2rem'}}>

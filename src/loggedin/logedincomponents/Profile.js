@@ -124,7 +124,7 @@ const[img,setImg] = useState(null)
           {
               method: "GET",
               headers: {
-                  Authorization: `Bearer ${user.accessToken}`,
+                  Authorization: `Bearer ${user.accessToken }`,
               },
 
           });
@@ -137,7 +137,6 @@ const[img,setImg] = useState(null)
   useEffect(() => {
       getPatientImage();
   }, [])
-
 
 
     const textFieldPadding = {
@@ -154,15 +153,25 @@ const[img,setImg] = useState(null)
       //   const updatedUser = { ...user.user, firstName, lastName };
       //   localStorage.setItem("userContext", JSON.stringify({ user: updatedUser }));
       // }, [names]);
-
       const handleSave = async () => {
         uploadPatientImage()
+        const fullNameArray = names.split(' ');
+        const firstName = fullNameArray[0];
+        const lastName = fullNameArray.slice(1).join(' ');
+      
+        // Update the formData object with firstName and lastName
+        const updatedFormData = {
+          firstName: firstName,
+          lastName: lastName,
+          gender: gender,
+          house: house,
+        };
         try {
           const response = await fetch(
             `http://my-doctors.net:8090/patients/${user.user._id}`,
             {
               method: "PATCH",
-              body: JSON.stringify(),
+              body: JSON.stringify(updatedFormData),
               headers: {
                 "Content-type": "application/json; charset=UTF-8",
                 Authorization: `Bearer ${user.accessToken}`,
@@ -170,7 +179,7 @@ const[img,setImg] = useState(null)
             }
           );
           const data = await response.json();
-          console.log(data);
+          console.log('ssdsdsdsds' ,data);
           setIsEditable(false);
           
           // window.location.reload(); 

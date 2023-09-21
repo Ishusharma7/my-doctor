@@ -1,11 +1,10 @@
 import React from 'react'
-import d from '../../Login Page/images/d.svg'
-function Imag() {
+function Imag({src, width}) {
   return (
     <div style={{alignItems:'end', justifyContent:'end', display:'flex'}}>
         <img
-        src={d}
-        width={2200}
+        src={src}
+        width={width}
          />
     </div>
   )

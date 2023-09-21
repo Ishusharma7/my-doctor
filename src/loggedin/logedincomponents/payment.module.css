@@ -1,0 +1,56 @@
+.al{
+    margin-top: 20vh;
+    min-height: 71.2vh;
+    padding-left: 30vw;
+    flex-direction: column;
+    gap: 2rem;
+    background-color: #fafafa;
+}
+.al h1{
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-size: 5rem;
+    font-weight: 300;
+}
+.ai {
+    border: 1px solid #b3b1b1;
+    gap: 1rem;
+    width: 30vw;
+    padding: 3rem;
+    background-color: #fafafa;
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+.ai p{
+    font-size: 1.5rem;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+.imaag{
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+}
+button{
+    width: 16.2vw;
+    padding: .8rem;
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    background-color: transparent;
+    border: .5px solid #c2c1c1;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+.nex{
+    background-color: #3f51b5;
+    color: white;
+    border: none;
+}
+.fl{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+}
+.fl label{
+    font-size: 1.5rem;
+    padding: .5rem;
+}

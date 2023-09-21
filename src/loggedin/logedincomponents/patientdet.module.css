@@ -1,8 +1,11 @@
 .al{
-    margin-top: 18vh;
+    margin-top: 5vh;
     background-color: #fafafa;
-    padding-left: 40vw;
-    min-height: 73vh;
+    min-height: 86vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .al h1{
     font-size: 3rem;
