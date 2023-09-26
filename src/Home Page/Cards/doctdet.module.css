@@ -17,6 +17,20 @@
     box-shadow: 0.5px 2px 2px 0px #888;
     gap: 2rem   ;
 }
+.upleft h1{
+     font-Size: 1.5rem;
+     color: black;
+     font-Weight:100;
+}
+.upleft h2{
+    font-Size: 1.5rem;
+    color:#919191;
+    font-Weight:100;
+}
+.upleft p {
+    font-Size: 1.5rem;
+    color:#919191;
+}
 .bt{
     display: flex;
     gap: 2rem;
@@ -29,8 +43,37 @@
 .drpdwn{
     background-color: white;
     width: 50vw;
+    padding: 2rem;
 }
 .drpdwn h3{
     font-size: 2rem;
     font-weight: 100;
+    margin-bottom: 1REM;
 }
+@media (max-width: 400px) {
+    .al{
+        margin: 0;
+        margin-top: 12rem;
+        padding-left: 2rem;
+    }
+    .upleft{
+        width: 35vw;
+    }
+    .upleft h2{
+        font-size: 1rem;
+    }
+    .upleft h1{
+        font-size: 1rem;
+        font-weight: 800;
+    }
+    .upleft p{
+        font-size: 1rem;
+    }
+    .drpdwn h3{
+        font-size: 1.5rem;
+    }
+    .drpdwn{
+        width: 73vw;
+        padding: 1rem;
+    }
+    }

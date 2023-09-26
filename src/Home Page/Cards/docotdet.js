@@ -82,10 +82,10 @@ function Dodet() {
     <div style={{display:'flex', gap:'3rem'}}>
       <div className={css.upleft}>
       <div>
-        <h1 style={{ fontSize: '1.5rem', color: 'black',fontWeight:'100' }}>Dr. {data.name}</h1>
-        <h2 style={{ fontSize: '1.5rem', color: 'black',fontWeight:'100' }}>{convertMonthsToYears(data.experienceMonths)}</h2>
+        <h1>Dr. {data.name}</h1>
+        <h2>{convertMonthsToYears(data.experienceMonths)} of experience</h2>
         </div>
-        <p style={{ fontSize: '1.5rem', color: 'black' }}>{data.bio}</p>
+        <p>{data.bio}</p>
         <div className={css.bt}>
         <button><FavoriteIcon sx={{fontSize:'2rem'}} /></button>
         <button><ShareIcon sx={{fontSize:'2rem'}} /></button>
@@ -103,10 +103,10 @@ function Dodet() {
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography sx={{fontSize:'1.5rem',fontWeight:'bolder'}}>Specialities</Typography>
+          <Typography sx={{fontSize:{md:'1.5rem'},fontWeight:'bolder'}}>Specialities</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography sx={{fontSize:'1.5rem'}}>
+          <Typography sx={{fontSize:{md:'1.5rem'}}}>
            {data.specialities}
           </Typography>
         </AccordionDetails>
@@ -117,10 +117,10 @@ function Dodet() {
           aria-controls="panel2a-content"
           id="panel2a-header"
         >
-          <Typography sx={{fontSize:'1.5rem',fontWeight:'bolder'}}>Qualifications</Typography>
+          <Typography sx={{fontSize:{md:'1.5rem'},fontWeight:'bolder'}}>Qualifications</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography sx={{fontSize:'1.5rem'}}>
+          <Typography sx={{fontSize:{md:'1.5rem'}}}>
            {data.qualifications}
           </Typography>
         </AccordionDetails>
@@ -131,10 +131,10 @@ function Dodet() {
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography sx={{fontSize:'1.5rem',fontWeight:'bolder'}}>Experience</Typography>
+          <Typography sx={{fontSize:{md:'1.5rem'},fontWeight:'bolder'}}>Experience</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography sx={{fontSize:'1.5rem'}}>
+          <Typography sx={{fontSize:{md:'1.5rem'}}}>
            {data.experience}
           </Typography>
         </AccordionDetails>
@@ -145,10 +145,10 @@ function Dodet() {
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography sx={{fontSize:'1.5rem',fontWeight:'bolder'}}>Languages</Typography>
+          <Typography sx={{fontSize:{md:'1.5rem'},fontWeight:'bolder'}}>Languages</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography sx={{fontSize:'1.5rem'}}>
+          <Typography sx={{fontSize:{md:'1.5rem'}}}>
             {data.languages.map((language, index) => (
               <li key={index}>{language}</li>
             ))}
@@ -161,10 +161,10 @@ function Dodet() {
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography sx={{fontSize:'1.5rem',fontWeight:'bolder'}}>Reviews</Typography>
+          <Typography sx={{fontSize:{md:'1.5rem'},fontWeight:'bolder'}}>Reviews</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography sx={{fontSize:'1.5rem'}}>
+          <Typography sx={{fontSize:{md:'1.5rem'}}}>
             {data.reviews}
           </Typography>
         </AccordionDetails>
@@ -175,7 +175,7 @@ function Dodet() {
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography sx={{fontSize:'1.5rem',fontWeight:'bolder'}}>Write a review</Typography>
+          <Typography sx={{fontSize:{md:'1.5rem'},fontWeight:'bolder'}}>Write a review</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>

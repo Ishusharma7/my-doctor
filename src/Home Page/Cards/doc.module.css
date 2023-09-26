@@ -16,7 +16,7 @@
     display: flex;
     flex-flow: row wrap;
     justify-content: flex-start;
-    width: 75vw;
+    width: 80vw;
     gap: 40px;
     margin-left: 32.5em;
     margin-bottom: 3em;
@@ -27,7 +27,7 @@
     flex-flow: column nowrap;
     justify-content: space-between  ;
     gap: 30px;
-    width: 14vw;    
+    width: 16vw;    
     height: 58vh;
 }
 .up p{

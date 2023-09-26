@@ -12,7 +12,9 @@ function Doctor() {
         <div>
         <Left />
         </div>
+        <div className={css.ingal}>
        <Imag  src={d} width='2200' />
+       </div>
         <div className={css.g}>
         <Special />
        <Link to='/Specialities'> <h5>View all specialities</h5> </Link>
