@@ -9,6 +9,8 @@ function Payment() {
   const[expmnth,setExpmnth]  = useState('')
   const[expyear,setExpyear]  = useState('')  
   const[scrty,setScrty]  = useState('')
+  const[error,setError] = useState(false)
+  const[eror, setEror] = useState(false)
 
   
   const handleSecurity = (e) => {
@@ -41,7 +43,14 @@ const handleCard = (e) => {
 
   // Update the state with the formatted input
   setCard(formattedInput);
+
 };
+const handleError =()=>{
+  setError(card.length < 16);
+}
+const handleEror=()=>{
+  setEror(scrty.length < 4)
+}
   const textFieldPadding = {
     '& .MuiInputBase-input': {
       padding: '1rem', // Adjust the padding as needed
@@ -66,27 +75,32 @@ const handleCard = (e) => {
          <div className={css.fl}>
           <TextField
           value={card}
-          error={handleError}
+          error={error}
+          onBlur={handleError}
           onChange={handleCard}
           label='Credit/Debit Card Number'sx={{...textFieldPadding,width:'28vw'}} />
           <TextField 
           value={expmnth}
+          focused
           onChange={handleMonth}
             label='Expiration month'
           />
           <TextField
           value={expyear}
+          focused
           onChange={handleYear}
           label='Expiration Year' />
           <TextField 
           value={scrty}
+          error={eror}
+          onBlur={handleEror}
           onChange={handleSecurity}
             label='Security Code'sx={{...textFieldPadding,width:'28vw'}}
           />
          </div>
         </div>
-        <div style={{display:'flex', gap:'2rem'}}>
-          <button>Back</button>
+        <div>
+          <button className={css.bck}>Back</button>
           <button className={css.nex}>MAKE PAYMENT</button>
         </div>
     </div>

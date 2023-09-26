@@ -94,27 +94,29 @@ const handleSpDetail = () => {
        specialData.map((item) => item.name);
 
        async function getPatientImage() {
-        const queryParams = new URLSearchParams({
+        if (user && user.user) { // Check if 'user' and 'user.user' exist
+          const queryParams = new URLSearchParams({
             avatar: 1,
-            "$select[]": "avatarId",
-        });
-        let response = await fetch(
-            `http://my-doctors.net:8090/patients/${user.user._id
-            }?${queryParams.toString()}`,
+            '$select[]': 'avatarId',
+          });
+          let response = await fetch(
+            `http://my-doctors.net:8090/patients/${user.user._id}?${queryParams.toString()}`,
             {
-                method: "GET",
-                headers: {
-                    Authorization: `Bearer ${user.accessToken}`,
-                },
-  
-            });
-        response = await response.json();
-        console.log('got image', response)
-        setSelectedImage(response?.avatar?.buffer);
-    }
-    useEffect(() => {
-      getPatientImage();
-  }, [])
+              method: 'GET',
+              headers: {
+                Authorization: `Bearer ${user.accessToken}`,
+              },
+            }
+          );
+          response = await response.json();
+          console.log('got image', response);
+          setSelectedImage(response?.avatar?.buffer);
+        }
+      }
+    
+      useEffect(() => {
+        getPatientImage();
+      }, [user]); // Make sure to trigger the effect when 'user' changes
 
 
   return (
