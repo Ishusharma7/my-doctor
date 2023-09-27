@@ -1,7 +1,5 @@
 .al{
-    margin-top: 5vh;
     background-color: #fafafa;
-    min-height: 86vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -9,6 +7,7 @@
 }
 .al h1{
     font-size: 3rem;
+    margin-right: 27rem;
     font-weight: 200;
 }
 .chose{
@@ -44,7 +43,7 @@ input[type=radio]{
     height: 1.5rem;
     width: 3rem;
 }
-button{
+.bex{
     width: 12.5vw;
     padding: .5rem;
     margin-top: 1rem;
@@ -55,6 +54,10 @@ button{
     background-color: #3f51b5;
     color: white;
     border: none;
+    width: 12.5vw;
+    padding: .5rem;
+    margin-top: 1rem;
+    font-size: 1.5rem;
 }
 .fl h3{
     font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,'Fira Sans','Droid Sans','Helvetica Neue',sans-serif;

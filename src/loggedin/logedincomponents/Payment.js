@@ -3,8 +3,9 @@ import css from './payment.module.css'
 import Imag from '../../Home Page/Cards/imag'
 import { TextField } from '@mui/material'
 import { useState } from 'react'
+import Left from '../../Home Page/Cards/leftbar'
 
-function Payment() {
+function Payment({handleBack}) {
   const[card,setCard]  = useState('')
   const[expmnth,setExpmnth]  = useState('')
   const[expyear,setExpyear]  = useState('')  
@@ -57,8 +58,10 @@ const handleEror=()=>{
       fontSize:'2rem',
     },
   };
+  const isButtonDisabled = card.length < 16|| scrty.length < 4;
   return (
     <div className={css.al}>
+    <Left />
         <h1>Payment Details</h1>
         <div className={css.ai}>
          <p>Accepted Credit/Debit Cards</p>
@@ -100,8 +103,8 @@ const handleEror=()=>{
          </div>
         </div>
         <div>
-          <button className={css.bck}>Back</button>
-          <button className={css.nex}>MAKE PAYMENT</button>
+          <button onClick={handleBack} className={css.bck}>Back</button>
+          <button className={css.nex} disabled={isButtonDisabled} >MAKE PAYMENT</button>
         </div>
     </div>
   )

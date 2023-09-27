@@ -1,11 +1,14 @@
 .al{
-    margin-top: 15vh;
-    min-height: 71.2vh;
-    padding-left: 30vw;
+    padding-left: 20vw;
     flex-direction: column;
     gap: 2rem;
     background-color: #fafafa;
 }
+button:disabled {
+    background-color: #ccc; /* Change the color to your desired disabled color */
+    color: #999; /* Change the text color */
+    cursor: not-allowed; /* Change cursor style */
+  }
 .al h1{
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
     font-size: 5rem;

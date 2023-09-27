@@ -40,6 +40,7 @@ export default function Header () {
     setAnchorEl(null);
     localStorage.removeItem("userContext");
     navigate('/')
+    window.location.reload()
   }
 
   const handleAppointment = ()=>{
@@ -134,9 +135,38 @@ const handleSpDetail = () => {
             height={100}
             />
             </Link>
-            <Link to="/auth/login">
-            <button href="/auth/login">LOGIN</button>
-            </Link>
+            {user && (
+              <div className={css.lu}>
+                <IconButton
+                  size="large"
+                  onClick={handleMenu}
+                >
+                 <Avatar 
+                 color="disabled"
+                      sx={{width:'5rem', height:'5rem', objectFit:'cover'}}
+                      src={selectedImage || "/broken-image.jpg"}
+                    />
+                </IconButton>
+                <Menu
+                sx={{zIndex:1300000}}
+                  anchorEl={anchorEl}
+                  keepMounted
+                  open={Boolean(anchorEl)}
+                  onClose={handleClose}
+                >
+                  <MenuItem onClick={handleAccount} selected><PermIdentityIcon sx={{fontSize:'3rem'}}/><Typography sx={{fontSize:'2rem'}}>Account Settings</Typography></MenuItem>
+                  <MenuItem onClick={handleAppointment}><CalendarTodayIcon sx={{fontSize:'3rem'}}/><Typography sx={{fontSize:'2rem'}}>My Appointments</Typography></MenuItem>
+                  <MenuItem onClick={handleLogOut}><ExitToAppIcon sx={{fontSize:'3rem'}}/><Typography sx={{fontSize:'2rem'}}>Logout</Typography></MenuItem>
+                </Menu>
+              </div>
+            )}
+            {!user && (
+              <Link to="/auth/login">
+                <button className={css.bt} variant="contained">
+                  Log In
+                </button>
+              </Link>
+            )}
             </div>
         <div className={css.bet}>
                 <Autocomplete
@@ -171,10 +201,6 @@ const handleSpDetail = () => {
             />
             </div>
             <div className={css.u}>
-
-
-
-
             {user && (
               <div className={css.lu}>
                 <IconButton

@@ -2,7 +2,7 @@ import React from 'react'
 import css from './Appointdet.module.css'
 import Left from '../../Home Page/Cards/leftbar'
 
-function AppointmentDet() {
+function AppointmentDet({handleNext,handleBack}) {
   return (
     <div className={css.al}>
         <Left />
@@ -34,8 +34,8 @@ function AppointmentDet() {
     </div>
        </div>
        <div style={{display:'flex', gap:'2rem'}}>
-          <button>Back</button>
-          <button className={css.nex}>CONFIRM AND PROCEED</button>
+          <button className={css.bea} onClick={handleBack}>Back</button>
+          <button onClick={handleNext} className={css.nex}>CONFIRM AND PROCEED</button>
         </div>
     </div>
   )

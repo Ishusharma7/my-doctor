@@ -1,16 +1,18 @@
 import { TextField } from '@mui/material'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import css from './patientdet.module.css'
 import Left from '../../Home Page/Cards/leftbar'
 
-function PatientDetails() {
+function PatientDetails({handleNext}) {
     const [selectedOption, setSelectedOption] = useState('myself')
+    const[data, setData]=useState([])
     const textFieldPadding = {
         '& .MuiInputBase-input': {
           padding: '1rem', // Adjust the padding as needed
           fontSize:'2rem',
         },
       };
+
       
       const user = JSON.parse(localStorage.getItem("userContext"));
       console.log(user)
@@ -60,12 +62,12 @@ function PatientDetails() {
             disabled={selectedOption === 'myself'}
             />
 
-            <h3>Fee : Rs</h3>
+            <h3>Fee : Rs {data.consultationFee}</h3>
         </div>
         </div>
         <div style={{display:'flex', gap:'2rem'}}>
-          <button disabled>Back</button>
-          <button className={css.nex}>Next</button>
+          <button className={css.bex} disabled>Back</button>
+          <button onClick={handleNext} className={css.nex}>Next</button>
         </div>
     </div>
   )

@@ -21,6 +21,7 @@ function Profile() {
     const [gender, setGender] = useState(user.user.gender);
     const [bloodgroup, setBloodgroup] = useState('');
     const [house, setHouse] = useState('');
+    const [dob, setDob] = useState(user.user.profile.dob)
     const [colony, setColony] = useState('');
     const [city, setCity] = useState('');
     const [state, setState] = useState('');
@@ -54,6 +55,9 @@ function Profile() {
 
   function handleColony(e) {
       setColony(e.target.value);
+  }
+  function handleDobChange(e){
+      setDob(e.target.value);
   }
 
   function handleCity(e) {
@@ -276,6 +280,8 @@ const[img,setImg] = useState(null)
         <MenuItem value="other" sx={{fontSize:'1.5rem'}}>Other</MenuItem>
       </Select>
     <TextField
+    value={dob}
+    onChange={handleDobChange}
     label='Date of Birth'
     sx={{ ...textFieldPadding, width: '23vw', "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
              border: '1px solid grey',

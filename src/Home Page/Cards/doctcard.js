@@ -31,7 +31,6 @@ function Doc() {
   const endIndex = startIndex + itemsPerPage;
   const displayeddocData = doctors.slice(startIndex, endIndex);
   
-
   return (
     <div >
       {displayeddocData.map((doctor, index) => (
