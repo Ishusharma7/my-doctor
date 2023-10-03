@@ -14,12 +14,25 @@ import ListItemText from '@mui/material/ListItemText';
 import { Link } from 'react-router-dom';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import NestedDrawer from '../../loggedin/nesteddrawaer'
+import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 
 
 function Left() {
   const [hasAppointment, setHasAppointment] = useState(false);
   const [display, setDisplay] = useState("none")
 
+  const user = JSON.parse(localStorage.getItem("userContext"));
+
+  const arr = ['Doctors', 'Specialities', 'My Appointments', 'Account Settings']
+  const arr2 = ["Dashboard", 'Doctor Profile', 'Appointments', 'Reviews']
+
+  let menuOptions;
+
+  if (user && user.user && user.user.role === 'doctor') {
+    menuOptions = arr2;
+  } else {
+    menuOptions = arr;
+  }
   // Check if there is content stored in local storage when the component mounts
   useEffect(() => {
     const storedAppointment = localStorage.getItem('userContext');
@@ -47,7 +60,7 @@ function Left() {
           >
             <Box sx={{ overflow: 'auto', marginTop: '2vh' }}>
               <List>
-                {['Doctors', 'Specialities', 'My Appointments', 'Account Settings'].map((text, index) => (
+                {menuOptions.map((text, index) => (
                   // Conditionally render the "Appointment" drawer based on the hasAppointment state
                   hasAppointment || (text !== 'My Appointments' && text !== 'Account Settings')? (
                     <ListItem key={text} disablePadding>
@@ -61,8 +74,12 @@ function Left() {
                             <BubbleChartIcon style={{ fontSize: '50px' }} />
                           ): text === 'My Appointments' ?(
                             <CalendarTodayIcon style={{ fontSize: '50px' }} />
+                          ):text === 'Doctors'?(
+                            <PersonIcon  style={{ fontSize: '50px' }} />
+                          ):text === 'Account Settings'?(
+                            <PersonIcon  style={{ fontSize: '50px' }} />
                           ):(
-                            <PersonIcon style={{ fontSize: '50px' }} />
+                            <PersonOutlineOutlinedIcon style={{ fontSize: '50px' }} />
                           )}
                         </ListItemIcon>
                         <ListItemText

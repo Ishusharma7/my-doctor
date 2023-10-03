@@ -21,7 +21,7 @@ function Profile() {
     const [gender, setGender] = useState(user.user.gender);
     const [bloodgroup, setBloodgroup] = useState('');
     const [house, setHouse] = useState('');
-    const [dob, setDob] = useState(user.user.profile.dob)
+    const [dob, setDob] = useState(user.user.profile.dob);
     const [colony, setColony] = useState('');
     const [city, setCity] = useState('');
     const [state, setState] = useState('');
